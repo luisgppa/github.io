@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serie Tierra — Luis González Palacios</title>
+  <meta name="description" content="Serie Tierra. Troncos de olivo rescatados, raíces recuperadas, traviesas de tren retiradas. Escultura en madera y acero reciclado. Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/tierra.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;animation:fadeUp 0.7s ease forwards}
+    .delay-1{animation-delay:.05s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.35s}.delay-4{animation-delay:.5s}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:20px 48px;display:flex;align-items:center;gap:10px;border-bottom:0.5px solid var(--border)}
+    .breadcrumb a{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .breadcrumb a:hover{color:var(--oxide)}
+    .breadcrumb-sep{font-size:11px;color:var(--border)}
+    .breadcrumb-current{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-2)}
+
+    .serie-header{max-width:1200px;margin:0 auto;padding:56px 48px 64px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:end;border-bottom:0.5px solid var(--border)}
+    .serie-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:14px}
+    .serie-titulo{font-family:var(--serif-d);font-size:clamp(48px,5vw,72px);font-weight:300;line-height:1.02;letter-spacing:.01em;margin-bottom:6px}
+    .serie-subtitulo{font-family:var(--serif-b);font-size:15px;font-style:italic;color:var(--ink-3)}
+    .serie-texto p{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+    .serie-texto p:last-child{margin-bottom:0}
+    .serie-mat{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);padding-top:20px;border-top:0.5px solid var(--border)}
+
+    .obras-section{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
+    .obras-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .obras-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .obras-count{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
+    .obras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 24px}
+
+    .obra-card{display:block}
+    .obra-card:hover .obra-img img{transform:scale(1.03)}
+    .obra-card:hover .obra-nombre{color:var(--oxide)}
+    .obra-img{width:100%;aspect-ratio:3/4;overflow:hidden;background:#f4f1ec;margin-bottom:16px;position:relative;}
+    .obra-img img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;}
+    .obra-img-placeholder{width:100%;height:100%;background:linear-gradient(150deg,#2a2420 0%,#1a1210 50%,#3d3530 100%)}
+    .obra-serie-label{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:5px}
+    .obra-nombre{font-family:var(--serif-d);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:4px;transition:color .2s}
+    .obra-meta{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
+
+    /* Sección multimedia: Stanbrook y Diario de una escultura */
+    .multimedia-section{border-top:0.5px solid var(--border)}
+    .multimedia-inner{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
+    .multimedia-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .multimedia-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .multimedia-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+    .multimedia-item{display:block}
+    .multimedia-thumb{width:100%;aspect-ratio:16/9;background:#1a1a1a;margin-bottom:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .multimedia-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .multimedia-thumb-bg{width:100%;height:100%;background:linear-gradient(160deg,#2a2420 0%,#1a1210 50%,#3d3530 100%);display:flex;align-items:center;justify-content:center}
+    .play-icon{width:48px;height:48px;border:0.5px solid rgba(244,241,236,.3);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .play-icon::after{content:'';border-left:14px solid rgba(244,241,236,.5);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
+    .multimedia-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px}
+    .multimedia-desc{font-family:var(--serif-b);font-size:14px;font-style:italic;color:var(--ink-3);line-height:1.7}
+
+    .nav-series{border-top:0.5px solid var(--border)}
+    .nav-series-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+    .nav-serie-prev,.nav-serie-next{display:flex;align-items:center;gap:16px;padding:28px 0;transition:opacity .2s}
+    .nav-serie-prev:hover,.nav-serie-next:hover{opacity:.6}
+    .nav-serie-next{justify-content:flex-end;text-align:right}
+    .nav-serie-dir{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:4px}
+    .nav-serie-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink)}
+    .nav-series-volver{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);text-align:center;transition:color .2s}
+    .nav-series-volver:hover{color:var(--oxide)}
+
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .breadcrumb{padding:16px 24px}
+      .serie-header{grid-template-columns:1fr;padding:40px 24px 48px;gap:32px}
+      .obras-section{padding:40px 24px 64px}
+      .obras-grid{grid-template-columns:1fr 1fr;gap:32px 16px}
+      .multimedia-inner{padding:40px 24px 64px}
+      .multimedia-grid{grid-template-columns:1fr}
+      .nav-series-inner{padding:0 24px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+    @media(max-width:540px){.obras-grid{grid-template-columns:1fr}}
+  </style>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html" class="active">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="obra.html">Obra</a>
+    <span class="breadcrumb-sep">—</span>
+    <span class="breadcrumb-current">Tierra</span>
+  </div>
+
+  <header class="serie-header">
+    <div class="fade-in delay-1">
+      <p class="serie-label">Serie 03</p>
+      <h1 class="serie-titulo">Tierra</h1>
+      <p class="serie-subtitulo">28 esculturas · 2024–2026</p>
+    </div>
+    <div class="serie-texto fade-in delay-2">
+      <p>Me refugio en los troncos rescatados. Mis manos hacen y mi cerebro calla. Atento a sus formas, intento comprender lo que guarda su memoria y darles otra oportunidad de brillar.</p>
+      <p>Troncos de olivo rescatados, raíces recuperadas de terrenos en abandono, traviesas de tren retiradas del servicio: cada pieza llega al taller con una historia ya inscrita en su materia. El proceso respeta las marcas del tiempo — nódulos, grietas y cicatrices naturales que se convierten en el vocabulario formal de la obra.</p>
+      <p>Estos materiales me ofrecen una forma de estar en el mundo y la posibilidad de construir desde la memoria: la suya y la mía.</p>
+      <p class="serie-mat">Madera de olivo · raíces rescatadas · traviesas de tren · acero reciclado</p>
+    </div>
+  </header>
+
+  <section class="obras-section">
+    <div class="obras-header">
+      <span class="obras-titulo">Obras</span>
+      <span class="obras-count">28 piezas</span>
+    </div>
+    <div class="obras-grid">
+
+      <a class="obra-card fade-in delay-2" href="tierra-31.html">
+        <div class="obra-img"><img src="img/tierra31.png" alt="Tierra 31 — Luis González Palacios. 65×55×10 cm, 2026." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 31</h2><p class="obra-meta">65 × 55 × 10 cm · 2026</p>
+      </a>
+
+      <a class="obra-card fade-in delay-2" href="tierra-29.html">
+        <div class="obra-img"><img src="img/tierra29.png" alt="Tierra 29 — Luis González Palacios. 72×25×15 cm, 2026." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 29</h2><p class="obra-meta">72 × 25 × 15 cm · 2026</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="tierra-28.html">
+        <div class="obra-img"><img src="img/tierra28.png" alt="Tierra 28 — Luis González Palacios. 80×18 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 28</h2><p class="obra-meta">80 × 18 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="tierra-27.html">
+        <div class="obra-img"><img src="img/tierra27.png" alt="Tierra 27 — Luis González Palacios. 83×37 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 27</h2><p class="obra-meta">83 × 37 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="tierra-casalectura.html">
+        <div class="obra-img"><img src="img/tierracasalectura.png" alt="Casa de lectura — Luis González Palacios. 70×34×20 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Casa de lectura</h2><p class="obra-meta">70 × 34 × 20 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="tierra-26.html">
+        <div class="obra-img"><img src="img/tierra26.png" alt="Tierra 26 — Luis González Palacios. 70×30×18 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 26</h2><p class="obra-meta">70 × 30 × 18 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="tierra-25.html">
+        <div class="obra-img"><img src="img/tierra25.png" alt="Tierra 25 — Luis González Palacios. 35×40×15 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 25</h2><p class="obra-meta">35 × 40 × 15 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="tierra-24.html">
+        <div class="obra-img"><img src="img/tierra24.png" alt="Tierra 24 — Luis González Palacios. 32×15×15 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 24</h2><p class="obra-meta">32 × 15 × 15 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="tierra-23.html">
+        <div class="obra-img"><img src="img/tierra23.png" alt="Tierra 23 — Luis González Palacios. 74×30×22 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 23</h2><p class="obra-meta">74 × 30 × 22 cm · 2025</p>
+      </a>
+
+    </div>
+    <div style="text-align:center;margin-top:48px;">
+      <a href="#todas" style="font-family:'EB Garamond',Georgia,serif;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:#111111;border:0.5px solid #111111;padding:12px 32px;display:inline-block;transition:background .2s,color .2s;" onmouseover="this.style.background='#111';this.style.color='#f4f1ec'" onmouseout="this.style.background='transparent';this.style.color='#111'">Ver todas las obras →</a>
+    </div>
+  </section>
+
+  <section class="obras-section" id="todas">
+    <div class="obras-header">
+      <span class="obras-titulo">Serie completa</span>
+      <span class="obras-count">28 piezas</span>
+    </div>
+    <div class="obras-grid">
+      <a class="obra-card fade-in delay-2" href="tierra-31.html">
+        <div class="obra-img"><img src="img/tierra31.png" alt="Tierra 31 — Luis González Palacios. 65 × 55 × 10 cm · 2026" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 31</h2><p class="obra-meta">65 × 55 × 10 cm · 2026</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-29.html">
+        <div class="obra-img"><img src="img/tierra29.png" alt="Tierra 29 — Luis González Palacios. 72 × 25 × 15 cm · 2026" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 29</h2><p class="obra-meta">72 × 25 × 15 cm · 2026</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-28.html">
+        <div class="obra-img"><img src="img/tierra28.png" alt="Tierra 28 — Luis González Palacios. 80 × 18 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 28</h2><p class="obra-meta">80 × 18 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-27.html">
+        <div class="obra-img"><img src="img/tierra27.png" alt="Tierra 27 — Luis González Palacios. 83 × 37 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 27</h2><p class="obra-meta">83 × 37 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-casalectura.html">
+        <div class="obra-img"><img src="img/tierracasalectura.png" alt="Casa de lectura — Luis González Palacios. 70 × 34 × 20 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Casa de lectura</h2><p class="obra-meta">70 × 34 × 20 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-26.html">
+        <div class="obra-img"><img src="img/tierra26.png" alt="Tierra 26 — Luis González Palacios. 70 × 30 × 18 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 26</h2><p class="obra-meta">70 × 30 × 18 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-25.html">
+        <div class="obra-img"><img src="img/tierra25.png" alt="Tierra 25 — Luis González Palacios. 35 × 40 × 15 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 25</h2><p class="obra-meta">35 × 40 × 15 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-24.html">
+        <div class="obra-img"><img src="img/tierra24.png" alt="Tierra 24 — Luis González Palacios. 32 × 15 × 15 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 24</h2><p class="obra-meta">32 × 15 × 15 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-23.html">
+        <div class="obra-img"><img src="img/tierra23.png" alt="Tierra 23 — Luis González Palacios. 74 × 30 × 22 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 23</h2><p class="obra-meta">74 × 30 × 22 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-22.html">
+        <div class="obra-img"><img src="img/tierra22.png" alt="Tierra 22 — Luis González Palacios. 68 × 22 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 22</h2><p class="obra-meta">68 × 22 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-21.html">
+        <div class="obra-img"><img src="img/tierra21.png" alt="Tierra 21 — Luis González Palacios. 73 × 24 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 21</h2><p class="obra-meta">73 × 24 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-20.html">
+        <div class="obra-img"><img src="img/tierra20.png" alt="Tierra 20 — Luis González Palacios. 66 × 12 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 20</h2><p class="obra-meta">66 × 12 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-19.html">
+        <div class="obra-img"><img src="img/tierra19.png" alt="Tierra 19 — Luis González Palacios. 72 × 64 × 17 cm · 2025" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 19</h2><p class="obra-meta">72 × 64 × 17 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-18.html">
+        <div class="obra-img"><img src="img/tierra18.png" alt="Tierra 18 — Luis González Palacios. 50 × 16 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 18</h2><p class="obra-meta">50 × 16 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-17.html">
+        <div class="obra-img"><img src="img/tierra17.png" alt="Tierra 17 — Luis González Palacios. 60 × 17 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 17</h2><p class="obra-meta">60 × 17 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-16.html">
+        <div class="obra-img"><img src="img/tierra16.png" alt="Tierra 16 — Luis González Palacios. 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 16</h2><p class="obra-meta">2024</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-15.html">
+        <div class="obra-img"><img src="img/tierra15-añoranza1-cover.png" alt="Tierra 15 — Luis González Palacios. 170 × 13 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 15</h2><p class="obra-meta">170 × 13 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-14.html">
+        <div class="obra-img"><img src="img/tierra14-añoranza2.png" alt="Tierra 14 — Luis González Palacios. 120 × 13 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 14</h2><p class="obra-meta">120 × 13 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-13.html">
+        <div class="obra-img"><img src="img/tierra13-añoranza3.png" alt="Tierra 13 — Luis González Palacios. 71 × 22 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 13</h2><p class="obra-meta">71 × 22 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-12.html">
+        <div class="obra-img"><img src="img/tierra12.png" alt="Tierra 12 — Luis González Palacios. 70 × 40 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 12</h2><p class="obra-meta">70 × 40 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-11.html">
+        <div class="obra-img"><img src="img/tierra11.png" alt="Tierra 11 — Luis González Palacios. 36 × 16 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 11</h2><p class="obra-meta">36 × 16 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-10.html">
+        <div class="obra-img"><img src="img/tierra10.png" alt="Tierra 10 — Luis González Palacios. 65 × 31 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 10</h2><p class="obra-meta">65 × 31 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-9.html">
+        <div class="obra-img"><img src="img/tierra9.png" alt="Tierra 9 — Luis González Palacios. 57 × 18 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 9</h2><p class="obra-meta">57 × 18 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-8.html">
+        <div class="obra-img"><img src="img/tierra8.png" alt="Tierra 8 — Luis González Palacios. 83 × 31 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 8</h2><p class="obra-meta">83 × 31 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-7.html">
+        <div class="obra-img"><img src="img/tierra7.png" alt="Tierra 7 — Luis González Palacios. 59 × 16 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 7</h2><p class="obra-meta">59 × 16 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-3" href="tierra-6.html">
+        <div class="obra-img"><img src="img/tierra6.png" alt="Tierra 6 — Luis González Palacios. 43 × 23 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 6</h2><p class="obra-meta">43 × 23 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="tierra-5.html">
+        <div class="obra-img"><img src="img/tierra5.png" alt="Tierra 5 — Luis González Palacios. 44 × 19 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 5</h2><p class="obra-meta">44 × 19 cm · 2024</p>
+      </a>
+      <a class="obra-card fade-in delay-2" href="tierra-1.html">
+        <div class="obra-img"><img src="img/tierra1.png" alt="Tierra 1 — Luis González Palacios. 42 × 25 cm · 2024" loading="lazy"></div>
+        <p class="obra-serie-label">Tierra</p><h2 class="obra-nombre">Tierra 1</h2><p class="obra-meta">42 × 25 cm · 2024</p>
+      </a>
+    </div>
+  </section>
+  <section class="multimedia-section">
+    <div class="multimedia-inner">
+      <div class="multimedia-header">
+        <span class="multimedia-titulo">Proceso y vídeo</span>
+      </div>
+      <div class="multimedia-grid">
+        <a class="multimedia-item fade-in delay-2" href="https://lgonzalezpalacios.com" target="_blank" rel="noopener">
+          <div class="multimedia-thumb"><div class="multimedia-thumb-bg"><div class="play-icon"></div></div></div>
+          <h3 class="multimedia-nombre">Añoranzas del tren</h3>
+          <p class="multimedia-desc">Las traviesas de tren retiradas del servicio llegan al taller. Proceso de escucha y transformación.</p>
+        </a>
+        <a class="multimedia-item fade-in delay-3" href="https://lgonzalezpalacios.com" target="_blank" rel="noopener">
+          <div class="multimedia-thumb"><div class="multimedia-thumb-bg"><div class="play-icon"></div></div></div>
+          <h3 class="multimedia-nombre">Alquimia de la luz</h3>
+          <p class="multimedia-desc">La madera de olivo y la luz. Cómo las aperturas talladas hacen visible lo que estaba oculto.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav-series" aria-label="Navegación entre series">
+    <div class="nav-series-inner">
+      <a href="ferrum.html" class="nav-serie-prev">
+        <div><p class="nav-serie-dir">← Anterior</p><p class="nav-serie-nombre">Ferrum</p></div>
+      </a>
+      <a href="obra.html" class="nav-series-volver">Todas las series</a>
+      <a href="cartografia.html" class="nav-serie-next">
+        <div><p class="nav-serie-dir">Siguiente →</p><p class="nav-serie-nombre">Cartografía del Movimiento</p></div>
+      </a>
+    </div>
+  </nav>
+
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </footer>
+</body>
+</html>

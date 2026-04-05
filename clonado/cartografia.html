@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cartografía del Movimiento — Luis González Palacios</title>
+  <meta name="description" content="Cartografía del Movimiento. Tríptico escultórico sobre la energía contenida, latente y liberada. Inercia, Impulso, Desplazamiento. Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/cartografia.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;animation:fadeUp 0.7s ease forwards}
+    .delay-1{animation-delay:.05s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.35s}.delay-4{animation-delay:.5s}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:20px 48px;display:flex;align-items:center;gap:10px;border-bottom:0.5px solid var(--border)}
+    .breadcrumb a{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .breadcrumb a:hover{color:var(--oxide)}
+    .breadcrumb-sep{font-size:11px;color:var(--border)}
+    .breadcrumb-current{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-2)}
+    .serie-header{max-width:1200px;margin:0 auto;padding:56px 48px 64px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:end;border-bottom:0.5px solid var(--border)}
+    .serie-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:14px}
+    .serie-titulo{font-family:var(--serif-d);font-size:clamp(36px,4.5vw,62px);font-weight:300;line-height:1.02;letter-spacing:.01em;margin-bottom:6px}
+    .serie-subtitulo{font-family:var(--serif-b);font-size:15px;font-style:italic;color:var(--ink-3)}
+    .serie-texto p{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+    .serie-texto p:last-child{margin-bottom:0}
+    .serie-mat{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);padding-top:20px;border-top:0.5px solid var(--border)}
+    /* Tríptico: layout especial horizontal */
+    .triptico-section{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
+    .triptico-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .triptico-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .triptico-subtitulo{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
+    .triptico-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .triptico-pieza{display:block;position:relative;overflow:hidden}
+    .triptico-pieza:hover .triptico-img-inner{transform:scale(1.03)}
+    .triptico-pieza:hover .triptico-nombre{color:var(--oxide)}
+    .triptico-img{width:100%;aspect-ratio:4/5;overflow:hidden;background:#1e2028}
+    .triptico-img-inner{width:100%;height:100%;transition:transform .8s ease}
+    .ci{background:linear-gradient(150deg,#1e2028 0%,#141620 50%,#2a2c3a 100%)}
+    .cii{background:linear-gradient(150deg,#161820 0%,#0e1018 50%,#222430 100%)}
+    .ciii{background:linear-gradient(150deg,#1a1c24 0%,#12141c 50%,#26283a 100%)}
+    .triptico-data{padding:18px 0 24px}
+    .triptico-num{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:5px}
+    .triptico-nombre{font-family:var(--serif-d);font-size:24px;font-weight:400;color:var(--ink);margin-bottom:6px;transition:color .2s}
+    .triptico-desc{font-family:var(--serif-b);font-size:14px;font-style:italic;color:var(--ink-2);line-height:1.7;margin-bottom:8px}
+    .triptico-meta{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3)}
+    /* Texto conceptual */
+    .concepto-section{border-top:0.5px solid var(--border)}
+    .concepto-inner{max-width:1200px;margin:0 auto;padding:56px 48px 80px;display:grid;grid-template-columns:200px 1fr;gap:0 80px}
+    .concepto-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);padding-top:6px}
+    .concepto-texto p{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:24px;max-width:620px}
+    .concepto-texto p:last-child{margin-bottom:0}
+    .concepto-texto strong{font-style:normal;font-weight:500;color:var(--ink)}
+    /* Nav series */
+    .nav-series{border-top:0.5px solid var(--border)}
+    .nav-series-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+    .nav-serie-prev,.nav-serie-next{display:flex;align-items:center;gap:16px;padding:28px 0;transition:opacity .2s}
+    .nav-serie-prev:hover,.nav-serie-next:hover{opacity:.6}
+    .nav-serie-next{justify-content:flex-end;text-align:right}
+    .nav-serie-dir{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:4px}
+    .nav-serie-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink)}
+    .nav-series-volver{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);text-align:center;transition:color .2s}
+    .nav-series-volver:hover{color:var(--oxide)}
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .breadcrumb{padding:16px 24px}
+      .serie-header{grid-template-columns:1fr;padding:40px 24px 48px;gap:32px}
+      .triptico-section{padding:40px 24px 64px}
+      .triptico-grid{grid-template-columns:1fr;gap:32px}
+      .concepto-inner{grid-template-columns:1fr;padding:40px 24px;gap:24px}
+      .nav-series-inner{padding:0 24px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+      .obra-img img,.triptico-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+    .obra-card:hover .obra-img img,.triptico-pieza:hover .triptico-img img{transform:scale(1.03)}
+    .serie-card-img img,.serie-featured-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+    .serie-card:hover .serie-card-img img{transform:scale(1.03)}
+    .serie-featured-img:hover img{transform:scale(1.03)}
+    .hero-image-placeholder img,.sobre-image img{width:100%;height:100%;object-fit:cover;display:block}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html" class="active">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="obra.html">Obra</a>
+    <span class="breadcrumb-sep">—</span>
+    <span class="breadcrumb-current">Cartografía del Movimiento</span>
+  </div>
+
+  <header class="serie-header">
+    <div class="fade-in delay-1">
+      <p class="serie-label">Serie 04</p>
+      <h1 class="serie-titulo">Cartografía<br>del Movimiento</h1>
+      <p class="serie-subtitulo">Tríptico · 80 × 100 cm · 2025</p>
+    </div>
+    <div class="serie-texto fade-in delay-2">
+      <p>El movimiento no siempre es visible. Hay estados anteriores al gesto, umbrales donde la energía se acumula sin liberarse todavía, y rastros posteriores donde la materia guarda la memoria de lo que ya ocurrió.</p>
+      <p>No se trata de representar el movimiento, sino de comprender cómo lo invisible nos impulsa a la acción.</p>
+      <p class="serie-mat">Acero · cobre · muelles · engranajes · esferas de reloj · componentes mecánicos reciclados</p>
+    </div>
+  </header>
+
+  <section class="triptico-section">
+    <div class="triptico-header">
+      <span class="triptico-titulo">Las tres piezas</span>
+      <span class="triptico-subtitulo">Tríptico completo</span>
+    </div>
+    <div class="triptico-grid">
+      <a class="triptico-pieza fade-in delay-2" href="inercia.html">
+        <div class="triptico-img"><img src="img/cartografia_inercia-cover.jpg" alt="Inercia — Luis González Palacios. 80×100 cm, 2024." loading="lazy"></div>
+        <div class="triptico-data">
+          <p class="triptico-num">I</p>
+          <h2 class="triptico-nombre">Inercia</h2>
+          <p class="triptico-desc">La energía presente pero negada. El metal no fluye, se traba. Todo permanece, todo resiste. Es el peso del reposo.</p>
+          <p class="triptico-meta">80 × 100 cm · 2024</p>
+        </div>
+      </a>
+      <a class="triptico-pieza fade-in delay-3" href="impulso.html">
+        <div class="triptico-img"><img src="img/cartografia_impulso.jpg" alt="Impulso — Luis González Palacios. 80×100 cm, 2025." loading="lazy"></div>
+        <div class="triptico-data">
+          <p class="triptico-num">II</p>
+          <h2 class="triptico-nombre">Impulso</h2>
+          <p class="triptico-desc">El instante anterior al movimiento. El tiempo no fluye: se condensa y rompe. El impulso ha detenido el mundo, suspendido en su vértice más intenso.</p>
+          <p class="triptico-meta">80 × 100 cm · 2025</p>
+        </div>
+      </a>
+      <a class="triptico-pieza fade-in delay-4" href="desplazamiento.html">
+        <div class="triptico-img"><img src="img/cartografia_desplazamiento.jpg" alt="Desplazamiento — Luis González Palacios. 80×100 cm, 2025." loading="lazy"></div>
+        <div class="triptico-data">
+          <p class="triptico-num">III</p>
+          <h2 class="triptico-nombre">Desplazamiento</h2>
+          <p class="triptico-desc">El rastro de un movimiento ya realizado. Una herida o una sombra de lo que ya pasó. La memoria inscrita en la materia.</p>
+          <p class="triptico-meta">80 × 100 cm · 2025</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="concepto-section">
+    <div class="concepto-inner fade-in delay-2">
+      <p class="concepto-label">Concepto</p>
+      <div class="concepto-texto">
+        <p>Este proyecto articula una narrativa de energía contenida, latente y liberada a través de materiales reciclados, estructuras tensadas, formas geométricas insinuadas y superficies trabajadas en tonos oscuros.</p>
+        <p>El reloj no mide aquí: <strong>es materia</strong>. Sus agujas sueltas, sus esferas fragmentadas hablan de un tiempo que se condensa, se rompe y deja huella. Establece un diálogo entre la física y el proceso creativo, invitando a la reflexión sobre los propios estados vitales.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav-series" aria-label="Navegación entre series">
+    <div class="nav-series-inner">
+      <a href="tierra.html" class="nav-serie-prev">
+        <div><p class="nav-serie-dir">← Anterior</p><p class="nav-serie-nombre">Tierra</p></div>
+      </a>
+      <a href="obra.html" class="nav-series-volver">Todas las series</a>
+      <a href="ecos.html" class="nav-serie-next">
+        <div><p class="nav-serie-dir">Siguiente →</p><p class="nav-serie-nombre">Ecos del Fuego</p></div>
+      </a>
+    </div>
+  </nav>
+
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </footer>
+</body>
+</html>
