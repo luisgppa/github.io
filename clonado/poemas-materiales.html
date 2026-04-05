@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poemas Materiales — Luis González Palacios</title>
+  <meta name="description" content="Poemas Materiales. Desertar construyendo. 22 poemas de Luis González Palacios construidos desde el taller.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/poemas-materiales.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;animation:fadeUp 0.7s ease forwards}
+    .delay-1{animation-delay:.05s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.35s}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:20px 48px;display:flex;align-items:center;gap:10px;border-bottom:0.5px solid var(--border)}
+    .breadcrumb a{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .breadcrumb a:hover{color:var(--oxide)}
+    .breadcrumb-sep{font-size:11px;color:var(--border)}
+    .breadcrumb-current{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-2)}
+
+    /* PORTADA DEL LIBRO */
+    .libro-portada{max-width:1200px;margin:0 auto;padding:72px 48px 80px;display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center;border-bottom:0.5px solid var(--border)}
+    .portada-texto{}
+    .portada-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+    .portada-titulo{font-family:var(--serif-d);font-size:clamp(40px,5vw,64px);font-weight:300;line-height:1.05;letter-spacing:.01em;margin-bottom:10px}
+    .portada-subtitulo{font-family:var(--serif-b);font-size:18px;font-style:italic;color:var(--oxide);margin-bottom:36px}
+    .portada-desc{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:24px;max-width:480px}
+    .portada-meta{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);padding-top:20px;border-top:0.5px solid var(--border)}
+    .portada-imagen{background:#111;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;text-align:center}
+    .portada-imagen-titulo{font-family:var(--serif-d);font-size:28px;font-weight:400;color:var(--bg);line-height:1.2;margin-bottom:16px}
+    .portada-imagen-sub{font-family:var(--serif-b);font-size:14px;font-style:italic;color:rgba(244,241,236,.5)}
+    .portada-imagen-autor{font-family:var(--serif-b);font-size:13px;letter-spacing:.1em;color:rgba(244,241,236,.35);margin-top:48px;text-transform:uppercase}
+
+    /* ÍNDICE */
+    .indice{max-width:1200px;margin:0 auto;padding:56px 48px;border-bottom:0.5px solid var(--border)}
+    .indice-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:32px}
+    .indice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 40px}
+    .indice-item{font-family:var(--serif-b);font-size:15px;font-style:italic;color:var(--ink-2);padding:8px 0;border-bottom:0.5px solid var(--border);cursor:pointer;transition:color .2s}
+    .indice-item:hover{color:var(--oxide)}
+
+    /* POEMAS */
+    .poemas-wrap{max-width:800px;margin:0 auto;padding:80px 48px}
+    .poema{padding-bottom:72px;border-bottom:0.5px solid var(--border);margin-bottom:72px}
+    .poema:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}
+    .poema-num{font-family:var(--serif-b);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3);margin-bottom:12px}
+    .poema-titulo{font-family:var(--serif-d);font-size:clamp(28px,3.5vw,40px);font-weight:300;letter-spacing:.02em;color:var(--ink);margin-bottom:36px}
+    .poema-cuerpo{font-family:var(--serif-d);font-size:clamp(18px,2.2vw,24px);font-weight:300;font-style:italic;line-height:2;color:var(--ink-2)}
+    .poema-cuerpo p{margin-bottom:1.5em}
+    .poema-cuerpo p:last-child{margin-bottom:0}
+    .estrofa-sep{margin-bottom:1.5em}
+
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .breadcrumb{padding:16px 24px}
+      .libro-portada{grid-template-columns:1fr;padding:48px 24px;gap:40px}
+      .portada-imagen{aspect-ratio:4/3}
+      .indice{padding:40px 24px}
+      .indice-grid{grid-template-columns:1fr 1fr}
+      .poemas-wrap{padding:56px 24px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+    @media(max-width:540px){
+      .indice-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html" class="active">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="textos.html">Textos</a>
+    <span class="breadcrumb-sep">—</span>
+    <span class="breadcrumb-current">Poemas Materiales</span>
+  </div>
+
+  <!-- PORTADA -->
+  <header class="libro-portada">
+    <div class="portada-texto fade-in delay-1">
+      <p class="portada-label">Poemario</p>
+      <h1 class="portada-titulo">Poemas<br>Materiales</h1>
+      <p class="portada-subtitulo">Desertar construyendo</p>
+      <p class="portada-desc">Veintidós poemas construidos desde el taller. Cada poema lleva el nombre de un gesto: el que busca, el que desnuda, el que lava, el que da forma. La herramienta y el verso comparten la misma economía. Lijar, taladrar, pulir, esperar — cada acto del escultor se vuelve lenguaje.</p>
+      <p class="portada-meta">22 poemas · Luis González Palacios · CC BY-NC-ND 4.0</p>
+    </div>
+    <div class="portada-imagen fade-in delay-2">
+      <p class="portada-imagen-titulo">Poemas<br>Materiales</p>
+      <p class="portada-imagen-sub">Desertar construyendo</p>
+      <p class="portada-imagen-autor">Luis González Palacios</p>
+    </div>
+  </header>
+
+  <!-- ÍNDICE -->
+  <nav class="indice fade-in delay-3" aria-label="Índice de poemas">
+    <p class="indice-label">Los 22 poemas</p>
+    <div class="indice-grid">
+      <a class="indice-item" href="#busca">El que busca</a>
+      <a class="indice-item" href="#desnuda">El que desnuda</a>
+      <a class="indice-item" href="#lava">El que lava</a>
+      <a class="indice-item" href="#pule">El que pule</a>
+      <a class="indice-item" href="#forma">El que da forma</a>
+      <a class="indice-item" href="#afila">El que afila</a>
+      <a class="indice-item" href="#duda">El que duda</a>
+      <a class="indice-item" href="#observa">El que observa</a>
+      <a class="indice-item" href="#nombra">El que nombra</a>
+      <a class="indice-item" href="#lija">El que lija</a>
+      <a class="indice-item" href="#mueve">El que se mueve</a>
+      <a class="indice-item" href="#dibuja">El que dibuja</a>
+      <a class="indice-item" href="#taladra">El que taladra</a>
+      <a class="indice-item" href="#crea">El que crea</a>
+      <a class="indice-item" href="#espera">El que espera</a>
+      <a class="indice-item" href="#sangra">El que sangra</a>
+      <a class="indice-item" href="#revela">El que revela</a>
+      <a class="indice-item" href="#sostiene">El que sostiene</a>
+      <a class="indice-item" href="#yerra">El que yerra</a>
+      <a class="indice-item" href="#respira">El que respira</a>
+      <a class="indice-item" href="#expone">El que expone</a>
+      <a class="indice-item" href="#agradece">El que agradece</a>
+    </div>
+  </nav>
+
+  <!-- POEMAS -->
+  <div class="poemas-wrap">
+
+    <div class="poema fade-in delay-2" id="busca">
+      <p class="poema-num">I</p>
+      <h2 class="poema-titulo">El que busca</h2>
+      <div class="poema-cuerpo">
+        <p>Os abandonan bajo la maleza.<br>
+        Al fondo del bancal<br>
+        como si fuerais eso:<br>
+        un simple desperdicio.</p>
+        <p>Nadie recuerda la rama robusta<br>
+        de la que suspendían holgazanas<br>
+        otras más jóvenes, luciendo<br>
+        sus perlas verdes al final del verano.</p>
+        <p>Un rugido de sierra<br>
+        presentó sus dientes implacables<br>
+        y, hundiéndose en la carne<br>
+        dio con vosotras en el suelo,<br>
+        la desgracia<br>
+        os convirtió en mi botín.</p>
+        <p>Soy el ladrón que deambula<br>
+        entre guerreros centenarios<br>
+        de retorcidos cuerpos.</p>
+        <p>Busco en vuestras heridas<br>
+        la posibilidad de algún olvido,<br>
+        y cuando al fin<br>
+        en un rincón del muro, resignados<br>
+        ofrecéis vuestro cuerpo a las hormigas,<br>
+        os nombro mi tesoro<br>
+        y os traigo a casa.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="desnuda">
+      <p class="poema-num">II</p>
+      <h2 class="poema-titulo">El que desnuda</h2>
+      <div class="poema-cuerpo">
+        <p>Te desnudo, a ti<br>
+        que ya estás muerto,<br>
+        para darte otra vida.</p>
+        <p>A golpes cuidadosos<br>
+        como si me diera miedo<br>
+        hacerte daño,<br>
+        despego de ti la piel más dura.</p>
+        <p>Tu cuerpo adquiere lentamente<br>
+        la visión hermosa de las vetas:<br>
+        me emociona tu luz mientras pulo<br>
+        tu carne suave y cálida.</p>
+        <p>No pretendo hacer de ti<br>
+        lo que no eres.<br>
+        Te devolveré<br>
+        el esplendor,<br>
+        no el que tuviste,<br>
+        sino el que dispone<br>
+        el tiempo en mis manos.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="lava">
+      <p class="poema-num">III</p>
+      <h2 class="poema-titulo">El que lava</h2>
+      <div class="poema-cuerpo">
+        <p>Lo sé, cambié vuestro futuro.<br>
+        Subido al montón de chatarra<br>
+        miro con avaricia a través del desorden.<br>
+        Remuevo los fragmentos<br>
+        al tiempo que imagino,<br>
+        entre olores de aceite<br>
+        y tierra estéril.</p>
+        <p>Algo en ti llama mi atención,<br>
+        despiertas mi sentido de lo útil<br>
+        o esa extraña forma de belleza,<br>
+        que acaba cautivándome.</p>
+        <p>Con la bolsa repleta<br>
+        me dirijo a la báscula:<br>
+        veinte kilos,<br>
+        diez euros.</p>
+        <p>Esparcidas por el suelo,<br>
+        comienzo a atisbar algunas conjunciones.<br>
+        Ha llegado el momento de arrebataros<br>
+        la piel que viste el abandono, velo<br>
+        que deposita el tiempo sobre lo inútil.</p>
+        <p>Una a una, entráis en el balde:<br>
+        Agua y jabón.<br>
+        Un reposo.<br>
+        Vendrán las cerdas de alambre<br>
+        a rescatar los primeros brillos,<br>
+        un nuevo rostro.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="pule">
+      <p class="poema-num">IV</p>
+      <h2 class="poema-titulo">El que pule</h2>
+      <div class="poema-cuerpo">
+        <p>No basta<br>
+        despojaros de mugre:<br>
+        quiero vestiros para la fiesta.</p>
+        <p>Os guardo nuevos sueños,<br>
+        un juego equilibrista<br>
+        que fije la atención y hasta el asombro.</p>
+        <p>Ahora venid,<br>
+        mis manos, alquimistas de la luz,<br>
+        os liberarán de la intemperie,<br>
+        y en su quehacer<br>
+        en ese desbastar,<br>
+        invocarán al brillo, atrapado<br>
+        entre moléculas de oxígeno.</p>
+        <p>De la opacidad<br>
+        surgirá el resplandor.<br>
+        Humilde hierro.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="forma">
+      <p class="poema-num">V</p>
+      <h2 class="poema-titulo">El que da forma</h2>
+      <div class="poema-cuerpo">
+        <p>Desde el suelo<br>
+        me habláis y yo os escucho.<br>
+        Os coloco y observo,<br>
+        a veces me conmuevo, entonces<br>
+        os dibujo y os pienso.</p>
+        <p>Sois un rompecabezas<br>
+        de formas inexactas,<br>
+        de aristas que solo coinciden<br>
+        en un punto.</p>
+        <p>Debo reconocer<br>
+        vuestro lugar en el espacio.<br>
+        Siguiendo el protocolo<br>
+        os dispongo en la mesa:<br>
+        pinzo a una de vosotras,<br>
+        resguardo mi cabeza tras el casco,<br>
+        a salvo están mis ojos<br>
+        y tras los guantes, mis brazos y mis manos.</p>
+        <p>Ajusto el amperaje<br>
+        y al acercar el electrodo,<br>
+        una espiral de humo se desprende.<br>
+        Surgen chispas danzantes<br>
+        de un fulgor naranja.</p>
+        <p>En un punto,<br>
+        los cuerpos se han fundido y al golpear,<br>
+        se libera la escoria, mostrando<br>
+        el hilo de cordón que os entrelaza.</p>
+        <p>Os alzo.<br>
+        Os observo.<br>
+        Sonrío.<br>
+        El azar encontró su forma.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="afila">
+      <p class="poema-num">VI</p>
+      <h2 class="poema-titulo">El que afila</h2>
+      <div class="poema-cuerpo">
+        <p>Afilar es un arte.<br>
+        El arte requiere ser paciente,<br>
+        despertar el filo del acero<br>
+        hasta rasgar el aire,<br>
+        es tarea delicada.</p>
+        <p>Sujetar con firmeza el formón<br>
+        mientras resbala por la lija,<br>
+        en ángulo adecuado<br>
+        sin que le falte el agua,<br>
+        morder con suavidad,<br>
+        darle la vuelta y con igual firmeza<br>
+        transformar su superficie en un espejo.</p>
+        <p>A tener en cuenta:<br>
+        ángulo de treinta grados,<br>
+        lijas de trescientos ochocientos y dos mil,<br>
+        pegadas y dispuestas sobre un cristal.</p>
+        <p>Importante:<br>
+        deslizar el filo sobre una hoja de papel,<br>
+        herirla en dos.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="duda">
+      <p class="poema-num">VII</p>
+      <h2 class="poema-titulo">El que duda</h2>
+      <div class="poema-cuerpo">
+        <p>Tengo por costumbre prepararme un café.<br>
+        Hace años también encendía un cigarro<br>
+        hace años sufrí un ictus.</p>
+        <p>Sobre la mesa<br>
+        un tronco de olivo espera sin impaciencia.</p>
+        <p>Sorbo tras sorbo<br>
+        exploro las posibilidades.<br>
+        Me muevo<br>
+        lo muevo<br>
+        tomo nota de cualquier perturbación:<br>
+        nudos, cortes, hendiduras.<br>
+        Sé que la corteza esconde información valiosa.</p>
+        <p>Un golpe seco<br>
+        altera la quietud de la madera,<br>
+        sobre el suelo se acumulan<br>
+        virutas de piel seca y escamada.</p>
+        <p>Desnuda,<br>
+        lo insignificante cobra relevancia.<br>
+        Un nudo es una puerta<br>
+        para llegar al alma del olivo,<br>
+        un trozo de rama mal podada<br>
+        empuja a ahondar la curvatura.</p>
+        <p>¿Cómo hacer que las vetas<br>
+        alcancen su máximo esplendor?<br>
+        ¿Que los tonos dorados, marrones y rojizos<br>
+        atrapen la mirada?</p>
+      </div>
+    </div>
+
+    <div class="poema" id="observa">
+      <p class="poema-num">VIII</p>
+      <h2 class="poema-titulo">El que observa</h2>
+      <div class="poema-cuerpo">
+        <p>Os aúpo a la mesa,<br>
+        os recorro con los ojos cerrados<br>
+        deslizando las yemas de mis dedos.<br>
+        Reconozco cada curva<br>
+        cada sorpresa discontinua<br>
+        que yo afiancé,<br>
+        para que fuerais únicas.</p>
+        <p>Os recorro de nuevo<br>
+        hasta quedar seguro<br>
+        de que toda aspereza,<br>
+        se la llevó el último pulido,<br>
+        solo mis dedos pueden<br>
+        leer entre renglones un tachón,<br>
+        descubrir, lo que mis ojos<br>
+        resultan incapaces.</p>
+        <p>Ahora guardo distancia,<br>
+        os observo sin prisa<br>
+        giro a vuestro alrededor,<br>
+        pongo nombre a los recodos<br>
+        os hablo en voz alta<br>
+        os dedico algunos adjetivos.</p>
+        <p>De ahora en adelante<br>
+        quien desee conoceros,<br>
+        será de obligado cumplimiento el abrazaros,<br>
+        descubriros a oscuras, y cuando os mire,<br>
+        os sentirá más allá de las formas.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="nombra">
+      <p class="poema-num">IX</p>
+      <h2 class="poema-titulo">El que nombra</h2>
+      <div class="poema-cuerpo">
+        <p>Desvestir al lenguaje,<br>
+        volverlo tangible,<br>
+        carnal.</p>
+        <p>Nombro al mazo<br>
+        cuando al golpear el formón<br>
+        astilla la madera.<br>
+        Nombro al soldador<br>
+        cuando funde al hierro<br>
+        dejando una cicatriz.</p>
+        <p>Nombro cada herramienta:<br>
+        sierra lija tornillo<br>
+        cera escofina tenaza<br>
+        todas palabras contundentes<br>
+        para esculpir el poema.<br>
+        Austeras, como los materiales.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="lija">
+      <p class="poema-num">X</p>
+      <h2 class="poema-titulo">El que lija</h2>
+      <div class="poema-cuerpo">
+        <p>Comienzo por lo áspero.<br>
+        El grano grueso muerde,<br>
+        arranca lo que sobra<br>
+        sin piedad, pero sin rabia.</p>
+        <p>Después viene lo fino,<br>
+        el susurro que suaviza,<br>
+        la caricia que prepara<br>
+        la piel para los ojos<br>
+        para las manos.</p>
+        <p>Lijar es un<br>
+        ir y venir sobre lo mismo,<br>
+        repetir el gesto hasta que el tacto<br>
+        confunda la madera<br>
+        con la yema de mis dedos.</p>
+        <p>Así, pliego tras pliego<br>
+        con amor y paciencia<br>
+        bajo cada capa de aspereza<br>
+        voy al encuentro de la luz.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="mueve">
+      <p class="poema-num">XI</p>
+      <h2 class="poema-titulo">El que se mueve</h2>
+      <div class="poema-cuerpo">
+        <p>En la trama invisible<br>
+        donde el viento danza,<br>
+        guarda el aire un secreto:</p>
+        <p>huecos que no se ven<br>
+        y atraviesan el tiempo.</p>
+        <p>Donde mueve el aire<br>
+        yo habito en su danza.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="dibuja">
+      <p class="poema-num">XII</p>
+      <h2 class="poema-titulo">El que dibuja</h2>
+      <div class="poema-cuerpo">
+        <p>Coger un lápiz entre los dedos<br>
+        es un acto cotidiano, como<br>
+        cambiar la broca del taladro<br>
+        afilar las gubias<br>
+        o barrer el suelo.</p>
+        <p>Son hábitos que uno aprende<br>
+        y reproduce justo en su momento,<br>
+        salvo el lápiz,<br>
+        dedo de grafito<br>
+        que la mano acoge como propio,<br>
+        y cuando así sucede<br>
+        las ideas lo nombran su aliado,<br>
+        el descanso se altera,<br>
+        como hoy, que me pregunto<br>
+        qué hago a las cuatro de la mañana<br>
+        trazando líneas sobre una hoja,<br>
+        yo, que no sé dibujar<br>
+        y todo son intentos<br>
+        por dejar esbozos de una idea,<br>
+        que nadie, salvo yo, entenderá.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="taladra">
+      <p class="poema-num">XIII</p>
+      <h2 class="poema-titulo">El que taladra</h2>
+      <div class="poema-cuerpo">
+        <p>Taladrar es una acción violenta.<br>
+        Odio la violencia.</p>
+        <p>Lo anuncia el sonido estridente<br>
+        de la máquina que empuño,<br>
+        al inclinarse<br>
+        busca el lugar, el punto señalado,<br>
+        rompe la broca los primeros tejidos,<br>
+        afilada penetra<br>
+        venciendo la resistencia de su cuerpo.</p>
+        <p>El orden se convierte caos<br>
+        todo se tiñe de virutas.</p>
+        <p>Ejercer la fuerza, vencer<br>
+        hacia adelante todo el cuerpo,<br>
+        empujar con decisión<br>
+        sí, es violencia.</p>
+        <p>En mi descargo, si hubiese<br>
+        posibilidad de perdonarse<br>
+        de aceptar ese impulso fiero,<br>
+        diría que hay un buen motivo:<br>
+        buscar la luz<br>
+        airear el corazón del tronco,<br>
+        embellecer si cabe<br>
+        lo que ya es bello.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="crea">
+      <p class="poema-num">XIV</p>
+      <h2 class="poema-titulo">El que crea</h2>
+      <div class="poema-cuerpo">
+        <p>Hay un silencio<br>
+        que hace del tiempo materia,<br>
+        y te ocupa<br>
+        y te pesa,<br>
+        enmudeces con él.</p>
+        <p>Aguardas el gesto<br>
+        que resquebraje el óxido,<br>
+        la vibración que te sacuda el alma,<br>
+        el caos que sublime el tiempo.</p>
+        <p>Ligero, acomodas las piezas<br>
+        hasta encontrar en la forma<br>
+        el sutil pensamiento<br>
+        que te mantuvo en vela<br>
+        y ahora te observa.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="espera">
+      <p class="poema-num">XV</p>
+      <h2 class="poema-titulo">El que espera</h2>
+      <div class="poema-cuerpo">
+        <p>Miro atento su silencio,<br>
+        La materia reposa,<br>
+        contemplo el leve pulso<br>
+        el instante perfecto,<br>
+        el anuncio.<br>
+        Nada se apresura.</p>
+        <p>Pasan los días,<br>
+        se oxida el hierro<br>
+        y los troncos callan.</p>
+        <p>Aguardo el gesto,<br>
+        el crujido leve,<br>
+        el momento en que algo se ofrece<br>
+        sin que yo lo reclame.</p>
+        <p>Esperar<br>
+        no es dejar de hacer.<br>
+        Es estar,<br>
+        sin intervenir,<br>
+        hasta que la forma llama.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="sangra">
+      <p class="poema-num">XVI</p>
+      <h2 class="poema-titulo">El que sangra</h2>
+      <div class="poema-cuerpo">
+        <p>Me lo digo a menudo.<br>
+        Cuando la herida sangra<br>
+        Cuando la ampolla duele.</p>
+        <p>Pero siento<br>
+        a mis manos prisioneras,<br>
+        Una distancia<br>
+        que me impide el tacto<br>
+        el manejo ágil<br>
+        Confiado me afano en el pulido<br>
+        no deparo en el corte.<br>
+        La rebaba me hiere.</p>
+        <p>Me acuerdo de los guantes<br>
+        mientras mi mano sangra.<br>
+        Me lo digo a menudo.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="revela">
+      <p class="poema-num">XVII</p>
+      <h2 class="poema-titulo">El que revela</h2>
+      <div class="poema-cuerpo">
+        <p>Bajo capas de tiempo<br>
+        late una luz.<br>
+        Mis manos buscan<br>
+        la huella leve<br>
+        la claridad.</p>
+        <p>No invento,<br>
+        descubro,<br>
+        como quien aparta el polvo<br>
+        de un antiguo retrato.</p>
+        <p>Solo oculta,<br>
+        y pide paciencia,<br>
+        atención.</p>
+        <p>Revelo<br>
+        aquello que ya estaba<br>
+        esperando su momento.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="sostiene">
+      <p class="poema-num">XVIII</p>
+      <h2 class="poema-titulo">El que sostiene</h2>
+      <div class="poema-cuerpo">
+        <p>Entre gravedad y equilibrio,<br>
+        mis manos encuentran sentido.<br>
+        La tensión es mi lenguaje,<br>
+        silencioso sostengo el aire,<br>
+        moldeo la quietud del espacio.</p>
+        <p>Todo peso tiene su sitio.<br>
+        Todo vértice exige su pacto.</p>
+        <p>No hay forma sin riesgo,<br>
+        ni estructura sin confianza.</p>
+        <p>Ser soporte<br>
+        es cargar sin ser visto,<br>
+        estar sin protagonismo,<br>
+        mantener lo imposible.</p>
+        <p>Al sostener,<br>
+        también soy contenido.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="yerra">
+      <p class="poema-num">XIX</p>
+      <h2 class="poema-titulo">El que yerra</h2>
+      <div class="poema-cuerpo">
+        <p>El error es la grieta por donde entra la luz:<br>
+        son gajes, heridas que el tiempo remienda.</p>
+        <p>Pero hay un descuido que no perdona:<br>
+        la sordera frente a la materia.</p>
+        <p>Si el nudo dicta su "no"<br>
+        y tú te obstinas;<br>
+        si la veta señala el rumbo<br>
+        y tú la fuerzas;<br>
+        si el óxido advierte su hora<br>
+        y tú lo pules,<br>
+        debes saber que</p>
+        <p>el hierro<br>
+        guarda memoria de su forja,<br>
+        el olivo<br>
+        recuerda cada sequía,<br>
+        el acero<br>
+        arrastra señales de recorte.</p>
+        <p>Tú llegas después.<br>
+        Rescatador o verdugo.<br>
+        La diferencia está en la escucha.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="respira">
+      <p class="poema-num">XX</p>
+      <h2 class="poema-titulo">El que respira</h2>
+      <div class="poema-cuerpo">
+        <p>Percibo en silencio.<br>
+        Mis manos sienten la vida<br>
+        respirando en formas nuevas.</p>
+        <p>Nada es inerte.<br>
+        Ni el hierro,<br>
+        ni la madera dormida.</p>
+        <p>Respiro con ellos,<br>
+        Crear,<br>
+        es simplemente<br>
+        respirar juntos.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="expone">
+      <p class="poema-num">XXI</p>
+      <h2 class="poema-titulo">El que expone</h2>
+      <div class="poema-cuerpo">
+        <p>Sacar las obras del taller.<br>
+        Llevarlas más allá de tu casa.<br>
+        Mostrarlas en una pared desconocida<br>
+        que dice que sí,<br>
+        que acogerá tus cuadros.</p>
+        <p>Mostrarte tú,<br>
+        porque las obras hablan<br>
+        de quién eres,<br>
+        dejar que otros lean<br>
+        lo que escribiste con las manos,<br>
+        lo que callaste con palabras,<br>
+        lo que gritaste en silencio<br>
+        sobre el acero.</p>
+        <p>Exponerse:<br>
+        convertir la intimidad del taller<br>
+        en conversación pública,<br>
+        dejar que miren<br>
+        detrás de la soldadura,<br>
+        el temblor.</p>
+        <p>Es ofrecer<br>
+        no lo que sabes hacer,<br>
+        sino lo que no sabes decir<br>
+        de otro modo.</p>
+        <p>Arriesgarse a<br>
+        que no entiendan,<br>
+        que pasen de largo<br>
+        a la indiferencia.</p>
+        <p>Pero exponer es también<br>
+        la posibilidad del encuentro:<br>
+        que alguien se detenga,<br>
+        que alguien vea en tu GPS de guerra<br>
+        su propia herida,<br>
+        que alguien reconozca<br>
+        en tus desechos redimidos<br>
+        una forma de resistir.</p>
+        <p>Sacar las obras del taller es:<br>
+        perder el control,<br>
+        dejar que vivan<br>
+        sin ti,<br>
+        que signifiquen<br>
+        más allá de tu intención.</p>
+        <p>Exponer, es decir:<br>
+        aquí estoy,<br>
+        esto soy,<br>
+        esto hice con lo que otros tiraron,<br>
+        esta es mi forma de desertar<br>
+        construyendo.</p>
+        <p>Exponer<br>
+        es terminar la obra<br>
+        dejándola ir.</p>
+      </div>
+    </div>
+
+    <div class="poema" id="agradece">
+      <p class="poema-num">XXII</p>
+      <h2 class="poema-titulo">El que agradece</h2>
+      <div class="poema-cuerpo">
+        <p>Agradezco<br>
+        al martillo<br>
+        su simple<br>
+        contundencia.</p>
+        <p>A la radial<br>
+        que desbarata<br>
+        el orden<br>
+        del metal.</p>
+        <p>A la lima<br>
+        por insistir<br>
+        donde la fuerza<br>
+        fracasa.</p>
+        <p>Al soldador<br>
+        por hacer<br>
+        de la junta<br>
+        cicatriz.</p>
+        <p>Agradezco<br>
+        al hierro oxidado<br>
+        por esperar<br>
+        tantos años.</p>
+        <p>A la madera de olivo<br>
+        por guardar<br>
+        la memoria<br>
+        de la tierra.</p>
+        <p>A los tornillos<br>
+        y tuercas<br>
+        que terminan<br>
+        siendo<br>
+        ornamento.</p>
+        <p>A los engranajes rotos<br>
+        por recordar<br>
+        que todo movimiento<br>
+        deja huella.</p>
+        <p>Agradezco<br>
+        a la chatarra<br>
+        por recibirme<br>
+        cuando el mundo<br>
+        no tenía lugar.</p>
+        <p>Agradezco<br>
+        a las herramientas<br>
+        por aceptar<br>
+        mis manos.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="textos.html">← Textos</a>
+      <a href="libro-poemas.html">📖 Libro dinámico</a>
+      <a href="ul-mor.html">Ul Mör →</a>
+    </div>
+  </footer>
+
+</body>
+</html>

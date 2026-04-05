@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Obra — Luis González Palacios</title>
+  <meta name="description" content="Obra escultórica de Luis González Palacios. Siete series en acero reciclado, madera de olivo y materiales rescatados. Desertor Constructor.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/obra.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #f4f1ec;
+      --ink:     #111111;
+      --ink-2:   #555555;
+      --ink-3:   #999999;
+      --oxide:   #9e5a28;
+      --border:  #d8d4cd;
+      --serif-d: 'Cormorant Garamond', Georgia, serif;
+      --serif-b: 'EB Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif-b);
+      font-size: 20px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in   { opacity: 0; animation: fadeUp 0.7s ease forwards; }
+    .delay-1   { animation-delay: 0.05s; }
+    .delay-2   { animation-delay: 0.2s; }
+    .delay-3   { animation-delay: 0.35s; }
+    .delay-4   { animation-delay: 0.5s; }
+    .delay-5   { animation-delay: 0.65s; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+    .nav-name {
+      font-family: var(--serif-d);
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-family: var(--serif-b);
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--oxide); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 1px; background: var(--ink); margin: 5px 0; }
+
+    /* ── CABECERA DE PÁGINA ── */
+    .page-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 48px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: end;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .page-header-label {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 14px;
+    }
+    .page-header h1 {
+      font-family: var(--serif-d);
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 300;
+      line-height: 1.02;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+    .page-header-text {
+      padding-bottom: 6px;
+    }
+    .page-header-desc {
+      font-family: var(--serif-b);
+      font-style: italic;
+      color: var(--ink-2);
+      line-height: 1.85;
+      max-width: 420px;
+    }
+    .page-header-count {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-top: 28px;
+    }
+
+    /* ── SERIE DESTACADA: PAISAJES DE GUERRA ── */
+    .serie-featured {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 64px 48px;
+      display: grid;
+      grid-template-columns: auto 420px;
+      gap: 72px;
+      align-items: center;
+      justify-content: start;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg);
+    }
+    .serie-featured-img {
+      display: block;
+      width: auto;
+      max-width: 560px;
+      background: transparent;
+      overflow: visible;
+      position: relative;
+      line-height: 0;
+    }
+    .serie-featured-img:hover {
+      opacity: 0.92;
+      transition: opacity 0.3s ease;
+    }
+    .serie-featured-img-inner {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(140deg, #1a1210 0%, #2a2420 45%, #0e0c0a 100%);
+      transition: transform 1s ease;
+    }
+    .serie-featured-img:hover .serie-featured-img-inner { transform: scale(1.03); }
+
+    .serie-featured-info {}
+    .serie-num {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--oxide);
+      margin-bottom: 12px;
+    }
+    .serie-featured-titulo {
+      font-family: var(--serif-d);
+      font-size: clamp(32px, 3.5vw, 48px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      margin-bottom: 20px;
+    }
+    .serie-desc {
+      font-family: var(--serif-b);
+      font-style: italic;
+      color: var(--ink-2);
+      line-height: 1.85;
+      margin-bottom: 28px;
+    }
+    .serie-materiales {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      color: var(--ink-3);
+      margin-bottom: 32px;
+      padding-top: 16px;
+      border-top: 0.5px solid var(--border);
+    }
+    .serie-link {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 0.5px solid var(--ink);
+      padding: 10px 24px;
+      display: inline-block;
+      transition: background 0.2s, color 0.2s;
+    }
+    .serie-link:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+    .serie-link-ext {
+      font-family: var(--serif-b);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--oxide);
+      margin-left: 20px;
+      border-bottom: 0.5px solid var(--oxide);
+      transition: opacity 0.2s;
+    }
+    .serie-link-ext:hover { opacity: 0.65; }
+
+    /* ── ENCABEZADO DE SECCIÓN ── */
+    .section-header {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 48px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .section-titulo {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .section-total {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--ink-3);
+    }
+
+    /* ── GRID DE SERIES ── */
+    .series-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px 32px;
+    }
+
+    .serie-card {
+      display: block;
+    }
+    .serie-card:hover .serie-card-img-inner { transform: scale(1.03); }
+    .serie-card:hover .serie-card-nombre { color: var(--oxide); }
+
+    .serie-card-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: #f4f1ec;
+      overflow: hidden;
+      margin-bottom: 18px;
+      position: relative;
+    }
+    .serie-card-img img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .serie-card-img-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease;
+    }
+
+    /* Colores diferenciados para cada serie */
+    .img-ferrum       { background: linear-gradient(150deg, #2a2420 0%, #1a1210 50%, #3d3530 100%); }
+    .img-tierra       { background: #f4f1ec; }
+    .img-cartografia  { background: linear-gradient(150deg, #1e2028 0%, #141620 50%, #2a2c3a 100%); }
+    .img-ecos         { background: linear-gradient(150deg, #2e1a0e 0%, #1e1008 50%, #3a2214 100%); }
+    .img-figuras      { background: linear-gradient(150deg, #1e1e1e 0%, #141414 50%, #2a2a2a 100%); }
+    .img-sabotaje     { background: linear-gradient(150deg, #1a1a20 0%, #101018 50%, #28283a 100%); }
+
+    .serie-card-num {
+      font-family: var(--serif-b);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--oxide);
+      margin-bottom: 6px;
+    }
+    .serie-card-nombre {
+      font-family: var(--serif-d);
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+    .serie-card-desc {
+      font-family: var(--serif-b);
+      font-style: italic;
+      color: var(--ink-2);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+    .serie-card-mat {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--ink-3);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--border);
+    }
+    .footer-name {
+      font-family: var(--serif-d);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-3);
+      letter-spacing: 0.04em;
+    }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--ink-3);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--oxide); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; flex-direction: column; gap: 0; }
+      .nav-links.open {
+        display: flex;
+        position: absolute;
+        top: 62px; left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 0.5px solid var(--border);
+        padding: 12px 24px;
+      }
+      .nav-links.open li { padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+      .nav-links.open li:last-child { border-bottom: none; }
+      .nav-toggle { display: block; }
+
+      .page-header {
+        grid-template-columns: 1fr;
+        padding: 40px 24px 40px;
+        gap: 20px;
+      }
+      .serie-featured {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+        gap: 32px;
+      }
+      .serie-featured-img { aspect-ratio: 16/10; }
+
+      .section-header { padding: 40px 24px 24px; }
+
+      .series-grid {
+        grid-template-columns: 1fr 1fr;
+        padding: 0 24px 60px;
+        gap: 36px 20px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .series-grid { grid-template-columns: 1fr; }
+      .serie-card-img { aspect-ratio: 4/3; }
+    }
+      .obra-img img,.triptico-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+    .obra-card:hover .obra-img img,.triptico-pieza:hover .triptico-img img{transform:scale(1.03)}
+    .serie-card-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .8s ease}.serie-featured-img img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .8s ease}
+    .serie-card-img img.contain{object-fit:contain;background:transparent;}
+    .serie-card:hover .serie-card-img img{transform:scale(1.03)}
+    .serie-featured-img:hover img{transform:scale(1.03)}
+    .hero-image-placeholder img,.sobre-image img{width:100%;height:100%;object-fit:cover;display:block}
+  </style>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html" class="active">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="page-header">
+    <div class="fade-in delay-1">
+      <p class="page-header-label">Obra escultórica</p>
+      <h1>Obra</h1>
+    </div>
+    <div class="page-header-text fade-in delay-2">
+      <p class="page-header-desc">Siete series construidas desde el material rescatado — acero fuera de uso, madera de olivo, componentes mecánicos abandonados. La forma surge de escuchar lo que el material ya sabe.</p>
+      <p class="page-header-count">7 series · Castellón, 2018 — 2025</p>
+    </div>
+  </header>
+
+  <!-- SERIE DESTACADA: PAISAJES DE GUERRA -->
+  <section class="serie-featured">
+    <a class="serie-featured-img fade-in delay-2" href="paisajes-de-guerra/index.html" target="_blank" rel="noopener" aria-label="Ver microsite Paisajes de Guerra">
+      <img src="img/nuseirat.png" alt="Campos de refugiados de Nuseirat — Luis González Palacios. Paisajes de Guerra, 2025." style="width:100%;height:auto;display:block;mix-blend-mode:multiply;">
+    </a>
+    <div class="serie-featured-info fade-in delay-3">
+      <p class="serie-num">Serie 01 · Microsite</p>
+      <h2 class="serie-featured-titulo">Paisajes<br>de Guerra</h2>
+      <p class="serie-desc">Placas de acero industrial reciclado con coordenadas GPS reales de territorios devastados por conflictos armados en Gaza y Ucrania. La imagen satelital se transfiere al acero mediante soldadura y abrasión. El material absorbe la geografía de la destrucción y la convierte en objeto que puede tocarse.</p>
+      <p class="serie-materiales">Acero industrial reciclado · coordenadas GPS · piezas documentales 20 × 20 cm · tríptico 240 × 100 cm · 2023–2025</p>
+      <div>
+        <a href="paisajes-de-guerra/index.html" target="_blank" rel="noopener" class="serie-link">Ver la serie</a>
+        <a href="paisajes-de-guerra/index.html" target="_blank" rel="noopener" class="serie-link-ext">Microsite completo →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTRAS SERIES -->
+  <div class="section-header fade-in delay-4">
+    <span class="section-titulo">Otras series</span>
+    <span class="section-total">6 series</span>
+  </div>
+
+  <div class="series-grid">
+
+    <!-- FERRUM -->
+    <a class="serie-card fade-in delay-2" href="ferrum.html">
+      <div class="serie-card-img">
+        <!-- <img src="img/ferrum-cover.jpg" alt="Serie Ferrum — Luis González Palacios"> -->
+        <img src="img/ferrum17-cover.png" alt="Ferrum — Luis González Palacios. Acero reciclado." loading="lazy">
+      </div>
+      <p class="serie-card-num">Serie 02</p>
+      <h2 class="serie-card-nombre">Ferrum</h2>
+      <p class="serie-card-desc">Construida desde la escucha del metal. El taller recibe los componentes tal como llegan — con sus marcas de uso, su óxido, su desgaste. El trabajo no borra esa historia: la convierte en forma.</p>
+      <p class="serie-card-mat">Acero reciclado · componentes mecánicos · desde 2024</p>
+    </a>
+
+    <!-- TIERRA -->
+    <a class="serie-card fade-in delay-3" href="tierra.html" style="--card-bg:#f4f1ec">
+      <div class="serie-card-img">
+        <!-- <img src="img/tierra-cover.jpg" alt="Serie Tierra — Luis González Palacios"> -->
+        <img src="img/tierra29.png" alt="Tierra — Luis González Palacios. Madera de olivo y acero reciclado." loading="lazy">
+      </div>
+      <p class="serie-card-num">Serie 03</p>
+      <h2 class="serie-card-nombre">Tierra</h2>
+      <p class="serie-card-desc">Troncos de olivo rescatados, raíces de terrenos en abandono, traviesas de tren retiradas. El proceso respeta las marcas del tiempo — nódulos, grietas, cicatrices — que se convierten en vocabulario formal.</p>
+      <p class="serie-card-mat">Madera de olivo · acero reciclado · desde 2024</p>
+    </a>
+
+    <!-- CARTOGRAFÍA DEL MOVIMIENTO -->
+    <a class="serie-card fade-in delay-4" href="cartografia.html">
+      <div class="serie-card-img">
+        <!-- <img src="img/cartografia-cover.jpg" alt="Serie Cartografía del Movimiento — Luis González Palacios"> -->
+        <img src="img/cartografia_inercia-cover.jpg" alt="Cartografía del Movimiento — Luis González Palacios." loading="lazy">
+      </div>
+      <p class="serie-card-num">Serie 04</p>
+      <h2 class="serie-card-nombre">Cartografía<br>del Movimiento</h2>
+      <p class="serie-card-desc">El movimiento no siempre es visible. Un tríptico que cartografía la secuencia interior: no el desplazamiento físico, sino sus condiciones — la tensión, el instante, la huella.</p>
+      <p class="serie-card-mat">Acero · cobre · muelles · engranajes · esferas de reloj · 2025</p>
+    </a>
+
+    <!-- ECOS DEL FUEGO -->
+    <a class="serie-card fade-in delay-2" href="ecos.html">
+      <div class="serie-card-img">
+        <!-- <img src="img/ecos-cover.jpg" alt="Serie Ecos del Fuego — Luis González Palacios"> -->
+        <img src="img/ecosdelfuego-ausencia3-cover.png" alt="Ecos del Fuego — Luis González Palacios." loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </div>
+      <p class="serie-card-num">Serie 05</p>
+      <h2 class="serie-card-nombre">Ecos del Fuego</h2>
+      <p class="serie-card-desc">El fuego no es aquí devastación sino proceso: revela la estructura interna del material, abre texturas, deposita capas de significado. Estas esculturas no representan el fuego — son su memoria solidificada.</p>
+      <p class="serie-card-mat">Madera rescatada · acero oxidado · 2025</p>
+    </a>
+
+    <!-- FIGURAS -->
+    <a class="serie-card fade-in delay-3" href="figuras.html">
+      <div class="serie-card-img">
+        <img src="img/fig2-cover.png" alt="Figuras — Luis González Palacios." loading="lazy">
+      </div>
+      <p class="serie-card-num">Serie 06</p>
+      <h2 class="serie-card-nombre">Figuras</h2>
+      <p class="serie-card-desc">Figuras construidas desde el fragmento y el material rescatado — chapa de acero inoxidable, madera de pino, barras de hierro — pintadas a mano y recubiertas de epoxi.</p>
+      <p class="serie-card-mat">Acero inoxidable · madera de pino · hierro · epoxi · 2025</p>
+    </a>
+
+    <!-- SABOTAJE -->
+    <a class="serie-card fade-in delay-4" href="sabotaje.html">
+      <div class="serie-card-img">
+        <!-- <img src="img/sabotaje-cover.jpg" alt="Serie Sabotaje — Luis González Palacios"> -->
+        <img src="img/sabotaje1-cover.jpeg" alt="Sabotaje — Luis González Palacios." loading="lazy">
+      </div>
+      <p class="serie-card-num">Serie 07</p>
+      <h2 class="serie-card-nombre">Sabotaje</h2>
+      <p class="serie-card-desc">En un tiempo que traduce la vida en datos y el pensamiento en código, el arte sigue teniendo la capacidad de interrumpir la maquinaria. Un acto de insurrección poética.</p>
+      <p class="serie-card-mat">Técnica mixta · materiales rescatados · 2025</p>
+    </a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </footer>
+
+</body>
+</html>

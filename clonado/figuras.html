@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serie Figuras — Luis González Palacios</title>
+  <meta name="description" content="Serie Figuras. Presencias construidas desde el fragmento y el material rescatado. Siete figuras en acero, madera y hierro. Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/figuras.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;animation:fadeUp 0.7s ease forwards}
+    .delay-1{animation-delay:.05s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.35s}.delay-4{animation-delay:.5s}
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:20px 48px;display:flex;align-items:center;gap:10px;border-bottom:0.5px solid var(--border)}
+    .breadcrumb a{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .breadcrumb a:hover{color:var(--oxide)}
+    .breadcrumb-sep{font-size:11px;color:var(--border)}
+    .breadcrumb-current{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-2)}
+    .serie-header{max-width:1200px;margin:0 auto;padding:56px 48px 64px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:end;border-bottom:0.5px solid var(--border)}
+    .serie-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:14px}
+    .serie-titulo{font-family:var(--serif-d);font-size:clamp(48px,5vw,72px);font-weight:300;line-height:1.02;letter-spacing:.01em;margin-bottom:6px}
+    .serie-subtitulo{font-family:var(--serif-b);font-size:15px;font-style:italic;color:var(--ink-3)}
+    .serie-texto p{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+    .serie-texto p:last-child{margin-bottom:0}
+    .serie-mat{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);padding-top:20px;border-top:0.5px solid var(--border)}
+    .obras-section{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
+    .obras-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .obras-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .obras-count{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
+    /* Grid de figuras: más alto, formato retrato */
+    .obras-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 16px}
+    .obra-card{display:block}
+    .obra-card:hover .obra-img-inner{transform:scale(1.03)}
+    .obra-card:hover .obra-nombre{color:var(--oxide)}
+    .obra-img{width:100%;aspect-ratio:2/3;overflow:hidden;background:#f4f1ec;margin-bottom:14px;position:relative;}
+    .obra-img img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;}
+    .obra-img-inner{width:100%;height:100%;transition:transform .8s ease}
+    .f1{background:linear-gradient(160deg,#1e1e1e 0%,#141414 50%,#2a2a2a 100%)}
+    .f2{background:linear-gradient(160deg,#1a1a1a 0%,#101010 50%,#262626 100%)}
+    .f3{background:linear-gradient(160deg,#222222 0%,#181818 50%,#2e2e2e 100%)}
+    .obra-num{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:4px}
+    .obra-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px;transition:color .2s}
+    .obra-mat{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-2);line-height:1.5;margin-bottom:4px}
+    .obra-meta{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3)}
+    .nav-series{border-top:0.5px solid var(--border)}
+    .nav-series-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+    .nav-serie-prev,.nav-serie-next{display:flex;align-items:center;gap:16px;padding:28px 0;transition:opacity .2s}
+    .nav-serie-prev:hover,.nav-serie-next:hover{opacity:.6}
+    .nav-serie-next{justify-content:flex-end;text-align:right}
+    .nav-serie-dir{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:4px}
+    .nav-serie-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink)}
+    .nav-series-volver{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);text-align:center;transition:color .2s}
+    .nav-series-volver:hover{color:var(--oxide)}
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .breadcrumb{padding:16px 24px}
+      .serie-header{grid-template-columns:1fr;padding:40px 24px 48px;gap:32px}
+      .obras-section{padding:40px 24px 64px}
+      .obras-grid{grid-template-columns:repeat(2,1fr);gap:28px 12px}
+      .nav-series-inner{padding:0 24px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+    @media(max-width:480px){.obras-grid{grid-template-columns:repeat(2,1fr)}}
+      .obra-img img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;}
+    .serie-card-img img,.serie-featured-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
+    .serie-card:hover .serie-card-img img{transform:scale(1.03)}
+    .serie-featured-img:hover img{transform:scale(1.03)}
+    .hero-image-placeholder img,.sobre-image img{width:100%;height:100%;object-fit:cover;display:block}
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html" class="active">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="obra.html">Obra</a>
+    <span class="breadcrumb-sep">—</span>
+    <span class="breadcrumb-current">Figuras</span>
+  </div>
+
+  <header class="serie-header">
+    <div class="fade-in delay-1">
+      <p class="serie-label">Serie 06</p>
+      <h1 class="serie-titulo">Figuras</h1>
+      <p class="serie-subtitulo">10 figuras · 2025</p>
+    </div>
+    <div class="serie-texto fade-in delay-2">
+      <p>Presencias construidas desde el fragmento. Chapa de acero inoxidable, madera de pino, barras de hierro, un viejo colador, alambres: el cuerpo humano emerge de lo que otros descartaron.</p>
+      <p>Cada figura lleva los materiales a la vista — pintados a mano, recubiertos de epoxi, intervenidos con fototransferencia. La técnica no se oculta: es parte del lenguaje.</p>
+      <p class="serie-mat">Acero inoxidable · madera de pino reciclada · hierro · epoxi · fototransferencia</p>
+    </div>
+  </header>
+
+  <section class="obras-section">
+    <div class="obras-header">
+      <span class="obras-titulo">Las diez figuras</span>
+      <span class="obras-count">10 figuras</span>
+    </div>
+    <div class="obras-grid">
+      <a class="obra-card fade-in delay-2" href="figura-uno.html">
+        <div class="obra-img"><img src="img/fig1.png" alt="Figura Uno — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">I</p><h2 class="obra-nombre">Uno</h2>
+        <p class="obra-mat">Chapa de acero inoxidable · pintada a mano</p>
+        <p class="obra-meta">78 × 60 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-2" href="figura-dos.html">
+        <div class="obra-img"><img src="img/fig2-cover.png" alt="Figura Dos — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">II</p><h2 class="obra-nombre">Dos</h2>
+        <p class="obra-mat">Madera de pino · barras de hierro · epoxi</p>
+        <p class="obra-meta">125 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="figura-tres.html">
+        <div class="obra-img"><img src="img/fig3.png" alt="Figura Tres — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">III</p><h2 class="obra-nombre">Tres</h2>
+        <p class="obra-mat">Madera de pino · barras de hierro · epoxi</p>
+        <p class="obra-meta">2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="figura-cuatro.html">
+        <div class="obra-img"><img src="img/fig4.png" alt="Figura Cuatro — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">IV</p><h2 class="obra-nombre">Cuatro</h2>
+        <p class="obra-mat">Colador reciclado · alambres · madera de pino · epoxi</p>
+        <p class="obra-meta">51 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="figura-cinco.html">
+        <div class="obra-img"><img src="img/fig5.png" alt="Figura Cinco — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">V</p><h2 class="obra-nombre">Cinco</h2>
+        <p class="obra-mat">Madera de pino · hierro · fototransferencia africana</p>
+        <p class="obra-meta">160 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="figura-seis.html">
+        <div class="obra-img"><img src="img/fig6.png" alt="Figura Seis — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">VI</p><h2 class="obra-nombre">Seis</h2>
+        <p class="obra-mat">Técnica mixta · materiales reciclados · epoxi</p>
+        <p class="obra-meta">65 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="figura-siete.html">
+        <div class="obra-img"><img src="img/fig7.png" alt="Figura Siete — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">VII</p><h2 class="obra-nombre">Siete</h2>
+        <p class="obra-mat">Técnica mixta · materiales reciclados · epoxi</p>
+        <p class="obra-meta">50 cm · 2025</p>
+      </a>
+
+
+      <a class="obra-card fade-in delay-4" href="figura-ocho.html">
+        <div class="obra-img"><img src="img/fig8.png" alt="Figura Ocho — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">VIII</p><h2 class="obra-nombre">Ocho</h2>
+        <p class="obra-mat">Técnica mixta · materiales reciclados · epoxi</p>
+        <p class="obra-meta">2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="figura-nueve.html">
+        <div class="obra-img"><img src="img/fig9.jpg" alt="Figura Nueve — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">IX</p><h2 class="obra-nombre">Nueve</h2>
+        <p class="obra-mat">Técnica mixta · materiales reciclados · epoxi</p>
+        <p class="obra-meta">2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="figura-diez.html">
+        <div class="obra-img"><img src="img/fig10.png" alt="Figura Diez — Luis González Palacios. 2025." loading="lazy"></div>
+        <p class="obra-num">X</p><h2 class="obra-nombre">Diez</h2>
+        <p class="obra-mat">Técnica mixta · materiales reciclados · epoxi</p>
+        <p class="obra-meta">2025</p>
+      </a>
+    </div>
+  </section>
+
+  <nav class="nav-series" aria-label="Navegación entre series">
+    <div class="nav-series-inner">
+      <a href="ecos.html" class="nav-serie-prev">
+        <div><p class="nav-serie-dir">← Anterior</p><p class="nav-serie-nombre">Ecos del Fuego</p></div>
+      </a>
+      <a href="obra.html" class="nav-series-volver">Todas las series</a>
+      <a href="sabotaje.html" class="nav-serie-next">
+        <div><p class="nav-serie-dir">Siguiente →</p><p class="nav-serie-nombre">Sabotaje</p></div>
+      </a>
+    </div>
+  </nav>
+
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </footer>
+</body>
+</html>

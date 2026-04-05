@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Poemas Materiales — Luis González Palacios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0e0c0a;
+      --page: #f4f1ec;
+      --page-l: #ede9e2;
+      --ink: #111111;
+      --ink-2: #444444;
+      --ink-3: #888888;
+      --oxide: #9e5a28;
+      --oxide-l: #c4783a;
+      --spine: #2a1f14;
+      --serif-d: 'Cormorant Garamond', Georgia, serif;
+      --serif-b: 'EB Garamond', Georgia, serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    body {
+      font-family: var(--serif-b);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      min-height: 100vh;
+      background: radial-gradient(ellipse at center, #1c1510 0%, #080604 100%);
+      user-select: none;
+    }
+
+    .book-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 16px 40px;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 200;
+    }
+    .book-header-title { font-family: var(--serif-d); font-size: 14px; font-weight: 300; letter-spacing: .1em; color: rgba(244,241,236,.32); }
+    .book-header-link  { font-family: var(--serif-b); font-size: 12px; font-style: italic; color: rgba(244,241,236,.28); text-decoration: none; transition: color .2s; }
+    .book-header-link:hover { color: var(--oxide-l); }
+
+    .scene { perspective: 2400px; display: flex; align-items: center; justify-content: center; width: 100%; }
+
+    .book {
+      position: relative;
+      width: min(940px, 95vw);
+      height: min(640px, 74vh);
+      transform-style: preserve-3d;
+      filter: drop-shadow(0 40px 70px rgba(0,0,0,.85));
+    }
+
+    /* lomo */
+    .book::before {
+      content: '';
+      position: absolute; left: 50%; top: 0; bottom: 0; width: 22px;
+      transform: translateX(-50%) translateZ(2px);
+      background: linear-gradient(to right, #0e0a06, var(--lomo, var(--spine)) 40%, var(--lomo, var(--spine)) 60%, #0e0a06);
+      z-index: 10;
+    }
+    .book-shadow {
+      position: absolute; bottom: -50px; left: 6%; right: 6%; height: 50px;
+      background: radial-gradient(ellipse, rgba(0,0,0,.65) 0%, transparent 70%);
+      filter: blur(14px);
+    }
+
+    /* páginas fijas */
+    .page-wrap { position: absolute; top: 0; bottom: 0; width: 50%; transform-style: preserve-3d; }
+    .page-wrap.left  { left: 0;  transform-origin: right center; }
+    .page-wrap.right { right: 0; transform-origin: left center; }
+    .page { position: absolute; inset: 0; backface-visibility: hidden; overflow: hidden; }
+    .page.recto  { background: var(--page);   box-shadow: inset -6px 0 18px rgba(0,0,0,.1),  -2px 0 8px rgba(0,0,0,.2); }
+    .page.verso  { background: var(--page-l); box-shadow: inset  6px 0 18px rgba(0,0,0,.06),  2px 0 8px rgba(0,0,0,.2); }
+    .page.back   { transform: rotateY(180deg); }
+
+    /* contenido desplazable */
+    .page-content {
+      position: absolute; inset: 0;
+      padding: 54px 50px 64px;
+      overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .page-content::-webkit-scrollbar { display: none; }
+
+    /* portada */
+    .cover-wrap { position: absolute; inset: 0; overflow: hidden; }
+    .cover-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cover-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.88) 0%, rgba(0,0,0,.18) 55%, rgba(0,0,0,.08) 100%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 40px 38px;
+    }
+    .c-label  { font-family: var(--serif-b); font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--oxide-l); margin-bottom: 10px; }
+    .c-title  { font-family: var(--serif-d); font-size: clamp(24px,3.8vw,40px); font-weight: 300; line-height: 1.1; color: #f4f1ec; margin-bottom: 6px; }
+    .c-sub    { font-family: var(--serif-b); font-size: 13px; font-style: italic; color: rgba(244,241,236,.5); margin-bottom: 18px; }
+    .c-sep    { width: 30px; height: .5px; background: var(--oxide); margin-bottom: 14px; }
+    .c-author { font-family: var(--serif-b); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(244,241,236,.35); }
+
+    /* contraportada */
+    .back-wrap { position: absolute; inset: 0; background: #0c0a08; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 52px 44px; text-align: center; }
+    .back-frase { font-family: var(--serif-d); font-size: clamp(14px,2vw,19px); font-style: italic; font-weight: 300; color: rgba(244,241,236,.52); line-height: 1.9; margin-bottom: 28px; }
+    .back-sep   { width: 30px; height: .5px; background: var(--oxide); margin: 0 auto 18px; }
+    .back-auth  { font-family: var(--serif-b); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--oxide); }
+
+    /* página en blanco */
+    .blank { position: absolute; inset: 0; background: var(--page-l); }
+
+    /* tipografía de poema */
+    .p-num   { font-family: var(--serif-b); font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: var(--oxide); margin-bottom: 8px; }
+    .p-title { font-family: var(--serif-d); font-size: clamp(20px,2.8vw,30px); font-weight: 400; letter-spacing: .02em; color: var(--ink); line-height: 1.15; margin-bottom: 22px; }
+    .p-rule  { width: 100%; height: .5px; background: #d8d4cd; margin-bottom: 22px; }
+    .p-body  { font-family: var(--serif-d); font-size: clamp(13.5px,1.75vw,17.5px); font-weight: 300; font-style: italic; line-height: 2; color: var(--ink-2); }
+    .p-body p { margin-bottom: .9em; }
+    .p-body p:last-child { margin-bottom: 0; }
+    .p-pagenum { position: absolute; bottom: 24px; font-family: var(--serif-b); font-size: 11px; font-style: italic; color: #bbb; pointer-events: none; }
+    .p-pagenum.l { left: 50px; }
+    .p-pagenum.r { right: 50px; }
+
+    /* página que gira */
+    #flipPage {
+      display: none; position: absolute; top: 0; bottom: 0; width: 50%;
+      transform-style: preserve-3d; z-index: 50;
+    }
+    #flipF, #flipB {
+      position: absolute; inset: 0; backface-visibility: hidden; overflow: hidden;
+    }
+    #flipF { background: var(--page);   box-shadow: inset -6px 0 18px rgba(0,0,0,.1); }
+    #flipB { background: var(--page-l); box-shadow: inset  6px 0 18px rgba(0,0,0,.06); transform: rotateY(180deg); }
+
+    /* controles */
+    .controls {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      padding: 16px 40px 20px;
+      display: flex; align-items: center; justify-content: center; gap: 28px;
+      z-index: 200;
+    }
+    .btn-page {
+      background: none;
+      border: .5px solid rgba(244,241,236,.17);
+      color: rgba(244,241,236,.42);
+      font-family: var(--serif-b); font-size: 13px; font-style: italic;
+      padding: 8px 22px; cursor: pointer; transition: all .2s; letter-spacing: .04em;
+    }
+    .btn-page:hover:not(:disabled) { border-color: var(--oxide); color: var(--oxide-l); }
+    .btn-page:disabled { opacity: .15; cursor: default; }
+    .page-counter {
+      font-family: var(--serif-b); font-size: 12px; font-style: italic;
+      color: rgba(244,241,236,.22); min-width: 120px; text-align: center;
+    }
+
+
+    .idx-list { margin-top: 16px; }
+    .idx-item {
+      font-family: var(--serif-b); font-size: 14px; font-style: italic;
+      color: var(--ink-2); padding: 9px 0;
+      border-bottom: .5px solid #d8d4cd;
+      cursor: pointer; transition: color .2s; letter-spacing: .02em;
+    }
+    .idx-item:hover { color: var(--oxide); }
+    .idx-item:last-child { border-bottom: none; }
+
+    @media (max-width: 640px) {
+      .book { width: 98vw; height: 70vh; }
+      .page-content { padding: 32px 26px 48px; }
+      .cover-overlay { padding: 28px 24px; }
+      .back-wrap { padding: 36px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="book-header">
+  <span class="book-header-title">Poemas Materiales · Luis González Palacios</span>
+  <a class="book-header-link" href="textos.html">← Volver a Textos</a>
+</header>
+
+<div class="scene">
+  <div class="book" id="book">
+    <div class="page-wrap left"  id="PL"><div class="page recto" id="PLf"><div id="LC"></div></div></div>
+    <div class="page-wrap right" id="PR"><div class="page verso" id="PRf"><div id="RC"></div></div></div>
+    <div id="flipPage">
+      <div id="flipF"><div class="page-content" id="FF"></div></div>
+      <div id="flipB"><div class="page-content" id="FB"></div></div>
+    </div>
+    <div class="book-shadow"></div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn-page" id="btnHome" onclick="goHome()" style="display:none">↩ Inicio</button>
+  <button class="btn-page" id="btnPrev" onclick="prevPage()">← Anterior</button>
+  <span class="page-counter" id="ctr"></span>
+  <button class="btn-page" id="btnNext" onclick="nextPage()">Siguiente →</button>
+</div>
+
+<script>
+const poems = [
+  {n:'I',   t:'El que busca',
+   v:`<p>Os abandonan bajo la maleza.<br>Al fondo del bancal<br>como si fuerais eso:<br>un simple desperdicio.</p><p>Nadie recuerda la rama robusta<br>de la que suspendían holgazanas<br>otras más jóvenes, luciendo<br>sus perlas verdes al final del verano.</p><p>Un rugido de sierra<br>presentó sus dientes implacables<br>y, hundiéndose en la carne<br>dio con vosotras en el suelo,<br>la desgracia<br>os convirtió en mi botín.</p><p>Soy el ladrón que deambula<br>entre guerreros centenarios<br>de retorcidos cuerpos.</p><p>Busco en vuestras heridas<br>la posibilidad de algún olvido,<br>y cuando al fin<br>en un rincón del muro, resignados<br>ofrecéis vuestro cuerpo a las hormigas,<br>os nombro mi tesoro<br>y os traigo a casa.</p>`},
+  {n:'II',  t:'El que desnuda',
+   v:`<p>Te desnudo, a ti<br>que ya estás muerto,<br>para darte otra vida.</p><p>A golpes cuidadosos<br>como si me diera miedo<br>hacerte daño,<br>despego de ti la piel más dura.</p><p>Tu cuerpo adquiere lentamente<br>la visión hermosa de las vetas:<br>me emociona tu luz mientras pulo<br>tu carne suave y cálida.</p><p>No pretendo hacer de ti<br>lo que no eres.<br>Te devolveré el esplendor,<br>no el que tuviste,<br>sino el que dispone<br>el tiempo en mis manos.</p>`},
+  {n:'III', t:'El que lava',
+   v:`<p>Lo sé, cambié vuestro futuro.<br>Subido al montón de chatarra<br>miro con avaricia a través del desorden.<br>Remuevo los fragmentos<br>al tiempo que imagino,<br>entre olores de aceite<br>y tierra estéril.</p><p>Algo en ti llama mi atención,<br>despiertas mi sentido de lo útil<br>o esa extraña forma de belleza,<br>que acaba cautivándome.</p><p>Con la bolsa repleta<br>me dirijo a la báscula:<br>veinte kilos, diez euros.</p><p>Ha llegado el momento de arrebataros<br>la piel que viste el abandono, velo<br>que deposita el tiempo sobre lo inútil.</p><p>Una a una, entráis en el balde:<br>Agua y jabón. Un reposo.<br>Vendrán las cerdas de alambre<br>a rescatar los primeros brillos,<br>un nuevo rostro.</p>`},
+  {n:'IV',  t:'El que pule',
+   v:`<p>No basta despojaros de mugre:<br>quiero vestiros para la fiesta.</p><p>Os guardo nuevos sueños,<br>un juego equilibrista<br>que fije la atención y hasta el asombro.</p><p>Ahora venid,<br>mis manos, alquimistas de la luz,<br>os liberarán de la intemperie,<br>y en su quehacer, en ese desbastar,<br>invocarán al brillo, atrapado<br>entre moléculas de oxígeno.</p><p>De la opacidad surgirá el resplandor.<br>Humilde hierro.</p>`},
+  {n:'V',   t:'El que da forma',
+   v:`<p>Desde el suelo me habláis y yo os escucho.<br>Os coloco y observo,<br>a veces me conmuevo, entonces<br>os dibujo y os pienso.</p><p>Sois un rompecabezas<br>de formas inexactas,<br>de aristas que solo coinciden en un punto.</p><p>Debo reconocer vuestro lugar en el espacio.<br>Siguiendo el protocolo os dispongo en la mesa:<br>pinzo a una de vosotras,<br>resguardo mi cabeza tras el casco,<br>a salvo están mis ojos<br>y tras los guantes, mis brazos y mis manos.</p><p>Ajusto el amperaje<br>y al acercar el electrodo,<br>una espiral de humo se desprende.<br>Surgen chispas danzantes de un fulgor naranja.</p><p>En un punto los cuerpos se han fundido y al golpear,<br>se libera la escoria, mostrando<br>el hilo de cordón que os entrelaza.</p><p>Os alzo. Os observo. Sonrío.<br>El azar encontró su forma.</p>`},
+  {n:'VI',  t:'El que afila',
+   v:`<p>Afilar es un arte.<br>El arte requiere ser paciente,<br>despertar el filo del acero<br>hasta rasgar el aire,<br>es tarea delicada.</p><p>Sujetar con firmeza el formón<br>mientras resbala por la lija,<br>en ángulo adecuado sin que le falte el agua,<br>morder con suavidad,<br>darle la vuelta y con igual firmeza<br>transformar su superficie en un espejo.</p><p>A tener en cuenta:<br>ángulo de treinta grados,<br>lijas de trescientos ochocientos y dos mil,<br>pegadas y dispuestas sobre un cristal.</p><p>Importante:<br>deslizar el filo sobre una hoja de papel,<br>herirla en dos.</p>`},
+  {n:'VII', t:'El que duda',
+   v:`<p>Tengo por costumbre prepararme un café.<br>Hace años también encendía un cigarro.<br>Hace años sufrí un ictus.</p><p>Sobre la mesa<br>un tronco de olivo espera sin impaciencia.</p><p>Sorbo tras sorbo exploro las posibilidades.<br>Me muevo, lo muevo,<br>tomo nota de cualquier perturbación:<br>nudos, cortes, hendiduras.<br>Sé que la corteza esconde información valiosa.</p><p>Un golpe seco altera la quietud de la madera,<br>sobre el suelo se acumulan<br>virutas de piel seca y escamada.</p><p>Desnuda, lo insignificante cobra relevancia.<br>Un nudo es una puerta<br>para llegar al alma del olivo,<br>un trozo de rama mal podada<br>empuja a ahondar la curvatura.</p><p>¿Cómo hacer que las vetas alcancen su máximo esplendor?<br>¿Que los tonos dorados, marrones y rojizos<br>atrapen la mirada?</p>`},
+  {n:'VIII',t:'El que observa',
+   v:`<p>Os aúpo a la mesa,<br>os recorro con los ojos cerrados<br>deslizando las yemas de mis dedos.<br>Reconozco cada curva,<br>cada sorpresa discontinua que yo afiancé,<br>para que fuerais únicas.</p><p>Os recorro de nuevo<br>hasta quedar seguro<br>de que toda aspereza se la llevó el último pulido.<br>Solo mis dedos pueden<br>leer entre renglones un tachón,<br>descubrir lo que mis ojos resultan incapaces.</p><p>Ahora guardo distancia,<br>os observo sin prisa,<br>giro a vuestro alrededor,<br>pongo nombre a los recodos,<br>os hablo en voz alta,<br>os dedico algunos adjetivos.</p><p>De ahora en adelante<br>quien desee conoceros,<br>será de obligado cumplimiento el abrazaros,<br>descubriros a oscuras, y cuando os mire,<br>os sentirá más allá de las formas.</p>`},
+  {n:'IX',  t:'El que nombra',
+   v:`<p>Desvestir al lenguaje,<br>volverlo tangible,<br>carnal.</p><p>Nombro al mazo<br>cuando al golpear el formón<br>astilla la madera.<br>Nombro al soldador<br>cuando funde al hierro<br>dejando una cicatriz.</p><p>Nombro cada herramienta:<br>sierra lija tornillo<br>cera escofina tenaza<br>todas palabras contundentes<br>para esculpir el poema.<br>Austeras, como los materiales.</p>`},
+  {n:'X',   t:'El que lija',
+   v:`<p>Comienzo por lo áspero.<br>El grano grueso muerde,<br>arranca lo que sobra<br>sin piedad, pero sin rabia.</p><p>Después viene lo fino,<br>el susurro que suaviza,<br>la caricia que prepara<br>la piel para los ojos, para las manos.</p><p>Lijar es un ir y venir sobre lo mismo,<br>repetir el gesto hasta que el tacto<br>confunda la madera<br>con la yema de mis dedos.</p><p>Así, pliego tras pliego, con amor y paciencia,<br>bajo cada capa de aspereza<br>voy al encuentro de la luz.</p>`},
+  {n:'XI',  t:'El que se mueve',
+   v:`<p>En la trama invisible<br>donde el viento danza,<br>guarda el aire un secreto:</p><p>huecos que no se ven<br>y atraviesan el tiempo.</p><p>Donde mueve el aire<br>yo habito en su danza.</p>`},
+  {n:'XII', t:'El que dibuja',
+   v:`<p>Coger un lápiz entre los dedos<br>es un acto cotidiano, como<br>cambiar la broca del taladro,<br>afilar las gubias o barrer el suelo.</p><p>Son hábitos que uno aprende<br>y reproduce justo en su momento,<br>salvo el lápiz,<br>dedo de grafito que la mano acoge como propio,<br>y cuando así sucede<br>las ideas lo nombran su aliado,<br>el descanso se altera,<br>como hoy, que me pregunto<br>qué hago a las cuatro de la mañana<br>trazando líneas sobre una hoja,<br>yo, que no sé dibujar<br>y todo son intentos<br>por dejar esbozos de una idea,<br>que nadie, salvo yo, entenderá.</p>`},
+  {n:'XIII',t:'El que taladra',
+   v:`<p>Taladrar es una acción violenta.<br>Odio la violencia.</p><p>Lo anuncia el sonido estridente de la máquina que empuño,<br>al inclinarse busca el lugar, el punto señalado,<br>rompe la broca los primeros tejidos,<br>afilada penetra<br>venciendo la resistencia de su cuerpo.</p><p>El orden se convierte caos,<br>todo se tiñe de virutas.</p><p>En mi descargo, si hubiese posibilidad de perdonarse,<br>diría que hay un buen motivo:<br>buscar la luz,<br>airear el corazón del tronco,<br>embellecer si cabe lo que ya es bello.</p>`},
+  {n:'XIV', t:'El que crea',
+   v:`<p>Hay un silencio<br>que hace del tiempo materia,<br>y te ocupa y te pesa,<br>enmudeces con él.</p><p>Aguardas el gesto<br>que resquebraje el óxido,<br>la vibración que te sacuda el alma,<br>el caos que sublime el tiempo.</p><p>Ligero, acomodas las piezas<br>hasta encontrar en la forma<br>el sutil pensamiento<br>que te mantuvo en vela<br>y ahora te observa.</p>`},
+  {n:'XV',  t:'El que espera',
+   v:`<p>Miro atento su silencio.<br>La materia reposa,<br>contemplo el leve pulso,<br>el instante perfecto.<br>Nada se apresura.</p><p>Pasan los días,<br>se oxida el hierro<br>y los troncos callan.</p><p>Aguardo el gesto,<br>el crujido leve,<br>el momento en que algo se ofrece<br>sin que yo lo reclame.</p><p>Esperar no es dejar de hacer.<br>Es estar, sin intervenir,<br>hasta que la forma llama.</p>`},
+  {n:'XVI', t:'El que sangra',
+   v:`<p>Me lo digo a menudo.<br>Cuando la herida sangra.<br>Cuando la ampolla duele.</p><p>Pero siento a mis manos prisioneras,<br>una distancia<br>que me impide el tacto, el manejo ágil.<br>Confiado me afano en el pulido,<br>no deparo en el corte.<br>La rebaba me hiere.</p><p>Me acuerdo de los guantes<br>mientras mi mano sangra.<br>Me lo digo a menudo.</p>`},
+  {n:'XVII',t:'El que revela',
+   v:`<p>Bajo capas de tiempo<br>late una luz.<br>Mis manos buscan<br>la huella leve, la claridad.</p><p>No invento, descubro,<br>como quien aparta el polvo<br>de un antiguo retrato.</p><p>Solo oculta,<br>y pide paciencia, atención.</p><p>Revelo<br>aquello que ya estaba<br>esperando su momento.</p>`},
+  {n:'XVIII',t:'El que sostiene',
+   v:`<p>Entre gravedad y equilibrio,<br>mis manos encuentran sentido.<br>La tensión es mi lenguaje,<br>silencioso sostengo el aire,<br>moldeo la quietud del espacio.</p><p>Todo peso tiene su sitio.<br>Todo vértice exige su pacto.</p><p>No hay forma sin riesgo,<br>ni estructura sin confianza.</p><p>Ser soporte<br>es cargar sin ser visto,<br>estar sin protagonismo,<br>mantener lo imposible.</p><p>Al sostener,<br>también soy contenido.</p>`},
+  {n:'XIX', t:'El que yerra',
+   v:`<p>El error es la grieta por donde entra la luz:<br>son gajes, heridas que el tiempo remienda.</p><p>Pero hay un descuido que no perdona:<br>la sordera frente a la materia.</p><p>Si el nudo dicta su "no" y tú te obstinas;<br>si la veta señala el rumbo y tú la fuerzas;<br>si el óxido advierte su hora y tú lo pules,<br>debes saber que</p><p>el hierro guarda memoria de su forja,<br>el olivo recuerda cada sequía,<br>el acero arrastra señales de recorte.</p><p>Tú llegas después.<br>Rescatador o verdugo.<br>La diferencia está en la escucha.</p>`},
+  {n:'XX',  t:'El que respira',
+   v:`<p>Percibo en silencio.<br>Mis manos sienten la vida<br>respirando en formas nuevas.</p><p>Nada es inerte.<br>Ni el hierro, ni la madera dormida.</p><p>Respiro con ellos.<br>Crear,<br>es simplemente<br>respirar juntos.</p>`},
+  {n:'XXI', t:'El que expone',
+   v:`<p>Sacar las obras del taller.<br>Llevarlas más allá de tu casa.<br>Mostrarlas en una pared desconocida<br>que dice que sí, que acogerá tus cuadros.</p><p>Mostrarte tú,<br>porque las obras hablan de quién eres,<br>dejar que otros lean<br>lo que escribiste con las manos,<br>lo que callaste con palabras,<br>lo que gritaste en silencio sobre el acero.</p><p>Exponerse:<br>convertir la intimidad del taller<br>en conversación pública,<br>dejar que miren detrás de la soldadura,<br>el temblor.</p><p>Es ofrecer no lo que sabes hacer,<br>sino lo que no sabes decir de otro modo.</p><p>Pero exponer es también la posibilidad del encuentro:<br>que alguien reconozca<br>en tus desechos redimidos<br>una forma de resistir.</p><p>Exponer, es decir:<br>aquí estoy, esto soy,<br>esto hice con lo que otros tiraron,<br>esta es mi forma de desertar construyendo.</p><p>Exponer<br>es terminar la obra<br>dejándola ir.</p>`},
+  {n:'XXII',t:'El que agradece',
+   v:`<p>Agradezco al martillo su simple contundencia.</p><p>A la radial que desbarata el orden del metal.<br>A la lima por insistir donde la fuerza fracasa.<br>Al soldador por hacer de la junta cicatriz.</p><p>Agradezco al hierro oxidado por esperar tantos años.<br>A la madera de olivo<br>por guardar la memoria de la tierra.</p><p>A los tornillos y tuercas<br>que terminan siendo ornamento.<br>A los engranajes rotos<br>por recordar que todo movimiento deja huella.</p><p>Agradezco a la chatarra<br>por recibirme cuando el mundo no tenía lugar.</p><p>Agradezco a las herramientas<br>por aceptar mis manos.</p>`}
+];
+
+function coverBlank() {
+  return `<div style="position:absolute;inset:0;background:#0c0a08;"></div>`;
+}
+
+function coverFull() {
+  return `<div class="cover-wrap" style="position:absolute;inset:0;">
+    <img src="img/portada-poemas.png" alt="Poemas Materiales" style="width:100%;height:100%;object-fit:cover;display:block;">
+  </div>`;
+}
+
+function introPg() {
+  return `<div class="page-content">
+    <div style="height:100%;display:flex;align-items:center;">
+      <div class="p-body" style="font-size:clamp(18px,2.4vw,26px);line-height:2.2;color:#555;">
+        <p>Todos los veranos al amanecer<br>
+        paseo entre los chopos.</p>
+        <p>Bajo mis pies<br>
+        todos los otoños.</p>
+      </div>
+    </div>
+  </div>`;
+}
+
+function index() {
+  let items = poems.map((p,i) => 
+    `<div class="idx-item" onclick="goToPoem(${i})">${p.n} &nbsp;·&nbsp; ${p.t}</div>`
+  ).join('');
+  return `<div class="page-content" style="background:#f4f1ec;">
+    <p class="p-num" style="margin-bottom:16px;">Índice</p>
+    <div class="p-rule"></div>
+    <div class="idx-list">${items}</div>
+  </div>`;
+}
+
+function cover() {
+  return `<div class="cover-wrap">
+    <img src="img/portada-poemas.png" alt="Poemas Materiales">
+  </div>`;
+}
+
+function imageFinal() {
+  return `<div style="position:absolute;inset:0;background:#111;overflow:hidden;">
+    <img src="img/poemas-contraportada.jpg" alt="Poemas Materiales" style="width:100%;height:100%;object-fit:cover;display:block;">
+  </div>`;
+}
+
+function backcover() {
+  return `<div class="back-wrap">
+    <p class="back-frase">Esto hice con lo que otros tiraron.<br>Esta es mi forma de desertar<br>construyendo.</p>
+    <div class="back-sep"></div>
+    <p class="back-auth">Luis González Palacios</p>
+  </div>`;
+}
+
+function blank() { return `<div class="blank"></div>`; }
+
+function poem(p, side) {
+  const nc = side === 'l' ? 'l' : 'r';
+  return `<div class="page-content">
+    <p class="p-num">${p.n}</p>
+    <h2 class="p-title">${p.t}</h2>
+    <div class="p-rule"></div>
+    <div class="p-body">${p.v}</div>
+  </div><span class="p-pagenum ${nc}">${p.n}</span>`;
+}
+
+// spreads[i] = [leftHTML, rightHTML, type]
+const spreads = [];
+spreads.push([coverBlank(), coverFull(), 'cover']);   // 0: portada doble
+spreads.push([introPg(), index(), 'index']);          // 1: intro + índice
+for (let i = 0; i < poems.length; i += 2) {
+  const l = poems[i]   ? poem(poems[i],   'l') : backcover();
+  const r = poems[i+1] ? poem(poems[i+1], 'r') : backcover();
+  spreads.push([l, r, 'poem']);
+}
+spreads.push([imageFinal(), backcover(), 'end']);
+
+let cur = 0, busy = false;
+
+function render() {
+  const [l, r, type] = spreads[cur];
+  document.getElementById('LC').innerHTML = l;
+  document.getElementById('RC').innerHTML = r;
+  document.getElementById('btnPrev').disabled = cur === 0;
+  document.getElementById('btnNext').disabled = cur === spreads.length - 1;
+  document.getElementById('btnHome').style.display = cur > 0 ? 'block' : 'none';
+
+  // Lomo: oculto en portada e índice
+  document.querySelector('.book').style.setProperty('--lomo', (type==='cover'||type==='index') ? 'transparent' : '#2a1f14');
+
+  if (cur === 0) {
+    document.getElementById('ctr').textContent = 'Portada';
+  } else if (cur === 1) {
+    document.getElementById('ctr').textContent = 'Índice';
+  } else if (cur === spreads.length - 1) {
+    document.getElementById('ctr').textContent = 'Fin';
+  } else {
+    const pi = (cur - 2) * 2;
+    const p1 = poems[pi], p2 = poems[pi + 1];
+    document.getElementById('ctr').textContent = p2 ? `${p1.t} · ${p2.t}` : p1.t;
+  }
+}
+
+function goToPoem(poemIndex) {
+  const spreadIndex = Math.floor(poemIndex / 2) + 2;
+  cur = spreadIndex;
+  render();
+}
+
+function flip(dir) {
+  if (busy) return;
+  if (dir === 1  && cur >= spreads.length - 1) return;
+  if (dir === -1 && cur <= 0) return;
+  busy = true;
+
+  const fp = document.getElementById('flipPage');
+  const ff = document.getElementById('FF');
+  const fb = document.getElementById('FB');
+
+  if (dir === 1) {
+    ff.innerHTML = spreads[cur][1];          // derecha actual → anverso
+    fb.innerHTML = spreads[cur + 1][0];      // izquierda siguiente → reverso
+    fp.style.cssText = `display:block;position:absolute;top:0;bottom:0;left:50%;width:50%;transform-origin:left center;transform:rotateY(0deg);transition:transform .72s cubic-bezier(.645,.045,.355,1);transform-style:preserve-3d;z-index:50;`;
+    document.getElementById('PRf').style.opacity = '0';
+    requestAnimationFrame(() => requestAnimationFrame(() => { fp.style.transform = 'rotateY(-180deg)'; }));
+    setTimeout(() => { cur++; fp.style.display='none'; fp.style.transition=''; document.getElementById('PRf').style.opacity='1'; render(); busy=false; }, 750);
+  } else {
+    ff.innerHTML = spreads[cur - 1][1];      // derecha anterior → anverso
+    fb.innerHTML = spreads[cur][0];          // izquierda actual → reverso
+    fp.style.cssText = `display:block;position:absolute;top:0;bottom:0;left:0;width:50%;transform-origin:right center;transform:rotateY(180deg);transition:transform .72s cubic-bezier(.645,.045,.355,1);transform-style:preserve-3d;z-index:50;`;
+    document.getElementById('PLf').style.opacity = '0';
+    requestAnimationFrame(() => requestAnimationFrame(() => { fp.style.transform = 'rotateY(0deg)'; }));
+    setTimeout(() => { cur--; fp.style.display='none'; fp.style.transition=''; document.getElementById('PLf').style.opacity='1'; render(); busy=false; }, 750);
+  }
+}
+
+function nextPage() { flip(1); }
+function goHome() { cur = 0; render(); }
+function prevPage() { flip(-1); }
+
+document.addEventListener('keydown', e => {
+  if (e.key==='ArrowRight'||e.key===' ') { e.preventDefault(); nextPage(); }
+  if (e.key==='ArrowLeft') { e.preventDefault(); prevPage(); }
+});
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+document.addEventListener('touchend',   e => { const d = e.changedTouches[0].clientX - tx; if (Math.abs(d)>50) d<0 ? nextPage() : prevPage(); }, {passive:true});
+
+render();
+</script>
+</body>
+</html>

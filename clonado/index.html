@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luis González Palacios · Escultor | Acero reciclado y madera de olivo</title>
+  <meta name="description" content="Luis González Palacios, escultor. Obra construida desde materiales rescatados — acero reciclado, madera de olivo, componentes mecánicos abandonados. Representado por Galería 1819.">
+  <meta name="keywords" content="Luis González Palacios, escultor, Desertor Constructor, escultura contemporánea, acero reciclado, Castellón, Paisajes de Guerra, Galería 1819">
+  <meta property="og:title" content="Luis González Palacios · Escultor">
+  <meta property="og:description" content="Obra construida desde materiales rescatados. Escultura contemporánea en acero reciclado y madera de olivo.">
+  <meta property="og:url" content="https://lgonzalezpalacios.com">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://lgonzalezpalacios.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #f4f1ec;
+      --ink:      #111111;
+      --ink-2:    #555555;
+      --ink-3:    #999999;
+      --oxide:    #9e5a28;
+      --border:   #d8d4cd;
+      --serif-d:  'Cormorant Garamond', Georgia, serif;
+      --serif-b:  'EB Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif-b);
+      font-size: 20px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── ANIMACIÓN DE ENTRADA ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+    .fade-in-1 { animation-delay: 0.1s; }
+    .fade-in-2 { animation-delay: 0.25s; }
+    .fade-in-3 { animation-delay: 0.45s; }
+    .fade-in-4 { animation-delay: 0.65s; }
+    .fade-in-5 { animation-delay: 0.85s; }
+
+    /* ── NAVEGACIÓN ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 100;
+    }
+
+    .nav-name {
+      font-family: var(--serif-d);
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--serif-b);
+      font-size: 16px;
+      letter-spacing: 0.08em;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--oxide); }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 22px;
+      height: 1px;
+      background: var(--ink);
+      margin: 5px 0;
+      transition: all 0.3s;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 0;
+      min-height: min(680px, 85vh);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 72px 48px 48px;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 64px;
+    }
+
+    .identity {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: var(--serif-d);
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      margin-bottom: 36px;
+    }
+
+    .statement {
+      font-family: var(--serif-b);
+      font-style: italic;
+      color: var(--ink-2);
+      line-height: 1.85;
+      max-width: 460px;
+      border-left: 2px solid var(--oxide);
+      padding-left: 20px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .btn-primary {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 0.5px solid var(--ink);
+      padding: 10px 24px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .btn-primary:hover {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .gallery-link {
+      font-family: var(--serif-b);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--oxide);
+      letter-spacing: 0.02em;
+      border-bottom: 0.5px solid var(--oxide);
+      transition: opacity 0.2s;
+    }
+
+    .gallery-link:hover { opacity: 0.7; }
+
+    /* ── IMAGEN HERO ── */
+    .hero-image-wrap {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: auto;
+      max-height: 580px;
+      display: block;
+      object-fit: contain;
+      background: transparent;
+    }
+
+    .hero-image-placeholder {
+      width: 100%;
+      height: 520px;
+      background: linear-gradient(160deg, #2a2420 0%, #1e1c1a 40%, #3d3530 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .hero-caption {
+      font-family: var(--serif-b);
+      font-size: 11px;
+      font-style: italic;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── FRANJA DE SERIES ── */
+    .series-strip {
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+    }
+
+    .series-strip-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 48px;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+    }
+
+    .series-item {
+      padding: 18px 0;
+      border-right: 0.5px solid var(--border);
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .series-item:last-child { border-right: none; }
+    .series-item:hover { background: rgba(158, 90, 40, 0.04); }
+
+    .series-item a {
+      font-family: var(--serif-b);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      transition: color 0.2s;
+    }
+
+    .series-item:hover a { color: var(--oxide); }
+
+    /* ── OBRA DESTACADA ── */
+    .featured {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 40px;
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: var(--serif-d);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .section-link {
+      font-family: var(--serif-b);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--oxide);
+      border-bottom: 0.5px solid var(--oxide);
+    }
+
+    .section-link:hover { opacity: 0.7; }
+
+    .obras-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .obra-card { cursor: pointer; }
+
+    .obra-img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #2a2420;
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .obra-img-placeholder {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.5s ease;
+    }
+
+    .obra-card:hover .obra-img-placeholder {
+      transform: scale(1.03);
+    }
+
+    .obra-img-1 { background: linear-gradient(135deg, #2a2420, #1a1210); }
+    .obra-img-2 { background: linear-gradient(135deg, #3d3530, #2a2420); }
+    .obra-img-3 { background: linear-gradient(135deg, #1e1c1a, #3a3028); }
+
+    .obra-data {
+      padding: 14px 0 24px;
+    }
+
+    .obra-serie {
+      font-family: var(--serif-b);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--oxide);
+      margin-bottom: 5px;
+    }
+
+    .obra-title {
+      font-family: var(--serif-d);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 3px;
+    }
+
+    .obra-meta {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--ink-3);
+    }
+
+    /* ── SOBRE EL ARTISTA ── */
+    .sobre {
+      background: var(--ink);
+      color: var(--bg);
+    }
+
+    .sobre-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .sobre-text h2 {
+      font-family: var(--serif-d);
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--oxide);
+      margin-bottom: 20px;
+    }
+
+    .sobre-text p {
+      font-family: var(--serif-b);
+      line-height: 1.85;
+      color: rgba(244, 241, 236, 0.75);
+      margin-bottom: 20px;
+    }
+
+    .sobre-text p strong {
+      color: var(--bg);
+      font-weight: 400;
+    }
+
+    .sobre-link {
+      font-family: var(--serif-b);
+      font-size: 13px;
+      font-style: italic;
+      color: var(--oxide);
+      border-bottom: 0.5px solid var(--oxide);
+      display: inline-block;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+
+    .sobre-link:hover { opacity: 0.7; }
+
+    .sobre-image {
+      aspect-ratio: 4/3;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+    .sobre-image .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease; will-change: opacity;
+    }
+    .sobre-image .slide.active { opacity: 1; }
+    .sobre-image .slide img {
+      width: 100%; height: 100%;
+      object-fit: contain; display: block;
+      background: transparent;
+    }
+    .sobre-image { background: #1a1210; }
+    .sobre-image .slideshow-dots {
+      position: absolute;
+      bottom: 14px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 8px;
+      z-index: 10;
+    }
+    .sobre-image .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(244,241,236,0.35); cursor: pointer; transition: background 0.2s;
+    }
+    .sobre-image .dot.dot-active { background: var(--oxide); }
+
+    /* ── EXPOSICIONES ── */
+    .expo {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+
+    .expo-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .expo-item {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 32px;
+      align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .expo-year {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--oxide);
+      letter-spacing: 0.06em;
+    }
+
+    .expo-title {
+      font-family: var(--serif-d);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .expo-lugar {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--ink-3);
+      text-align: right;
+    }
+
+    /* ── GALERÍA 1819 ── */
+    .galeria-banner {
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .galeria-banner-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .galeria-label {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    .galeria-name {
+      font-family: var(--serif-d);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .galeria-link {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--oxide);
+      border-bottom: 0.5px solid var(--oxide);
+      transition: opacity 0.2s;
+    }
+
+    .galeria-link:hover { opacity: 0.7; }
+
+    /* ── FOOTER ── */
+    footer {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-name {
+      font-family: var(--serif-d);
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-3);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: var(--serif-b);
+      font-size: 12px;
+      font-style: italic;
+      color: var(--ink-3);
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--oxide); }
+
+
+    /* ── SLIDESHOW ── */
+    .slideshow-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+      border-top: 0.5px solid var(--border);
+    }
+    .slideshow {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.6s ease; will-change: opacity;
+    }
+    .slide.active { opacity: 1; }
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .slide img[src*="suturas"], .slide img[src*="tension"] {
+      mix-blend-mode: multiply;
+    }
+    .slideshow-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .dot.active { background: var(--oxide); }
+
+    @media (max-width: 900px) {
+      .slideshow-section { padding: 48px 24px; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+
+      .nav-links { display: none; flex-direction: column; gap: 0; }
+      .nav-links.open {
+        display: flex;
+        position: absolute;
+        top: 61px; left: 0; right: 0;
+        background: var(--bg);
+        border-bottom: 0.5px solid var(--border);
+        padding: 12px 24px;
+      }
+      .nav-links.open li { padding: 10px 0; border-bottom: 0.5px solid var(--border); }
+      .nav-links.open li:last-child { border-bottom: none; }
+      .nav-links a { font-size: 15px; }
+      .nav-toggle { display: block; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 48px 24px 0;
+        min-height: auto;
+        gap: 40px;
+      }
+      .hero-text { padding-right: 0; }
+      .hero-image-placeholder { height: 300px; }
+
+      .series-strip-inner {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 0 24px;
+      }
+      .series-item:nth-child(4) { border-right: none; }
+      .series-item:nth-child(5),
+      .series-item:nth-child(6),
+      .series-item:nth-child(7) { border-top: 0.5px solid var(--border); }
+
+      .featured, .expo { padding: 48px 24px; }
+      .obras-grid { grid-template-columns: 1fr 1fr; }
+
+      .sobre-inner {
+        grid-template-columns: 1fr;
+        padding: 48px 24px;
+        gap: 32px;
+      }
+      .sobre-image { aspect-ratio: 4/3; }
+
+      .galeria-banner-inner {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 20px 24px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+        padding: 32px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 36px; }
+      .series-strip-inner { grid-template-columns: repeat(2, 1fr); }
+      .series-item:nth-child(2n) { border-right: none; }
+      .series-item:nth-child(n+3) { border-top: 0.5px solid var(--border); }
+      .obras-grid { grid-template-columns: 1fr; }
+      .expo-item { grid-template-columns: 60px 1fr; }
+      .expo-lugar { display: none; }
+    }
+  </style>
+  <link rel="preload" as="image" href="img/ferrum15.png">
+  <link rel="preload" as="image" href="img/STANBROOK.png">
+  <link rel="preload" as="image" href="img/ecosdelfuego-amanecer2.jpeg">
+  <link rel="preload" as="image" href="img/sabotaje1-cover.jpeg">
+  <link rel="preload" as="image" href="img/cartografia_inercia-cover.jpg">
+  <link rel="preload" as="image" href="img/cartografia_desplazamiento.png">
+  <link rel="preload" as="image" href="img/tierra8.png">
+  <link rel="preload" as="image" href="img/tierra14-añoranza2.png">
+  <link rel="preload" as="image" href="img/suturas.png">
+  <link rel="preload" as="image" href="img/tension.png">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <a href="/" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open'); document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="identity fade-in fade-in-1">Desertor Constructor</p>
+      <h1 class="fade-in fade-in-2">Luis González<br>Palacios</h1>
+      <blockquote class="statement fade-in fade-in-3">
+        "Me refugio en el material desechado. No sé qué legitimidad tiene un desertor para construir testimonio. Pero sigo construyendo."
+      </blockquote>
+      <div class="hero-actions fade-in fade-in-4">
+        <a href="obra.html" class="btn-primary">Ver la obra</a>
+        <a href="https://1819.es/artistas/luis-gonzalez-palacios/" target="_blank" rel="noopener" class="gallery-link">Galería 1819 →</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap fade-in fade-in-5">
+      <video class="hero-image" autoplay muted loop playsinline>
+        <source src="videos/encuentro.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- FRANJA DE SERIES -->
+  <div class="series-strip">
+    <div class="series-strip-inner">
+      <div class="series-item"><a href="paisajes-de-guerra/index.html" target="_blank" rel="noopener">Paisajes de Guerra</a></div>
+      <div class="series-item"><a href="ferrum.html">Ferrum</a></div>
+      <div class="series-item"><a href="tierra.html">Tierra</a></div>
+      <div class="series-item"><a href="cartografia.html">Cartografía</a></div>
+      <div class="series-item"><a href="ecos.html">Ecos del Fuego</a></div>
+      <div class="series-item"><a href="figuras.html">Figuras</a></div>
+      <div class="series-item"><a href="sabotaje.html">Sabotaje</a></div>
+    </div>
+  </div>
+
+  <!-- OBRA DESTACADA -->
+  <section class="featured">
+    <div class="section-header">
+      <span class="section-title">Obra reciente</span>
+      <a href="obra.html" class="section-link">Ver todo →</a>
+    </div>
+    <div class="obras-grid">
+      <article class="obra-card">
+        <a href="paisajes-de-guerra/index.html" target="_blank" rel="noopener">
+          <div class="obra-img">
+            <img src="img/rafah.png" alt="Rafah — Luis González Palacios. Paisajes de Guerra, 2025." style="width:100%;height:100%;object-fit:contain;display:block;background:#f4f1ec;">
+          </div>
+          <div class="obra-data">
+            <p class="obra-serie">Paisajes de Guerra</p>
+            <h2 class="obra-title">Franja de Gaza I</h2>
+            <p class="obra-meta">Acero reciclado · 20 × 20 cm · 2025</p>
+          </div>
+        </a>
+      </article>
+      <article class="obra-card">
+        <a href="ferrum.html">
+          <div class="obra-img">
+            <img src="img/STANBROOK.png" alt="Stanbrook — Luis González Palacios. Ferrum, 2025." style="width:100%;height:100%;object-fit:contain;display:block;background:#f4f1ec;">
+          </div>
+          <div class="obra-data">
+            <p class="obra-serie">Ferrum</p>
+            <h2 class="obra-title">Ferrum 18</h2>
+            <p class="obra-meta">Acero reciclado · 83 × 46 cm · 2025</p>
+          </div>
+        </a>
+      </article>
+      <article class="obra-card">
+        <a href="cartografia.html">
+          <div class="obra-img">
+            <img src="img/cartografia_inercia-cover.jpg" alt="Inercia — Luis González Palacios. Cartografía del Movimiento, 2025." style="width:100%;height:100%;object-fit:cover;display:block;">
+          </div>
+          <div class="obra-data">
+            <p class="obra-serie">Cartografía del Movimiento</p>
+            <h2 class="obra-title">Inercia</h2>
+            <p class="obra-meta">Acero reciclado · 65 × 90 cm · 2025</p>
+          </div>
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <!-- SOBRE EL ARTISTA -->
+  <section class="sobre">
+    <div class="sobre-inner">
+      <div class="sobre-text">
+        <h2>El artista</h2>
+        <p>
+          <strong>Luis González Palacios</strong> trabaja desde la escucha del material. Acero industrial fuera de uso, madera de olivo rescatada, componentes mecánicos abandonados: el taller los recibe tal como llegan, con sus marcas, su óxido, su desgaste. El trabajo no borra esa historia — la convierte en forma.
+        </p>
+        <p>
+          Bajo la identidad artística <strong>Desertor Constructor</strong>, desarrolla una práctica que atraviesa la escultura y la poesía. Su obra está representada por <strong>Galería 1819</strong> y ha sido exhibida en Akelarre Art Fair Madrid y en la Patricia Cancelo Art Gallery de Bogense, Dinamarca.
+        </p>
+        <a href="bio.html" class="sobre-link">Leer más sobre el artista →</a>
+      </div>
+      <div class="sobre-image" id="slideshow">
+        <div class="slide  active"><img src="img/ferrum15.png" alt="Ferrum 15 — Luis González Palacios"></div>
+        <div class="slide"><img src="img/STANBROOK.png" alt="Stanbrook — Luis González Palacios. Ferrum"></div>
+        <div class="slide"><img src="img/ecosdelfuego-amanecer2.jpeg" alt="Amanecer — Luis González Palacios. Ecos del Fuego"></div>
+        <div class="slide"><img src="img/sabotaje1-cover.jpeg" alt="Virus — Luis González Palacios. Sabotaje"></div>
+        <div class="slide"><img src="img/cartografia_inercia-cover.jpg" alt="Inercia — Luis González Palacios. Cartografía del Movimiento"></div>
+        <div class="slide"><img src="img/cartografia_desplazamiento.png" alt="Desplazamiento — Luis González Palacios. Cartografía del Movimiento"></div>
+        <div class="slide"><img src="img/tierra8.png" alt="Tierra 8 — Luis González Palacios"></div>
+        <div class="slide"><img src="img/tierra14-añoranza2.png" alt="Añoranza del tren — Luis González Palacios"></div>
+        <div class="slide"><img src="img/suturas.png" alt="Suturas — Luis González Palacios. Paisajes de Guerra"></div>
+        <div class="slide"><img src="img/tension.png" alt="Tensión — Luis González Palacios. Paisajes de Guerra"></div>
+        <div class="slideshow-dots"><span class="dot  dot-active" onclick="goTo(0)"></span><span class="dot" onclick="goTo(1)"></span><span class="dot" onclick="goTo(2)"></span><span class="dot" onclick="goTo(3)"></span><span class="dot" onclick="goTo(4)"></span><span class="dot" onclick="goTo(5)"></span><span class="dot" onclick="goTo(6)"></span><span class="dot" onclick="goTo(7)"></span><span class="dot" onclick="goTo(8)"></span><span class="dot" onclick="goTo(9)"></span></div>
+      </div>
+      <script>
+        let sIdx=0;
+        const slides=document.querySelectorAll('#slideshow .slide');
+        const sdots=document.querySelectorAll('#slideshow .dot');
+        let stimer=setInterval(()=>goTo(sIdx+1),3500);
+        function goTo(n){
+          slides[sIdx].classList.remove('active');
+          sdots[sIdx].classList.remove('dot-active');
+          sIdx=(n+slides.length)%slides.length;
+          slides[sIdx].classList.add('active');
+          sdots[sIdx].classList.add('dot-active');
+          clearInterval(stimer);stimer=setInterval(()=>goTo(sIdx+1),3500);
+        }
+      </script>
+    </div>
+  </section>
+
+  <!-- EXPOSICIONES -->
+  <section class="expo">
+    <div class="section-header">
+      <span class="section-title">Exposiciones</span>
+      <a href="contacto.html" class="section-link">Historial completo →</a>
+    </div>
+    <div class="expo-list">
+      <div class="expo-item">
+        <span class="expo-year">2026</span>
+        <span class="expo-title">Paisajes de Guerra</span>
+        <span class="expo-lugar">Patricia Cancelo Art Gallery · Bogense, Dinamarca</span>
+      </div>
+      <div class="expo-item">
+        <span class="expo-year">2025</span>
+        <span class="expo-title">Akelarre Art Fair</span>
+        <span class="expo-lugar">Madrid</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA 1819 -->
+  <div class="galeria-banner">
+    <div class="galeria-banner-inner">
+      <span class="galeria-label">Representado por</span>
+      <span class="galeria-name">Galería 1819</span>
+      <a href="https://1819.es/artistas/luis-gonzalez-palacios/" target="_blank" rel="noopener" class="galeria-link">Ver perfil en galería →</a>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+      <a href="https://1819.es/artistas/luis-gonzalez-palacios/" target="_blank" rel="noopener">Galería 1819</a>
+    </div>
+  </footer>
+
+</body>
+</html>

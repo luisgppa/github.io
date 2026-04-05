@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Textos — Luis González Palacios</title>
+  <meta name="description" content="Textos de Luis González Palacios. Poemas Materiales: Desertar construyendo. Ul Mör: Pared de la Memoria. Escritura y escultura como práctica paralela.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/textos.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;animation:fadeUp 0.7s ease forwards}
+    .delay-1{animation-delay:.05s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.35s}.delay-4{animation-delay:.5s}
+
+    /* NAV */
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+
+    /* CABECERA */
+    .page-header{max-width:1200px;margin:0 auto;padding:64px 48px 72px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;border-bottom:0.5px solid var(--border)}
+    .page-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+    .page-titulo{font-family:var(--serif-d);font-size:clamp(48px,5vw,72px);font-weight:300;line-height:1.02;letter-spacing:.01em}
+    .page-desc{font-style:italic;color:var(--ink-2);line-height:1.85}
+    .page-desc-small{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);margin-top:20px}
+
+    /* LIBRO: BLOQUE PRINCIPAL */
+    .libro{border-bottom:0.5px solid var(--border)}
+    .libro-inner{max-width:1200px;margin:0 auto;padding:72px 48px}
+    .libro-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+
+    .libro-info{}
+    .libro-num{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:14px}
+    .libro-titulo{font-family:var(--serif-d);font-size:clamp(36px,4vw,52px);font-weight:300;line-height:1.05;margin-bottom:6px}
+    .libro-subtitulo{font-family:var(--serif-b);font-size:16px;font-style:italic;color:var(--ink-3);margin-bottom:32px}
+    .libro-sinopsis{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:24px}
+    .libro-sinopsis p{margin-bottom:16px}
+    .libro-sinopsis p:last-child{margin-bottom:0}
+    .libro-meta{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);padding-top:20px;border-top:0.5px solid var(--border);margin-bottom:28px}
+    .btn-libro{display:inline-block;font-family:var(--serif-b);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);border:0.5px solid var(--ink);padding:10px 24px;transition:background .2s,color .2s}
+    .btn-libro:hover{background:var(--ink);color:var(--bg)}
+
+    /* Poema muestra */
+    .libro-muestra{}
+    .muestra-label{font-family:var(--serif-b);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-3);margin-bottom:24px}
+    .poema{margin-bottom:48px}
+    .poema:last-child{margin-bottom:0}
+    .poema-titulo{font-family:var(--serif-d);font-size:18px;font-weight:400;letter-spacing:.08em;color:var(--oxide);margin-bottom:20px}
+    .poema-verso{font-family:var(--serif-d);font-size:22px;font-weight:300;font-style:italic;line-height:1.9;color:var(--ink-2)}
+    .poema-verso p{margin-bottom:8px}
+
+    /* UL MÖR: tratamiento especial oscuro */
+    .libro-ulmor{background:var(--ink);color:var(--bg)}
+    .libro-ulmor .libro-num{color:var(--oxide)}
+    .libro-ulmor .libro-titulo{color:var(--bg)}
+    .libro-ulmor .libro-subtitulo{color:rgba(244,241,236,.5)}
+    .libro-ulmor .libro-sinopsis{color:rgba(244,241,236,.75)}
+    .libro-ulmor .libro-meta{color:rgba(244,241,236,.4);border-top-color:rgba(244,241,236,.1)}
+    .libro-ulmor .btn-libro{color:var(--bg);border-color:rgba(244,241,236,.3)}
+    .libro-ulmor .btn-libro:hover{background:var(--bg);color:var(--ink)}
+    .libro-ulmor .muestra-label{color:rgba(244,241,236,.4)}
+    .libro-ulmor .poema-titulo{color:var(--oxide)}
+    .libro-ulmor .poema-verso{color:rgba(244,241,236,.75)}
+
+    /* FRANJA: TEXTOS DE SERIE */
+    .textos-serie{max-width:1200px;margin:0 auto;padding:72px 48px 80px}
+    .textos-serie-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .textos-serie-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .textos-serie-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 32px}
+    .texto-serie-item{border-top:0.5px solid var(--border);padding-top:20px}
+    .texto-serie-item:hover .texto-serie-nombre{color:var(--oxide)}
+    .texto-serie-label{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:8px}
+    .texto-serie-nombre{font-family:var(--serif-d);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:10px;transition:color .2s}
+    .texto-serie-frase{font-family:var(--serif-b);font-size:15px;font-style:italic;color:var(--ink-2);line-height:1.7}
+
+    /* FOOTER */
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .page-header{grid-template-columns:1fr;padding:40px 24px 48px;gap:24px}
+      .libro-inner{padding:48px 24px}
+      .libro-grid{grid-template-columns:1fr;gap:48px}
+      .textos-serie{padding:48px 24px 64px}
+      .textos-serie-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+    @media(max-width:540px){
+      .textos-serie-grid{grid-template-columns:1fr}
+    }
+  </style>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html" class="active">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- CABECERA -->
+  <header class="page-header">
+    <div class="fade-in delay-1">
+      <p class="page-label">Escritura</p>
+      <h1 class="page-titulo">Textos</h1>
+    </div>
+    <div class="fade-in delay-2">
+      <p class="page-desc">La escritura y la escultura nacen del mismo gesto: escuchar antes de intervenir. Lo que no cabe en la forma lo recoge el verso. Lo que el verso no puede sostener lo recibe la materia.</p>
+      
+    </div>
+  </header>
+
+  <!-- LIBRO 1: POEMAS MATERIALES -->
+  <section class="libro fade-in delay-2">
+    <div class="libro-inner">
+      <div class="libro-grid">
+
+        <div class="libro-info">
+          <p class="libro-num">Poemario I</p>
+          <h2 class="libro-titulo">Poemas<br>Materiales</h2>
+          <p class="libro-subtitulo">Desertar construyendo</p>
+          <div class="libro-sinopsis">
+            <p>Veintidós poemas construidos desde el taller. Cada poema lleva el nombre de un gesto: el que busca, el que desnuda, el que lava, el que da forma, el que yerra, el que expone.</p>
+            <p>La herramienta y el verso comparten la misma economía. La soldadura deja cicatriz. El poema también. Lijar, taladrar, pulir, esperar — cada acto del escultor se vuelve metáfora de la escritura, y al revés.</p>
+            <p>Un libro sobre el proceso creativo escrito desde dentro del proceso.</p>
+          </div>
+          <p class="libro-meta">22 poemas · Luis González Palacios · CC BY-NC-ND 4.0</p>
+          <a href="libro-poemas.html" class="btn-libro">Abrir el libro →</a>
+        </div>
+
+        <div class="libro-muestra">
+          <p class="muestra-label">Del poemario</p>
+
+          <div class="poema">
+            <p class="poema-titulo">El que busca</p>
+            <div class="poema-verso">
+              <p>Os abandonan bajo la maleza.<br>
+              Al fondo del bancal<br>
+              como si fuerais eso:<br>
+              un simple desperdicio.</p>
+              <p>Soy el ladrón que deambula<br>
+              entre guerreros centenarios<br>
+              de retorcidos cuerpos.<br>
+              Busco en vuestras heridas<br>
+              la posibilidad de algún olvido.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">El que yerra</p>
+            <div class="poema-verso">
+              <p>El error es la grieta por donde entra la luz:<br>
+              son gajes, heridas que el tiempo remienda.<br>
+              Pero hay un descuido que no perdona:<br>
+              la sordera frente a la materia.</p>
+              <p>el hierro guarda memoria de su forja,<br>
+              el olivo recuerda cada sequía,<br>
+              el acero arrastra señales de recorte.</p>
+              <p>Tú llegas después.<br>
+              Rescatador o verdugo.<br>
+              La diferencia está en la escucha.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRO 2: UL MÖR -->
+  <section class="libro libro-ulmor fade-in delay-3">
+    <div class="libro-inner">
+      <div class="libro-grid">
+
+        <div class="libro-info">
+          <p class="libro-num">Poema épico</p>
+          <h2 class="libro-titulo">Ul Mör</h2>
+          <p class="libro-subtitulo">Pared de la Memoria</p>
+          <div class="libro-sinopsis">
+            <p>Una expedición militar extraviada en el páramo encuentra a un pueblo sin armas: desertores que eligieron la construcción sobre la destrucción. Los acogen sin preguntar.</p>
+            <p>Ul Mör narra, en siete cantos, la fundación de esa civilización nómada: desde la renuncia a las armas hasta la edificación de una ciudad cuyas fachadas se convierten en el libro vivo de su memoria.</p>
+            <p>Un poema épico con su propia mitología, su glosario de términos, sus mapas. Una obra donde el mör — la gran pared de la memoria — es a la vez escritura y escultura, forma y testimonio.</p>
+          </div>
+          <p class="libro-meta">Siete cantos · Glosario · Mapa de Ul Mör · Luis González Palacios</p>
+          <a href="ul-mor.html" class="btn-libro">Leer Ul Mör →</a>
+        </div>
+
+        <div class="libro-muestra">
+          <p class="muestra-label">Del poema</p>
+
+          <div class="poema">
+            <p class="poema-titulo">El encuentro</p>
+            <div class="poema-verso">
+              <p>Quedamos quietos.<br>
+              También las bestias<br>
+              En mitad del páramo<br>
+              dos hombres aguardaban.</p>
+              <p>Pies al suelo<br>
+              Manos en la brida<br>
+              Hombres curtidos temerosos<br>
+              Las bestias cabecean<br>
+              El miedo se espesa<br>
+              como niebla cerrada.</p>
+              <p>Uno de ellos alzó la mano<br>
+              El otro imitó el gesto<br>
+              y nos animó a avanzar.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Del origen · Ser pueblo</p>
+            <div class="poema-verso">
+              <p>No nacimos pueblo<br>
+              Éramos perdedores,<br>
+              náufragos del páramo.</p>
+              <p>Seremos<br>
+              si todos somos.<br>
+              Ser luz:<br>
+              Una estrella no hace el cielo,<br>
+              pero sin ella<br>
+              faltaría su luz.</p>
+              <p>Somos tránsito<br>
+              Cambio<br>
+              Huella.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CARTOGRAFÍA DEL MOVIMIENTO -->
+  <section class="libro fade-in delay-3">
+    <div class="libro-inner">
+      <div class="libro-grid">
+
+        <div class="libro-info">
+          <p class="libro-num">Texto de serie</p>
+          <h2 class="libro-titulo">Cartografía<br>del Movimiento</h2>
+          <p class="libro-subtitulo">Una reflexión sobre el proceso creativo</p>
+          <div class="libro-sinopsis">
+            <p>Un tríptico escultórico mural compuesto por tres piezas — Inercia, Impulso y Desplazamiento — que representan estados distintos del movimiento, entendido no como acción física observable sino como tensión interior, condición emocional o memoria matérica.</p>
+            <p>El proyecto articula una narrativa de energía contenida, latente y liberada a través de materiales reciclados, estructuras tensadas y superficies trabajadas. Establece un diálogo entre la física y el proceso creativo.</p>
+            <p>Las tres obras forman una secuencia que puede leerse como una frase escultórica de tres palabras: tensión, vibración, huella.</p>
+          </div>
+          <p class="libro-meta">Tríptico · Inercia · Impulso · Desplazamiento · Luis González Palacios · 2025</p>
+          <a href="cartografia.html" class="btn-libro">Ver la serie →</a>
+        </div>
+
+        <div class="libro-muestra">
+          <p class="muestra-label">Del texto</p>
+
+          <div class="poema">
+            <p class="poema-titulo">Inercia</p>
+            <div class="poema-verso">
+              <p>La energía está presente, pero negada. El metal no fluye, se traba. El triángulo de acero inoxidable aparece firme, central, como estructura encerrada.</p>
+              <p>Todo permanece, todo resiste. Es el peso del reposo.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Impulso</p>
+            <div class="poema-verso">
+              <p>Todo está por suceder. La energía no se libera aún, pero ha roto la estructura del tiempo. Las agujas del reloj se han desprendido, la medida se ha disuelto.</p>
+              <p>El impulso ha detenido el mundo, suspendido en su vértice más intenso. El tiempo ya no avanza: vibra.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Desplazamiento</p>
+            <div class="poema-verso">
+              <p>El desplazamiento ya no es impulso: es memoria inscrita. Las formas hablan del paso de la energía, de lo que fue y dejó huella.</p>
+              <p>La materia recuerda.</p>
+            </div>
+          </div>
+
+          <div class="poema" style="margin-top:32px;padding-top:32px;border-top:0.5px solid #d8d4cd;">
+            <p class="poema-titulo" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#999;">Poema</p>
+            <div class="poema-verso">
+              <p>Hay un silencio<br>que hace del tiempo materia,<br>y te ocupa<br>y te pesa.</p>
+              <p>Enmudeces con él,<br>aguardas el gesto<br>que resquebraje el óxido,<br>la vibración que te sacuda el alma,<br>el caos que sublime el tiempo.</p>
+              <p>Ligero, acomodas las piezas<br>hasta encontrar en la forma<br>el sutil pensamiento<br>que te mantuvo en vela<br>y ahora te observa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ECOS DEL FUEGO -->
+  <section class="libro fade-in delay-3">
+    <div class="libro-inner">
+      <div class="libro-grid">
+
+        <div class="libro-info">
+          <p class="libro-num">Texto de serie</p>
+          <h2 class="libro-titulo">Ecos<br>del Fuego</h2>
+          <p class="libro-subtitulo">La devastación como lenguaje</p>
+          <div class="libro-sinopsis">
+            <p>El fuego arrasa en silencio y con estrépito. No distingue fronteras, no respeta límites, no entiende de nombres ni de memoria. Avanza sobre colinas, barrancos y senderos antiguos, arrastrando consigo todo lo que encuentra.</p>
+            <p>Ecos del Fuego nace de esa devastación, pero también del impulso de no olvidar. Cada pieza es un fragmento de memoria material, un registro poético de lo que el fuego borra y de lo que persiste.</p>
+            <p>Las placas hablan del silencio posterior, del contraste entre la desolación y el leve inicio de la vida que, obstinada, brota entre restos quemados.</p>
+          </div>
+          <p class="libro-meta">Cuatro piezas · Fuego · Amanecer · Ausencia · Brotes · Luis González Palacios · 2025</p>
+          <a href="ecos.html" class="btn-libro">Ver la serie →</a>
+        </div>
+
+        <div class="libro-muestra">
+          <p class="muestra-label">Del texto</p>
+
+          <div class="poema">
+            <p class="poema-titulo">Fuego</p>
+            <div class="poema-verso">
+              <p>El árbol central, construido con alambres retorcidos y oscuros, se erige como un testigo carbonizado, símbolo de resistencia y fragilidad al mismo tiempo.</p>
+              <p>El metal pulido, trabajado como espejo. La pregunta esencial: ¿qué papel jugamos en esta destrucción?</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Amanecer</p>
+            <div class="poema-verso">
+              <p>El sol negro, denso y opaco, flota sobre un cielo trabajado con un pulido violento, casi desgarrado. No hay presencia de vida, solo el eco de lo que existió.</p>
+              <p>El amanecer no es aquí luminoso, sino incómodo, obligado, como una respiración que se abre paso entre cenizas.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Ausencia</p>
+            <div class="poema-verso">
+              <p>En Ausencia la devastación no grita: murmura. La obra no muestra la violencia del fuego, sino lo que permanece después: la nada.</p>
+              <p>La tierra, impregnada de cenizas, es el testimonio mudo de lo que hubo.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Brotes</p>
+            <div class="poema-verso">
+              <p>La vida insiste, incluso sobre las cenizas. El acero, rígido por naturaleza, dibuja el futuro con un gesto delicado.</p>
+              <p>Brotes es la respuesta íntima al dolor de la pérdida. La regeneración nunca es estruendosa: comienza en silencio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SABOTAJE -->
+  <section class="libro fade-in delay-3">
+    <div class="libro-inner">
+      <div class="libro-grid">
+
+        <div class="libro-info">
+          <p class="libro-num">Texto de serie</p>
+          <h2 class="libro-titulo">Sabotaje</h2>
+          <p class="libro-subtitulo">Insurrección poética</p>
+          <div class="libro-sinopsis">
+            <p>Saboteo el sistema con palabras serenas. Ante la saturación de información y la hiperactividad insoportable, propongo detenerse.</p>
+            <p>La serie nace de la convicción de que el arte puede ser un acto de resistencia silenciosa. No la protesta que grita, sino la que construye desde los desechos del propio sistema que critica.</p>
+            <p>Materiales rescatados de la obsolescencia tecnológica — placas base, circuitos, jeringas — ensamblados en nuevas formas que interrogan nuestra relación con la máquina y el control.</p>
+          </div>
+          <p class="libro-meta">Dos piezas · Virus · Caos · Luis González Palacios · 2024–2025</p>
+          <a href="sabotaje.html" class="btn-libro">Ver la serie →</a>
+        </div>
+
+        <div class="libro-muestra">
+          <p class="muestra-label">Del texto</p>
+
+          <div class="poema">
+            <p class="poema-titulo">Virus</p>
+            <div class="poema-verso">
+              <p>Una placa madre de ordenador forma la silueta de una cabeza. Desde ella crecen árboles neuronales dibujados en blanco, mientras jeringas la atraviesan en distintos ángulos.</p>
+              <p>El sistema infectado por su propia lógica. Sabotear el código desde dentro.</p>
+            </div>
+          </div>
+
+          <div class="poema">
+            <p class="poema-titulo">Caos</p>
+            <div class="poema-verso">
+              <p>El orden que se deshace. La estructura que ya no puede contenerse a sí misma.</p>
+              <p>El caos no como ausencia de forma, sino como forma que ha superado su propio límite. Segunda pieza de la insurrección.</p>
+            </div>
+          </div>
+
+          <div class="poema" style="margin-top:32px;padding-top:32px;border-top:0.5px solid #d8d4cd;">
+            <p class="poema-titulo" style="font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#999;">Manifiesto</p>
+            <div class="poema-verso">
+              <p>Matan sin permiso.<br>La madre es la madre.<br>Quien hiere sin pedir perdón<br>no es digno de la vida.</p>
+              <p>No hay paz<br>si uno deja de ser<br>bosque.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEXTOS DE SERIE -->
+  <section class="textos-serie fade-in delay-3">
+    <div class="textos-serie-header">
+      <span class="textos-serie-titulo">Textos de serie</span>
+    </div>
+    <div class="textos-serie-grid">
+
+      <a href="paisajes-de-guerra/index.html" target="_blank" rel="noopener" class="texto-serie-item">
+        <p class="texto-serie-label">Paisajes de Guerra</p>
+        <h3 class="texto-serie-nombre">Documento coordenadas</h3>
+        <p class="texto-serie-frase">Fijo estos territorios antes de que desaparezcan en el flujo continuo de las imágenes. Cada pieza es un intento de interrumpir ese borrado.</p>
+      </a>
+
+      <a href="ecos.html" class="texto-serie-item">
+        <p class="texto-serie-label">Ecos del Fuego</p>
+        <h3 class="texto-serie-nombre">La devastación como lenguaje</h3>
+        <p class="texto-serie-frase">El fuego calcinó hasta el silencio, / la memoria se tornó ceniza. / ¿Quién frenará su sed? / Solo el fuego a sí mismo se devora.</p>
+      </a>
+
+      <a href="cartografia.html" class="texto-serie-item">
+        <p class="texto-serie-label">Cartografía del Movimiento</p>
+        <h3 class="texto-serie-nombre">Una reflexión sobre el proceso creativo</h3>
+        <p class="texto-serie-frase">No se trata de representar el movimiento, sino de comprender cómo lo invisible nos impulsa a la acción.</p>
+      </a>
+
+      <a href="sabotaje.html" class="texto-serie-item">
+        <p class="texto-serie-label">Sabotaje</p>
+        <h3 class="texto-serie-nombre">Insurrección poética</h3>
+        <p class="texto-serie-frase">Saboteo el sistema con palabras serenas. Ante la saturación de información y la hiperactividad insoportable, propongo detenerse.</p>
+      </a>
+
+      <a href="ferrum.html" class="texto-serie-item">
+        <p class="texto-serie-label">Ferrum</p>
+        <h3 class="texto-serie-nombre">La escucha del metal</h3>
+        <p class="texto-serie-frase">Sobre el suelo son cuerpos sucios: chatarra. Comprender cómo dialogan entre ellos, encontrar la luz, la geometría en sus encajes.</p>
+      </a>
+
+      <a href="tierra.html" class="texto-serie-item">
+        <p class="texto-serie-label">Tierra</p>
+        <h3 class="texto-serie-nombre">La memoria de los troncos</h3>
+        <p class="texto-serie-frase">Mis manos hacen y mi cerebro calla. Atento a sus formas, intento comprender lo que guarda su memoria y darles otra oportunidad de brillar.</p>
+      </a>
+
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </footer>
+
+</body>
+</html>
