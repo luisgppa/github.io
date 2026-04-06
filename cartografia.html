@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cartografía del Movimiento — Luis González Palacios</title>
-  <meta name="description" content="Cartografía del Movimiento. Tríptico escultórico sobre la energía contenida, latente y liberada. Inercia, Impulso, Desplazamiento. Luis González Palacios.">
+  <title>Cartografía del Movimiento · Luis González Palacios | Tríptico escultórico</title>
+  <meta name="description" content="Tríptico escultórico sobre la energía contenida, latente y liberada. Inercia, Impulso, Desplazamiento. Luis González Palacios.">
   <link rel="canonical" href="https://lgonzalezpalacios.com/cartografia.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,6 +100,18 @@
     .serie-featured-img:hover img{transform:scale(1.03)}
     .hero-image-placeholder img,.sobre-image img{width:100%;height:100%;object-fit:cover;display:block}
   </style>
+  <link rel="stylesheet" href="estilos.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cartografía del Movimiento · Luis González Palacios | Tríptico escultórico">
+  <meta property="og:description" content="Tríptico escultórico sobre la energía contenida, latente y liberada. Inercia, Impulso, Desplazamiento. Luis González Palacios.">
+  <meta property="og:image" content="https://lgonzalezpalacios.com/img/cartografia_inercia-cover.jpg">
+  <meta property="og:url" content="https://lgonzalezpalacios.com/cartografia.html">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cartografía del Movimiento · Luis González Palacios | Tríptico escultórico">
+  <meta name="twitter:description" content="Tríptico escultórico sobre la energía contenida, latente y liberada. Inercia, Impulso, Desplazamiento. Luis González Palacios.">
+  <meta name="twitter:image" content="https://lgonzalezpalacios.com/img/cartografia_inercia-cover.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/css/glightbox.min.css">
 </head>
 <body>
   <nav>
@@ -192,12 +204,32 @@
     </div>
   </nav>
 
+  
+  <section style="max-width:1200px;margin:0 auto;padding:48px 48px 64px;border-top:0.5px solid #d8d4cd;text-align:center;">
+    <p style="font-family:'EB Garamond',Georgia,serif;font-size:18px;font-style:italic;color:#555;margin-bottom:24px;">¿Te interesa alguna pieza de esta serie?</p>
+    <a href="contacto.html?serie=cartografía-del-movimiento" style="font-family:'EB Garamond',Georgia,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#111;border:0.5px solid #111;padding:14px 36px;display:inline-block;transition:all .2s;" onmouseover="this.style.background='#9e5a28';this.style.color='#f4f1ec';this.style.borderColor='#9e5a28'" onmouseout="this.style.background='transparent';this.style.color='#111';this.style.borderColor='#111'">Consultar sobre esta serie →</a>
+  </section>
+
   <footer>
     <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
     <div class="footer-links">
       <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.artsy.net/artist/luis-gonzalez-palacios" target="_blank" rel="noopener">Artsy</a>
       <a href="contacto.html">Contacto</a>
     </div>
   </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/js/glightbox.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        zoomable: true,
+        draggable: true,
+        skin: 'clean'
+      });
+    });
+  </script>
 </body>
 </html>
