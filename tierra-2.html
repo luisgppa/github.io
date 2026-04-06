@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tierra 1 — Luis González Palacios</title>
-  <meta name="description" content="Tierra 1. Madera de olivo y acero reciclado, 42 × 25 cm · 2024. Serie Tierra. Luis González Palacios.">
-  <link rel="canonical" href="https://lgonzalezpalacios.com/tierra-1.html">
+  <title>Tierra 2 — Luis González Palacios</title>
+  <meta name="description" content="Tierra 2. Madera de olivo y acero reciclado, 58 × 20 cm, 2024. Serie Tierra. Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/tierra-2.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -37,8 +37,8 @@
 
     /* Imagen */
     .obra-imagen{position:sticky;top:90px}
-    .imagen-principal{width:100%;aspect-ratio:3/4;display:block;overflow:hidden;background:#f4f1ec;position:relative;}
-    .imagen-principal img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;}
+    .imagen-principal{width:100%;aspect-ratio:4/5;display:block;overflow:hidden;background:#1a1a20}
+    .imagen-principal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease}
     .imagen-principal:hover img{transform:scale(1.02)}
     .imagen-caption{font-family:var(--serif-b);font-size:11px;font-style:italic;color:var(--ink-3);margin-top:12px;text-align:center;letter-spacing:.04em}
 
@@ -73,7 +73,7 @@
     .nav-obra-prev:hover,.nav-obra-next:hover{opacity:.6}
     .nav-obra-next{justify-content:flex-end;text-align:right}
     .nav-obra-img{width:52px;height:64px;overflow:hidden;flex-shrink:0;background:#1a1a20}
-    .nav-obra-img img{width:100%;height:100%;object-fit:contain;display:block;background:#f4f1ec;}
+    .nav-obra-img img{width:100%;height:100%;object-fit:cover;display:block}
     .nav-obra-dir{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:4px}
     .nav-obra-nombre{font-family:var(--serif-d);font-size:18px;font-weight:400;color:var(--ink)}
     .nav-obras-volver{font-family:var(--serif-d);font-size:18px;font-weight:300;letter-spacing:.04em;font-style:italic;color:var(--ink-3);text-align:center;transition:color .2s}
@@ -100,36 +100,12 @@
     }
     @media(max-width:540px){.nav-obra-img{display:none}}
   
-    /* LIGHTBOX */
-    .lightbox-overlay {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
-      z-index: 999;
-      cursor: zoom-out;
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox-overlay.active { display: flex; }
-    .lightbox-overlay img {
-      max-width: 90vw;
-      max-height: 90vh;
-      object-fit: contain;
-      display: block;
-    }
-    .lightbox-close {
-      position: absolute;
-      top: 20px; right: 24px;
-      font-family: var(--serif-b);
-      font-size: 28px;
-      color: rgba(244,241,236,.6);
-      cursor: pointer;
-      line-height: 1;
-    }
-    .imagen-principal {
-      cursor: zoom-in;
-    }
+    .lightbox-overlay {display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;cursor:zoom-out;align-items:center;justify-content:center;}
+    .lightbox-overlay.active{display:flex;}
+    .lightbox-overlay img{max-width:90vw;max-height:90vh;object-fit:contain;display:block;}
+    .lightbox-close{position:absolute;top:20px;right:24px;font-family:var(--serif-b);font-size:28px;color:rgba(244,241,236,.6);cursor:pointer;line-height:1;}
+    .imagen-principal{cursor:zoom-in;position:relative;}
+    .imagen-principal img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;}
 
   </style>
   <link rel="stylesheet" href="estilos.css">
@@ -154,19 +130,19 @@
     <span class="breadcrumb-sep">—</span>
     <a href="tierra.html">Tierra</a>
     <span class="breadcrumb-sep">—</span>
-    <span class="breadcrumb-current">Tierra 1</span>
+    <span class="breadcrumb-current">Tierra 2</span>
   </div>
 
   <div class="obra-wrap">
 
     <div class="obra-imagen fade-in delay-1">
-      <div class="imagen-principal" onclick="openLightbox('img/tierra1.png', 'Tierra 1 — Luis González Palacios. Serie Tierra. 42 × 25 cm · 2024.')" title="Clic para ampliar"><img src="img/tierra1.png" alt="Tierra 1 — Luis González Palacios. Serie Tierra. 42 × 25 cm · 2024."></div>
-      <p class="imagen-caption">Tierra 1 · 2024</p>
+      <div class="imagen-principal" onclick="openLightbox(\'img/tierra2.png', 'Tierra 2')" title="Clic para ampliar"></div>
+      <p class="imagen-caption">Tierra 2 · 2024</p>
     </div>
 
     <div class="obra-ficha">
       <p class="ficha-serie fade-in delay-1">Serie Tierra</p>
-      <h1 class="ficha-titulo fade-in delay-2">Tierra 1</h1>
+      <h1 class="ficha-titulo fade-in delay-2">Tierra 2</h1>
       <p class="ficha-anyo fade-in delay-2">2024</p>
 
       <hr class="sep fade-in delay-3">
@@ -182,7 +158,7 @@
         </div>
         <div class="dato">
           <span class="dato-key">Medidas</span>
-          <span class="dato-val">42 × 25 cm</span>
+          <span class="dato-val">58 × 20 cm</span>
         </div>
         <div class="dato">
           <span class="dato-key">Año</span>
@@ -205,23 +181,25 @@
       </div>
 
       <div class="acciones fade-in delay-4">
-        <a href="contacto.html?obra=tierra-1" class="btn-consultar">Consultar precio</a>
+        <a href="contacto.html?obra=tierra-2" class="btn-consultar">Consultar precio</a>
         
         
       </div>
 
       <div class="obra-texto fade-in delay-4">
         <p class="texto-label">Sobre la pieza</p>
-        <p class="texto-body">La primera pieza de la serie guarda la lógica de todo lo que vendría después: encontrar antes de intervenir. El olivo llega al taller con su forma ya resuelta — el trabajo consiste en reconocerla, limpiarla, sostenerla. Aquí empieza la escucha.</p>
+        <p class="texto-body">
+          Pieza vertical de olivo trabajada con mínima intervención. La madera tiene marcas de crecimiento que el lijado ha revelado en toda su complejidad cromática. El soporte de acero es austero — una varilla, una base — porque la forma no necesita más.
+        </p>
       </div>
     </div>
   </div>
 
   <nav class="nav-obras" aria-label="Obras anterior y siguiente">
     <div class="nav-obras-inner">
-      <a href="tierra-5.html" class="nav-obra-prev"><div class="nav-obra-img"><img src="img/tierra5.png" alt="Tierra 5"></div><div><p class="nav-obra-dir">← Anterior</p><p class="nav-obra-nombre">Tierra 5</p></div></a>
+      <a href="tierra-3.html" class="nav-obra-prev"><div class="nav-obra-img"><img src="img/tierra3.png" alt="Tierra 3"></div><div><p class="nav-obra-dir">← Anterior</p><p class="nav-obra-nombre">Tierra 3</p></div></a>
       <a href="tierra.html" class="nav-obras-volver">Volver a Tierra</a>
-      <div></div>
+      <a href="tierra-1.html" class="nav-obra-next"><div><p class="nav-obra-dir">Siguiente →</p><p class="nav-obra-nombre">Tierra 1</p></div><div class="nav-obra-img"><img src="img/tierra1.png" alt="Tierra 1"></div></a>
     </div>
   </nav>
 
@@ -234,25 +212,15 @@
   </footer>
 
 
-  <!-- LIGHTBOX -->
   <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
     <span class="lightbox-close">×</span>
     <img id="lightboxImg" src="" alt="">
   </div>
 
   <script>
-    function openLightbox(src, alt) {
-      document.getElementById('lightboxImg').src = src;
-      document.getElementById('lightboxImg').alt = alt;
-      document.getElementById('lightbox').classList.add('active');
-    }
-    function closeLightbox() {
-      document.getElementById('lightbox').classList.remove('active');
-    }
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') closeLightbox();
-    });
+    function openLightbox(src,alt){document.getElementById('lightboxImg').src=src;document.getElementById('lightboxImg').alt=alt;document.getElementById('lightbox').classList.add('active');}
+    function closeLightbox(){document.getElementById('lightbox').classList.remove('active');}
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
   </script>
-
 </body>
 </html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luis González Palacios · Escultor | Acero reciclado y madera de olivo</title>
-  <meta name="description" content="Luis González Palacios, escultor. Obra construida desde materiales rescatados — acero reciclado, madera de olivo, componentes mecánicos abandonados. Castellón.">
+  <title>Luis González Palacios | Escultor contemporáneo en acero reciclado y madera de olivo</title>
+  <meta name="description" content="Esculturas contemporáneas en acero reciclado y madera de olivo. Proyectos sobre memoria, tiempo y conflicto. Obras disponibles. Castellón.">
   <meta name="keywords" content="Luis González Palacios, escultor, Desertor Constructor, escultura contemporánea, acero reciclado, Castellón, Paisajes de Guerra, Galería 1819">
   <link rel="canonical" href="https://lgonzalezpalacios.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -679,6 +679,17 @@
       .expo-item { grid-template-columns: 60px 1fr; }
       .expo-lugar { display: none; }
     }
+  
+    .autoridad-section { border-top: 0.5px solid var(--border); background: var(--bg); }
+    .autoridad-inner { max-width: 1200px; margin: 0 auto; padding: 64px 48px; text-align: center; }
+    .autoridad-label { font-family: var(--serif-b); font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--oxide); margin-bottom: 16px; }
+    .autoridad-texto { font-family: var(--serif-d); font-size: 28px; font-weight: 300; color: var(--ink); margin-bottom: 32px; }
+    .autoridad-lista { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 32px; margin-bottom: 40px; }
+    .autoridad-lista span { font-family: var(--serif-b); font-size: 15px; font-style: italic; color: var(--ink-2); }
+    .autoridad-link { font-family: var(--serif-b); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); border-bottom: 0.5px solid var(--ink); padding-bottom: 2px; transition: color .2s, border-color .2s; }
+    .autoridad-link:hover { color: var(--oxide); border-color: var(--oxide); }
+    @media(max-width:768px){ .autoridad-inner { padding: 48px 24px; } .autoridad-texto { font-size: 22px; } }
+
   </style>
   <link rel="preload" as="image" href="img/ferrum15.png">
   <link rel="preload" as="image" href="img/STANBROOK.png">
@@ -894,6 +905,24 @@
 
 
   <!-- FOOTER -->
+  
+  <!-- AUTORIDAD -->
+  <section class="autoridad-section fade-in">
+    <div class="autoridad-inner">
+      <p class="autoridad-label">Trayectoria</p>
+      <p class="autoridad-texto">Expuesto en ferias y galerías nacionales e internacionales.</p>
+      <div class="autoridad-lista">
+        <span>Akelarre Art Fair · Madrid</span>
+        <span>Patricia Cancelo Art Gallery · Bogense, Dinamarca</span>
+        <span>Galería Ra del Rey · Madrid</span>
+        <span>1819 Art Gallery</span>
+        <span>Museu Etnogràfic de Ripoll · Girona</span>
+        <span>Galería Abartium · Madrid</span>
+      </div>
+      <a href="bio.html" class="autoridad-link">Ver biografía y CV →</a>
+    </div>
+  </section>
+
   <footer>
     <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
     <div class="footer-links">
