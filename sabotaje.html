@@ -104,7 +104,23 @@
   <meta name="twitter:title" content="Sabotaje · Luis González Palacios | Insurrección poética">
   <meta name="twitter:description" content="Un acto de insurrección poética. Ante la saturación de información, el arte interrumpe la maquinaria. Luis González Palacios.">
   <meta name="twitter:image" content="https://lgonzalezpalacios.com/img/sabotaje1-cover.jpeg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/css/glightbox.min.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Sabotaje",
+    "description": "Un acto de insurrección poética. Ante la saturación de información, el arte interrumpe la maquinaria.",
+    "numberOfItems": 2,
+    "image": "https://lgonzalezpalacios.com/img/sabotaje1-cover.jpeg",
+    "author": {
+      "@type": "Person",
+      "name": "Luis González Palacios",
+      "url": "https://lgonzalezpalacios.com"
+    },
+    "artMedium": "Técnica mixta · materiales reciclados",
+    "url": "https://lgonzalezpalacios.com/sabotaje.html"
+  }
+  </script>
 </head>
 <body>
   <nav>
@@ -149,13 +165,13 @@
     </div>
     <div class="obras-grid">
       <a class="obra-card fade-in delay-2" href="sabotaje-virus.html">
-        <div class="obra-img"><a href="img/sabotaje1-cover.jpeg" class="glightbox" data-gallery="serie-sabotaje" data-description="Virus — Luis González Palacios. 80×100 cm, 2024."><img src="img/sabotaje1-cover.jpeg" alt="Virus — Luis González Palacios. 80×100 cm, 2024." loading="lazy"></a></div>
+        <div class="obra-img"><img src="img/sabotaje1-cover.jpeg" alt="Virus — Luis González Palacios. 80×100 cm, 2024." loading="lazy"></div>
         <div class="obra-data"><p class="obra-num">I</p><h2 class="obra-nombre">Virus</h2>
         <p class="obra-desc">Una placa madre de ordenador forma la cabeza. Los árboles neuronales crecen desde el circuito. Las jeringas lo atraviesan. El sistema infectado por su propia lógica.</p>
         <p class="obra-meta">80 × 100 cm · 2024</p></div>
       </a>
       <a class="obra-card fade-in delay-3" href="sabotaje-caos.html">
-        <div class="obra-img"><a href="img/sabotaje2.jpg" class="glightbox" data-gallery="serie-sabotaje" data-description="Caos — Luis González Palacios. 80×100 cm, 2025."><img src="img/sabotaje2.jpg" alt="Caos — Luis González Palacios. 80×100 cm, 2025." loading="lazy"></a></div>
+        <div class="obra-img"><img src="img/sabotaje2.jpg" alt="Caos — Luis González Palacios. 80×100 cm, 2025." loading="lazy"></div>
         <div class="obra-data"><p class="obra-num">II</p><h2 class="obra-nombre">Caos</h2>
         <p class="obra-desc">La segunda pieza de la insurrección. El orden que se deshace. La estructura que ya no puede contenerse a sí misma.</p>
         <p class="obra-meta">80 × 100 cm · 2025</p></div>
@@ -189,18 +205,6 @@
       <a href="contacto.html">Contacto</a>
     </div>
   </footer>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.0/js/glightbox.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      GLightbox({
-        selector: '.glightbox',
-        touchNavigation: true,
-        loop: true,
-        zoomable: true,
-        draggable: true,
-        skin: 'clean'
-      });
-    });
-  </script>
+
 </body>
 </html>
