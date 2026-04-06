@@ -227,12 +227,23 @@
 
   <script>
     function mostrarConfirmacion(e) {
-      // Formspree se encarga del envío real
-      // Mostramos confirmación tras un breve delay
-      setTimeout(() => {
-        document.getElementById('contactForm').style.display = 'none';
-        document.getElementById('formOk').style.display = 'block';
-      }, 800);
+      e.preventDefault();
+      const form = document.getElementById('contactForm');
+      const data = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          form.style.display = 'none';
+          document.getElementById('formOk').style.display = 'block';
+        } else {
+          alert('Hubo un error al enviar. Por favor escríbeme directamente a luisgppa@gmail.com');
+        }
+      }).catch(() => {
+        alert('Hubo un error al enviar. Por favor escríbeme directamente a luisgppa@gmail.com');
+      });
     }
   </script>
 
