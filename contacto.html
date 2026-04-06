@@ -176,15 +176,15 @@
     <div class="contacto-form fade-in delay-2">
       <span class="form-label-top">Escríbeme</span>
 
-      <form id="contactForm" onsubmit="enviarFormulario(event)">
+      <form id="contactForm" action="https://formspree.io/f/xbdpqynk" method="POST" onsubmit="mostrarConfirmacion(event)">
         <div class="campo">
           <label for="nombre">Nombre</label>
-          <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          <input type="text" id="nombre" name="nombre" name="nombre" placeholder="Tu nombre" required>
         </div>
 
         <div class="campo">
           <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+          <input type="email" id="email" name="email" name="email" placeholder="tu@email.com" required>
         </div>
 
         <div class="campo">
@@ -204,6 +204,8 @@
           <textarea id="mensaje" name="mensaje" placeholder="Cuéntame..." required></textarea>
         </div>
 
+        <input type="hidden" name="_subject" value="Mensaje desde lgonzalezpalacios.com">
+        <input type="hidden" name="_language" value="es">
         <button type="submit" class="btn-enviar">Enviar mensaje</button>
         <p class="form-nota">Respondo en un plazo de 48 horas.</p>
       </form>
@@ -224,28 +226,12 @@
   </footer>
 
   <script>
-    function enviarFormulario(e) {
-      e.preventDefault();
-      const form = document.getElementById('contactForm');
-      const ok   = document.getElementById('formOk');
-
-      // Construir mailto
-      const nombre  = document.getElementById('nombre').value;
-      const email   = document.getElementById('email').value;
-      const asunto  = document.getElementById('asunto').value || 'Contacto web';
-      const mensaje = document.getElementById('mensaje').value;
-
-      const body = encodeURIComponent(
-        `Nombre: ${nombre}\nEmail: ${email}\n\n${mensaje}`
-      );
-      const subject = encodeURIComponent(`[lgonzalezpalacios.com] ${asunto}`);
-
-      window.location.href = `mailto:luisgppa@gmail.com?subject=${subject}&body=${body}`;
-
-      // Mostrar confirmación
+    function mostrarConfirmacion(e) {
+      // Formspree se encarga del envío real
+      // Mostramos confirmación tras un breve delay
       setTimeout(() => {
-        form.style.display = 'none';
-        ok.style.display = 'block';
+        document.getElementById('contactForm').style.display = 'none';
+        document.getElementById('formOk').style.display = 'block';
       }, 800);
     }
   </script>
