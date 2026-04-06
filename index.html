@@ -173,8 +173,16 @@
       color: var(--bg);
     }
 
-    .gallery-link {
+    .btn-secondary {
       font-family: var(--serif-b);
+      font-size: 14px;
+      letter-spacing: .12em;
+      color: var(--ink);
+      border-bottom: 0.5px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .btn-secondary:hover { color: var(--oxide); border-color: var(--oxide); }      font-family: var(--serif-b);
       font-size: 13px;
       font-style: italic;
       color: var(--oxide);
@@ -183,7 +191,6 @@
       transition: opacity 0.2s;
     }
 
-    .gallery-link:hover { opacity: 0.7; }
 
     /* ── IMAGEN HERO ── */
     .hero-image-wrap {
@@ -743,7 +750,7 @@
       </blockquote>
       <div class="hero-actions fade-in fade-in-4">
         <a href="obra.html" class="btn-primary">Ver la obra</a>
-        <a href="https://1819.es/artistas/luis-gonzalez-palacios/" target="_blank" rel="noopener" class="gallery-link">Galería 1819 →</a>
+        <a href="contacto.html" class="btn-secondary">Consultar disponibilidad →</a>
       </div>
     </div>
     <div class="hero-image-wrap fade-in fade-in-5">
