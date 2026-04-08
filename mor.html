@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Mör — Luis González Palacios</title>
+  <meta name="robots" content="noindex, nofollow" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --paper:   #f0ebe2;
+      --ink:     #1a1714;
+      --oxide:   #9e5a28;
+      --muted:   #7a7066;
+      --faint:   #cfc8bc;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 18px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-weight: 400;
+      line-height: 1.85;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Grain texture overlay */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    /* ─── Layout ─── */
+
+    .page {
+      max-width: 580px;
+      margin: 0 auto;
+      padding: 9vh 2rem 14vh;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: emerge 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+    }
+
+    @keyframes emerge {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── Header ─── */
+
+    .header {
+      margin-bottom: 5.5rem;
+    }
+
+    .return-link {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--faint);
+      padding-bottom: 1px;
+      transition: color 0.3s, border-color 0.3s;
+      margin-bottom: 4.5rem;
+      display: block;
+    }
+
+    .return-link:hover {
+      color: var(--oxide);
+      border-color: var(--oxide);
+    }
+
+    .header-rule {
+      width: 1px;
+      height: 60px;
+      background: var(--oxide);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: emerge 1s ease 0.9s forwards;
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.2;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    h1 em {
+      font-style: italic;
+      color: var(--oxide);
+    }
+
+    /* ─── Body text ─── */
+
+    .text-block {
+      margin-bottom: 3rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      color: var(--ink);
+      hyphens: auto;
+      text-align: justify;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── Section titles ─── */
+
+    h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--oxide);
+      margin-bottom: 1.2rem;
+      margin-top: 3.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    /* ─── Verse ─── */
+
+    .verse {
+      position: relative;
+      margin: 2.8rem 0 2.8rem 1.5rem;
+      padding-left: 1.8rem;
+      border-left: 1px solid var(--oxide);
+    }
+
+    .verse p {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--ink);
+      text-align: left;
+      margin-bottom: 0.4rem;
+    }
+
+    .verse p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── Key phrase ─── */
+
+    .key-phrase {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--ink);
+      display: block;
+      margin: 3rem 0;
+      line-height: 1.5;
+    }
+
+    /* ─── Series list ─── */
+
+    .series {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* ─── Separator ─── */
+
+    .sep {
+      width: 40px;
+      height: 1px;
+      background: var(--faint);
+      margin: 3.5rem 0;
+    }
+
+    /* ─── Footer ─── */
+
+    .footer {
+      margin-top: 7rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--faint);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer-name {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .footer-back {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--oxide);
+      text-decoration: none;
+      border-bottom: 1px solid var(--oxide);
+      padding-bottom: 1px;
+      transition: opacity 0.3s;
+    }
+
+    .footer-back:hover {
+      opacity: 0.65;
+    }
+
+    /* ─── Responsive ─── */
+
+    @media (max-width: 480px) {
+      .page {
+        padding: 7vh 1.4rem 12vh;
+      }
+      .verse {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <a class="return-link" href="bio.html">&#8592; lgonzalezpalacios.com</a>
+    <div class="header-rule"></div>
+    <p class="tagline">Nota del escultor</p>
+    <h1>De <em>Ul&nbsp;M&#246;r</em><br>a Poemas Materiales</h1>
+  </header>
+
+  <main>
+
+    <div class="text-block">
+      <p>Mi trabajo toma por nombre <em>Poemas Materiales</em>. El poema se construye, se levanta a trav&#233;s de palabras, y el alma de esa construcci&#243;n, de ese edificio, es la met&#225;fora. Mis esculturas, en vez de palabras, utilizan maderas y hierros, y su met&#225;fora es cambiar su destino: rescatar su memoria y ofrecerles otra vida.</p>
+
+      <p>Pero no era consciente de que todo este trabajo, a su vez, participaba de una filosof&#237;a, de una forma de entender el mundo que hab&#237;a plasmado casi paralelamente en un poemario llamado <em>Ul M&#246;r</em>. Un pueblo n&#243;mada que habita en un p&#225;ramo extenso y que va en busca de lugares donde asentarse. Un pueblo que mantiene una conexi&#243;n profunda con la tierra y al que se unen otros que huyen o que se han perdido.</p>
+
+      <p>Cada a&#241;o levantan un muro alto &#8212;el <em>m&#246;r</em>&#8212; en el que reflejan historias acontecidas durante ese a&#241;o. Mis esculturas son esas historias, mis cuadros son esas historias, mis poemas son esas historias. Los encargados de construir la pared de la memoria se denominan <em>haj-m&#246;r</em>. Yo soy un haj-m&#246;r.</p>
+    </div>
+
+    <div class="sep"></div>
+
+    <h2>El m&#246;r como acto de construcci&#243;n de memoria</h2>
+
+    <div class="text-block">
+      <p>En <em>Ul M&#246;r</em>, el pueblo traza sus huellas sobre muros de barro, convirtiendo cada paso, cada vida vivida, en memoria colectiva. Cuando el lugar se vuelve confuso, parten hacia un nuevo <em>amesh</em> (asentamiento) y construyen un nuevo <em>m&#246;r</em>. Este ciclo de construcci&#243;n, memoria y tr&#225;nsito es exactamente lo que hago con mis materiales: cada pieza de madera de olivo que rescato, cada hierro industrial abandonado, lleva consigo siglos de historia. Fueron &#225;rbol, herramienta, funci&#243;n. Al darles nueva forma, honro la memoria de lo que fue para que siga siendo.</p>
+
+      <p>La madera que trabajo guarda en sus vetas sequ&#237;as y tormentas, el hierro conserva la huella de manos que lo usaron. No impongo formas sobre estos materiales; dialogo con ellos, escucho lo que quieren ser. Como los habitantes de <em>Ul M&#246;r</em>, que piden perd&#243;n a la madre tierra antes de herir su cuerpo, yo respeto la vida anterior de cada material. Mis esculturas son habitantes de ese universo: los pr&#243;fugos, los constructores, los ni&#241;os int&#233;rpretes que tejen v&#237;nculos entre mundos distintos.</p>
+    </div>
+
+    <div class="sep"></div>
+
+    <h2>Paisajes de guerra: el m&#246;r del soldado</h2>
+
+    <div class="text-block">
+      <p><em>Paisajes de guerra</em> es la historia de este tiempo. Cada cuadro, cada escultura ha surgido para convertirse en memoria y servir de reflexi&#243;n sobre la destrucci&#243;n y la miseria. Sobre el odio y la violencia que en su camino no dejan m&#225;s que m&#225;s odio y m&#225;s violencia.</p>
+
+      <p>Esta serie conecta profundamente con el origen de <em>Ul M&#246;r</em>: un pueblo formado por soldados desertores, mercenarios y pr&#243;fugos que renunciaron a las armas. El momento fundacional ocurre cuando Umayo arroja su arco al fuego y &#171;vuelve a ser gente&#187;. Mis <em>Paisajes de guerra</em> son el <em>m&#246;r</em> de esa memoria como soldado, las huellas de una vida anterior. Son lo que el narrador del poemario lleva dentro cuando dice:</p>
+
+      <div class="verse">
+        <p>En la noche soy todas las batallas,</p>
+        <p>las pesadillas son</p>
+        <p>el &#250;ltimo territorio del guerrero.</p>
+      </div>
+
+      <p>El hierro retorcido, las composiciones fragmentadas, el metal oxidado que parece herida abierta: todo habla de destrucci&#243;n y memoria del dolor, lamentos, cicatrices.</p>
+    </div>
+
+    <div class="sep"></div>
+
+    <h2>De mercenario a constructor</h2>
+
+    <div class="text-block">
+      <p>Como escribo en <em>Ul M&#246;r</em>:</p>
+
+      <div class="verse">
+        <p>Nosotros, ayer mercenarios.</p>
+        <p>Hoy constructores.</p>
+      </div>
+
+      <p>Esta transformaci&#243;n &#8212;de la violencia a la memoria, de las armas al arte&#8212; es el coraz&#243;n de mi trabajo. Cada escultura es un trazo en mi propio <em>m&#246;r</em> personal. Cada serie <span class="series">(Tierra, Ferrum, las Figuras, Sabotaje, Ecos del Fuego, Paisajes de Guerra)</span> son manifestaciones materiales de esta misma cosmogon&#237;a.</p>
+
+      <span class="key-phrase">&#171;Soy un desertor que aprende a construir.&#187;</span>
+
+      <p>Mi taller es mi <em>amesh</em>, el lugar temporal donde habito mientras construyo memoria. Y como el pueblo de <em>Ul M&#246;r</em>, que est&#225; formado por retazos cosidos de todos los pueblos, mi trabajo acoge materiales olvidados de todas las procedencias y les ofrece un lugar donde no desaparecer.</p>
+
+      <p>Solo hay que dejar pasar el tiempo. La memoria permanece en los muros que levantamos.</p>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="text-block">
+      <p>He pasado gran parte de mi vida disfrutando de la oportunidad de luchar por hacer una sociedad mejor a trav&#233;s de la educaci&#243;n. Dotar a mis alumnos de la herramienta m&#225;s maravillosa: aprender a hacerse y hacer preguntas relevantes. Esa misma herramienta es la que trato de poner en marcha cada d&#237;a cuando emprendo un proyecto.</p>
+    </div>
+
+    <div class="sep"></div>
+
+    <h2>Del poema</h2>
+
+    <div class="text-block">
+
+      <div class="verse" style="margin-top:1.5rem">
+        <p style="font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;font-style:normal;color:var(--muted);margin-bottom:1rem;">El encuentro</p>
+        <p>Quedamos quietos.<br>
+        Tambi&#233;n las bestias<br>
+        En mitad del p&#225;ramo<br>
+        dos hombres aguardaban.</p>
+        <p>Pies al suelo<br>
+        Manos en la brida<br>
+        Hombres curtidos temerosos<br>
+        Las bestias cabecean<br>
+        El miedo se espesa<br>
+        como niebla cerrada.</p>
+        <p>Uno de ellos alz&#243; la mano<br>
+        El otro imit&#243; el gesto<br>
+        y nos anim&#243; a avanzar.</p>
+      </div>
+
+      <div class="verse">
+        <p style="font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;font-style:normal;color:var(--muted);margin-bottom:1rem;">Del origen &#183; Ser pueblo</p>
+        <p>No nacimos pueblo<br>
+        &#201;ramos perdedores,<br>
+        n&#225;ufragos del p&#225;ramo.</p>
+        <p>Seremos<br>
+        si todos somos.<br>
+        Ser luz:<br>
+        Una estrella no hace el cielo,<br>
+        pero sin ella<br>
+        faltar&#237;a su luz.</p>
+        <p>Somos tr&#225;nsito<br>
+        Cambio<br>
+        Huella.</p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <span class="footer-name">Luis Gonz&#225;lez Palacios &mdash; Escultor</span>
+    <a class="footer-back" href="bio.html">Volver</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
