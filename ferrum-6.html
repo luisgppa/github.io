@@ -351,6 +351,11 @@
     /* ── NAVEGACIÓN ENTRE OBRAS ── */
     .nav-obras {
       border-top: 0.5px solid var(--border);
+      position: static !important;
+      display: block !important;
+      padding: 0 !important;
+      z-index: auto !important;
+      top: auto !important;
     }
     .nav-obras-inner {
       max-width: 1200px;
@@ -359,13 +364,14 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
+      gap: 48px;
     }
     .nav-obra-prev,
     .nav-obra-next {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 28px 0;
+      gap: 20px;
+      padding: 40px 0;
       transition: opacity 0.2s;
     }
     .nav-obra-prev:hover,
@@ -551,7 +557,7 @@
         </div>
         <div class="dato">
           <span class="dato-key">Referencia</span>
-          <span class="dato-val">LGP-FE-2025-018</span>
+          <span class="dato-val">LGP-FE-2024-006</span>
         </div>
       </div>
 

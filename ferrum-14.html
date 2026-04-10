@@ -351,6 +351,11 @@
     /* ── NAVEGACIÓN ENTRE OBRAS ── */
     .nav-obras {
       border-top: 0.5px solid var(--border);
+      position: static !important;
+      display: block !important;
+      padding: 0 !important;
+      z-index: auto !important;
+      top: auto !important;
     }
     .nav-obras-inner {
       max-width: 1200px;
@@ -359,13 +364,14 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
+      gap: 48px;
     }
     .nav-obra-prev,
     .nav-obra-next {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 28px 0;
+      gap: 20px;
+      padding: 40px 0;
       transition: opacity 0.2s;
     }
     .nav-obra-prev:hover,
@@ -502,12 +508,12 @@
     <!-- IMAGEN -->
     <div class="obra-imagen fade-in delay-1">
       <div class="imagen-principal">
-        <img src="img/Ferrum14.png" alt="Ferrum 14 — Luis González Palacios. Serie Ferrum. 57 × 32 cm, 2025." class="obra-img">
+        <img src="img/ferrum14.png" alt="Ferrum 14 — Luis González Palacios. Serie Ferrum. 57 × 32 cm, 2025." class="obra-img">
       </div>
       <p class="imagen-caption">Ferrum 14 · Acero reciclado · 2025</p>
       <div class="imagenes-mini">
         <div class="mini active">
-          <img src="img/Ferrum14.png" alt="Ferrum 18 — vista frontal">
+          <img src="img/ferrum14.png" alt="Ferrum 18 — vista frontal">
         </div>
         <div class="mini">
           <img src="img/ferrum18_1.png" alt="Ferrum 18 — detalle">
@@ -548,7 +554,7 @@
         </div>
         <div class="dato">
           <span class="dato-key">Referencia</span>
-          <span class="dato-val">LGP-FE-2025-018</span>
+          <span class="dato-val">LGP-FE-2025-014</span>
         </div>
       </div>
 
