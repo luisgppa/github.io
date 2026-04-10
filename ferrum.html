@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Serie Ferrum · Luis González Palacios | Escultura en acero reciclado</title>
+  <meta name="description" content="Acero industrial reconvertido en forma. El óxido como memoria, la soldadura como gesto. 18 esculturas en acero reciclado. Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/ferrum.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    .fade-in{opacity:0;animation:fadeUp 0.7s ease forwards}
+    .delay-1{animation-delay:.05s}.delay-2{animation-delay:.2s}.delay-3{animation-delay:.35s}.delay-4{animation-delay:.5s}
+
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+
+    .breadcrumb{max-width:1200px;margin:0 auto;padding:20px 48px;display:flex;align-items:center;gap:10px;border-bottom:0.5px solid var(--border)}
+    .breadcrumb a{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .breadcrumb a:hover{color:var(--oxide)}
+    .breadcrumb-sep{font-size:11px;color:var(--border)}
+    .breadcrumb-current{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-2)}
+
+    .serie-header{max-width:1200px;margin:0 auto;padding:56px 48px 64px;display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:end;border-bottom:0.5px solid var(--border)}
+    .serie-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:14px}
+    .serie-titulo{font-family:var(--serif-d);font-size:clamp(48px,5vw,72px);font-weight:300;line-height:1.02;letter-spacing:.01em;margin-bottom:6px}
+    .serie-subtitulo{font-family:var(--serif-b);font-size:15px;font-style:italic;color:var(--ink-3)}
+    .serie-texto p{font-style:italic;color:var(--ink-2);line-height:1.85;margin-bottom:20px}
+    .serie-texto p:last-child{margin-bottom:0}
+    .serie-mat{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);padding-top:20px;border-top:0.5px solid var(--border)}
+
+    .obras-section{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
+    .obras-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .obras-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .obras-count{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
+    .obras-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px 24px}
+
+    .obra-card{display:block}
+    .obra-card:hover .obra-img img{transform:scale(1.03)}
+    .obra-card:hover .obra-nombre{color:var(--oxide)}
+    .obra-img{width:100%;aspect-ratio:3/4;overflow:hidden;background:#f4f1ec;margin-bottom:16px;position:relative;}
+    .obra-img img{width:100%;height:100%;object-fit:contain;display:block;position:absolute;top:0;left:0;}
+    .obra-img-placeholder{width:100%;height:100%;background:linear-gradient(150deg,#2a2420 0%,#1a1210 50%,#3d3530 100%)}
+    .obra-serie-label{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:5px}
+    .obra-nombre{font-family:var(--serif-d);font-size:22px;font-weight:400;color:var(--ink);margin-bottom:4px;transition:color .2s}
+    .obra-meta{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
+
+    /* Sección multimedia: Stanbrook y Diario de una escultura */
+    .multimedia-section{border-top:0.5px solid var(--border)}
+    .multimedia-inner{max-width:1200px;margin:0 auto;padding:56px 48px 80px}
+    .multimedia-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:40px;padding-bottom:16px;border-bottom:0.5px solid var(--border)}
+    .multimedia-titulo{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-3)}
+    .multimedia-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+    .multimedia-item{display:block}
+    .multimedia-thumb{width:100%;aspect-ratio:16/9;background:#1a1a1a;margin-bottom:16px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .multimedia-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+    .multimedia-thumb-bg{width:100%;height:100%;background:linear-gradient(160deg,#2a2420 0%,#1a1210 50%,#3d3530 100%);display:flex;align-items:center;justify-content:center}
+    .play-icon{width:48px;height:48px;border:0.5px solid rgba(244,241,236,.3);border-radius:50%;display:flex;align-items:center;justify-content:center}
+    .play-icon::after{content:'';border-left:14px solid rgba(244,241,236,.5);border-top:8px solid transparent;border-bottom:8px solid transparent;margin-left:4px}
+    .multimedia-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink);margin-bottom:4px}
+    .multimedia-desc{font-family:var(--serif-b);font-size:14px;font-style:italic;color:var(--ink-3);line-height:1.7}
+
+    .nav-series{border-top:0.5px solid var(--border)}
+    .nav-series-inner{max-width:1200px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
+    .nav-serie-prev,.nav-serie-next{display:flex;align-items:center;gap:16px;padding:28px 0;transition:opacity .2s}
+    .nav-serie-prev:hover,.nav-serie-next:hover{opacity:.6}
+    .nav-serie-next{justify-content:flex-end;text-align:right}
+    .nav-serie-dir{font-family:var(--serif-b);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--oxide);margin-bottom:4px}
+    .nav-serie-nombre{font-family:var(--serif-d);font-size:20px;font-weight:400;color:var(--ink)}
+    .nav-series-volver{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);text-align:center;transition:color .2s}
+    .nav-series-volver:hover{color:var(--oxide)}
+
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .breadcrumb{padding:16px 24px}
+      .serie-header{grid-template-columns:1fr;padding:40px 24px 48px;gap:32px}
+      .obras-section{padding:40px 24px 64px}
+      .obras-grid{grid-template-columns:1fr 1fr;gap:32px 16px}
+      .multimedia-inner{padding:40px 24px 64px}
+      .multimedia-grid{grid-template-columns:1fr}
+      .nav-series-inner{padding:0 24px}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+    @media(max-width:540px){.obras-grid{grid-template-columns:1fr}}
+  </style>
+  <link rel="stylesheet" href="estilos.css">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Serie Ferrum · Luis González Palacios | Escultura en acero reciclado">
+  <meta property="og:description" content="Acero industrial reconvertido en forma. El óxido como memoria, la soldadura como gesto. 18 esculturas en acero reciclado. Luis González Palacios.">
+  <meta property="og:image" content="https://lgonzalezpalacios.com/img/STANBROOK.png">
+  <meta property="og:url" content="https://lgonzalezpalacios.com/ferrum.html">
+  <meta property="og:locale" content="es_ES">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Serie Ferrum · Luis González Palacios | Escultura en acero reciclado">
+  <meta name="twitter:description" content="Acero industrial reconvertido en forma. El óxido como memoria, la soldadura como gesto. 18 esculturas en acero reciclado. Luis González Palacios.">
+  <meta name="twitter:image" content="https://lgonzalezpalacios.com/img/STANBROOK.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Serie Ferrum",
+    "description": "Acero industrial reconvertido en forma. El óxido como memoria, la soldadura como gesto.",
+    "numberOfItems": 18,
+    "image": "https://lgonzalezpalacios.com/img/STANBROOK.png",
+    "author": {
+      "@type": "Person",
+      "name": "Luis González Palacios",
+      "url": "https://lgonzalezpalacios.com"
+    },
+    "artMedium": "Acero reciclado · componentes mecánicos",
+    "url": "https://lgonzalezpalacios.com/ferrum.html"
+  }
+  </script>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="obra.html" class="active">Obra</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="textos.html">Textos</a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumb">
+    <a href="obra.html">Obra</a>
+    <span class="breadcrumb-sep">—</span>
+    <span class="breadcrumb-current">Ferrum</span>
+  </div>
+
+  <header class="serie-header">
+    <div class="fade-in delay-1">
+      <p class="serie-label">Serie 02</p>
+      <h1 class="serie-titulo">Ferrum</h1>
+      <p class="serie-subtitulo">18 esculturas · 2024–2025</p>
+    </div>
+    <div class="serie-texto fade-in delay-2">
+      <p>Sobre el suelo son cuerpos sucios: chatarra. Comprender cómo dialogan entre ellos, encontrar la luz, la geometría en sus encajes, devolverles una posición en el espacio.</p>
+      <p>Componentes mecánicos abandonados, acero industrial fuera de uso, piezas que el sistema productivo ha descartado: el taller los recibe tal como llegan, con sus marcas de uso, su óxido y su desgaste. El trabajo no borra esa historia — la convierte en forma.</p>
+      <p>Rescatarlos es devolverles presencia y construir con ellos una nueva posibilidad de permanencia.</p>
+      <p class="serie-mat">Acero reciclado · componentes mecánicos · soldadura</p>
+    </div>
+  </header>
+
+  <section class="obras-section">
+    <div class="obras-header">
+      <span class="obras-titulo">Obras</span>
+      <span class="obras-count">18 piezas</span>
+    </div>
+    <div class="obras-grid">
+
+      <a class="obra-card fade-in delay-2" href="ferrum-18.html">
+        <div class="obra-img"><img src="img/ferrum18.png" alt="Ferrum 18 — Luis González Palacios. Acero reciclado, 83×46 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 18</h2>
+        <p class="obra-meta">83 × 46 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-2" href="ferrum-17.html">
+        <div class="obra-img"><img src="img/ferrum17-cover.png" alt="Ferrum 17 — Luis González Palacios. Acero reciclado, 70×45×14 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 17</h2>
+        <p class="obra-meta">70 × 45 × 14 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="ferrum-16.html">
+        <div class="obra-img"><img src="img/ferrum16.png" alt="Ferrum 16 — Luis González Palacios. Acero reciclado, 60×45×15 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 16</h2>
+        <p class="obra-meta">60 × 45 × 15 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-3" href="ferrum-15.html">
+        <div class="obra-img"><img src="img/ferrum15.png" alt="Ferrum 15 — Luis González Palacios. Acero reciclado, 80×45×14 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 15</h2>
+        <p class="obra-meta">80 × 45 × 14 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-14.html">
+        <div class="obra-img"><img src="img/ferrum14.png" alt="Ferrum 14 — Luis González Palacios. Acero reciclado, 57×32 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 14</h2>
+        <p class="obra-meta">57 × 32 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-13.html">
+        <div class="obra-img"><img src="img/ferrum13.png" alt="Ferrum 13 — Luis González Palacios. Acero reciclado, 87×58 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 13</h2>
+        <p class="obra-meta">87 × 58 cm · 2025</p>
+      </a>
+
+      
+      <a class="obra-card fade-in delay-4" href="stanbrook.html">
+        <div class="obra-img"><img src="img/STANBROOK.png" alt="Stanbrook — Luis González Palacios. Acero reciclado, 130×68 cm, 2025." loading="lazy"></div>
+        <h2 class="obra-nombre">Stanbrook</h2>
+        <p class="obra-meta">130 × 68 cm · 2025</p>
+      </a>
+      <a class="obra-card fade-in delay-4" href="ferrum-12.html">
+        <div class="obra-img"><img src="img/ferrum12.png" alt="Ferrum 12 — Luis González Palacios. Acero reciclado, 162×62×12 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 12</h2>
+        <p class="obra-meta">162 × 62 × 12 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-11.html">
+        <div class="obra-img"><img src="img/ferrum11.png" alt="Ferrum 11 — Luis González Palacios. Acero reciclado, 35×25×10 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 11</h2>
+        <p class="obra-meta">35 × 25 × 10 cm · 2025</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-10.html">
+        <div class="obra-img"><img src="img/ferrum10.png" alt="Ferrum 10 — Luis González Palacios. Acero reciclado, 40×28 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 10</h2>
+        <p class="obra-meta">40 × 28 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-9.html">
+        <div class="obra-img"><img src="img/ferrum9.png" alt="Ferrum 9 — Luis González Palacios. Acero reciclado, 41×14 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 9</h2>
+        <p class="obra-meta">41 × 14 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-8.html">
+        <div class="obra-img"><img src="img/ferrum8.png" alt="Ferrum 8 — Luis González Palacios. Acero reciclado, 39×27 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 8</h2>
+        <p class="obra-meta">39 × 27 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-7.html">
+        <div class="obra-img"><img src="img/ferrum7.png" alt="Ferrum 7 — Luis González Palacios. Acero reciclado, 37×33 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 7</h2>
+        <p class="obra-meta">37 × 33 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-6.html">
+        <div class="obra-img"><img src="img/ferrum6.png" alt="Ferrum 6 — Luis González Palacios. Acero reciclado, 35×24 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 6</h2>
+        <p class="obra-meta">35 × 24 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-5.html">
+        <div class="obra-img"><img src="img/ferrum5.png" alt="Ferrum 5 — Luis González Palacios. Acero reciclado, 42×30 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 5</h2>
+        <p class="obra-meta">42 × 30 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-4.html">
+        <div class="obra-img"><img src="img/ferrum4.png" alt="Ferrum 4 — Luis González Palacios. Acero reciclado, 44×15 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 4</h2>
+        <p class="obra-meta">44 × 15 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-3.html">
+        <div class="obra-img"><img src="img/ferrum3.png" alt="Ferrum 3 — Luis González Palacios. Acero reciclado, 26×14 cm, 2024." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Ferrum 3</h2>
+        <p class="obra-meta">26 × 14 cm · 2024</p>
+      </a>
+
+      <a class="obra-card fade-in delay-4" href="ferrum-interacciones.html">
+        <div class="obra-img"><img src="img/ferrum_interacciones.png" alt="Interacciones — Luis González Palacios. Acero reciclado, 40×55 cm, 2025." loading="lazy"></div>
+        <p class="obra-serie-label">Ferrum</p>
+        <h2 class="obra-nombre">Interacciones</h2>
+        <p class="obra-meta">40 × 55 cm · 2025</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- MULTIMEDIA: Stanbrook y Diario de una escultura -->
+  <section class="multimedia-section">
+    <div class="multimedia-inner">
+      <div class="multimedia-header">
+        <span class="multimedia-titulo">Proceso y vídeo</span>
+      </div>
+      <div class="multimedia-grid">
+        <a class="multimedia-item fade-in delay-2" href="stanbrook.html">
+          <div class="multimedia-thumb">
+            <img src="img/STANBROOK.png" alt="Stanbrook — Luis González Palacios. Proceso escultórico.">
+          </div>
+          <h3 class="multimedia-nombre">Stanbrook</h3>
+          <p class="multimedia-desc">Diario de proceso de una escultura. Desde el material encontrado hasta la pieza terminada.</p>
+        </a>
+        <a class="multimedia-item fade-in delay-3" href="https://lgonzalezpalacios.com" target="_blank" rel="noopener">
+          <div class="multimedia-thumb">
+            <div class="multimedia-thumb-bg"><div class="play-icon"></div></div>
+          </div>
+          <h3 class="multimedia-nombre">Diario de una escultura</h3>
+          <p class="multimedia-desc">El proceso creativo en vídeo. La chatarra que llega al taller y la forma que emerge.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <nav class="nav-series" aria-label="Navegación entre series">
+    <div class="nav-series-inner">
+      <a href="paisajes-de-guerra/index.html" target="_blank" rel="noopener" class="nav-serie-prev">
+        <div><p class="nav-serie-dir">← Microsite</p><p class="nav-serie-nombre">Paisajes de Guerra</p></div>
+      </a>
+      <a href="obra.html" class="nav-series-volver">Todas las series</a>
+      <a href="tierra.html" class="nav-serie-next">
+        <div><p class="nav-serie-dir">Siguiente →</p><p class="nav-serie-nombre">Tierra</p></div>
+      </a>
+    </div>
+  </nav>
+
+  
+  <section style="max-width:1200px;margin:0 auto;padding:48px 48px 64px;border-top:0.5px solid #d8d4cd;text-align:center;">
+    <p style="font-family:'EB Garamond',Georgia,serif;font-size:18px;font-style:italic;color:#555;margin-bottom:24px;">¿Te interesa alguna pieza de esta serie?</p>
+    <a href="contacto.html?serie=ferrum" style="font-family:'EB Garamond',Georgia,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:#111;border:0.5px solid #111;padding:14px 36px;display:inline-block;transition:all .2s;" onmouseover="this.style.background='#9e5a28';this.style.color='#f4f1ec';this.style.borderColor='#9e5a28'" onmouseout="this.style.background='transparent';this.style.color='#111';this.style.borderColor='#111'">Consultar sobre esta serie →</a>
+  </section>
+
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/lgonzalezpalacios" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.artsy.net/artist/luis-gonzalez-palacios" target="_blank" rel="noopener">Artsy</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </footer>
+
+
+</body>
+</html>
