@@ -401,15 +401,8 @@
       color: var(--ink);
     }
 
-    .nav-obras-volver {
-      font-family: var(--serif-b);
-      font-size: 12px;
-      font-style: italic;
-      color: var(--ink-3);
-      text-align: center;
-      transition: color 0.2s;
-    }
-    .nav-obras-volver:hover { color: var(--oxide); }
+    .nav-obras-volver{font-family:var(--serif-d);font-size:18px;font-weight:300;letter-spacing:.04em;font-style:italic;color:var(--ink-3);text-align:center;transition:color .2s}
+    .nav-obras-volver:hover{color:var(--oxide)}
 
     /* ── FOOTER ── */
     footer {
@@ -474,6 +467,12 @@
       .obra-img img{width:100%;height:100%;object-fit:cover;display:block}
     .mini img{width:100%;height:100%;object-fit:cover;display:block}
     .nav-obra-img img{width:100%;height:100%;object-fit:cover;display:block}
+  
+    .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;cursor:zoom-out;align-items:center;justify-content:center}
+    .lightbox-overlay.active{display:flex}
+    .lightbox-overlay img{max-width:90vw;max-height:90vh;object-fit:contain;display:block}
+    .lightbox-close{position:absolute;top:20px;right:24px;font-family:var(--serif-b);font-size:28px;color:rgba(244,241,236,.6);cursor:pointer;line-height:1}
+    .imagen-principal{cursor:zoom-in}
   </style>
 </head>
 
@@ -507,21 +506,18 @@
 
     <!-- IMAGEN -->
     <div class="obra-imagen fade-in delay-1">
-      <div class="imagen-principal">
+      <div class="imagen-principal" onclick="openLightbox('img/ferrum9.png', 'Ferrum 9')" title="Clic para ampliar">
         <img src="img/ferrum9.png" alt="Ferrum 9 — Luis González Palacios. Serie Ferrum. 41 × 14 cm, 2024." class="obra-img">
       </div>
       <p class="imagen-caption">Ferrum 9 · Acero reciclado · 2024</p>
       <div class="imagenes-mini">
         <div class="mini active">
-          <img src="img/ferrum9.png" alt="Ferrum 18 — vista frontal">
+          <img src="img/ferrum9.png" alt="Ferrum 9 — vista frontal">
         </div>
         <div class="mini">
-          <img src="img/ferrum18_1.png" alt="Ferrum 18 — detalle">
+          <img src="img/ferrum9_1.png" alt="Ferrum 9 — detalle">
         </div>
-        <div class="mini">
-          <!-- <img src="img/ferrum-18-c.jpg" alt="Ferrum 18 — vista lateral"> -->
-          <div class="mini-placeholder m3"></div>
-        </div>
+        <div class="mini"><img src="img/ferrum9_2.png" alt="Ferrum 9 — vista lateral" onerror="this.closest('.mini').style.display='none'"></div>
       </div>
     </div>
 
@@ -602,5 +598,28 @@
     </div>
   </footer>
 
+
+  <script>
+    document.querySelectorAll('.mini').forEach(function(mini) {
+      mini.style.cursor = 'pointer';
+      mini.addEventListener('click', function() {
+        var img = this.querySelector('img');
+        if (!img) return;
+        var principal = document.querySelector('.imagen-principal img');
+        if (principal) principal.src = img.src;
+        document.querySelectorAll('.mini').forEach(function(m) { m.classList.remove('active'); });
+        this.classList.add('active');
+      });
+    });
+  </script>
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <script>
+    function openLightbox(src,alt){document.getElementById('lightboxImg').src=src;document.getElementById('lightboxImg').alt=alt;document.getElementById('lightbox').classList.add('active');}
+    function closeLightbox(){document.getElementById('lightbox').classList.remove('active');}
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLightbox();});
+  </script>
 </body>
 </html>
