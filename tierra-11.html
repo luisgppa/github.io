@@ -99,6 +99,12 @@
       footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
     }
     @media(max-width:540px){.nav-obra-img{display:none}}
+  
+    .lightbox-overlay{{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:999;cursor:zoom-out;align-items:center;justify-content:center}}
+    .lightbox-overlay.active{{display:flex}}
+    .lightbox-overlay img{{max-width:90vw;max-height:90vh;object-fit:contain;display:block}}
+    .lightbox-close{{position:absolute;top:20px;right:24px;font-family:var(--serif-b);font-size:28px;color:rgba(244,241,236,.6);cursor:pointer;line-height:1}}
+    .imagen-principal{{cursor:zoom-in}}
   </style>
 </head>
 <body>
@@ -127,7 +133,7 @@
   <div class="obra-wrap">
 
     <div class="obra-imagen fade-in delay-1">
-      <div class="imagen-principal"><img src="img/tierra11.png" alt="Tierra 11 — Luis González Palacios. Serie Tierra. 36 × 16 cm · 2024."></div>
+      <div class="imagen-principal" onclick="openLightbox('img/tierra11.png', 'Tierra 11 — Luis González Palacios. Serie Tierra. 36 × 16 cm · 2024.')" title="Clic para ampliar"><img src="img/tierra11.png" alt="Tierra 11 — Luis González Palacios. Serie Tierra. 36 × 16 cm · 2024."></div>
       <p class="imagen-caption">Tierra 11 · 2024</p>
     </div>
 
@@ -163,11 +169,15 @@
           <span class="dato-key">Certificado</span>
           <span class="dato-val">Incluido · firmado por el autor</span>
         </div>
+        <div class="dato">
+          <span class="dato-key">Referencia</span>
+          <span class="dato-val">LGP-TE-2024-011</span>
+        </div>
       </div>
 
       <div class="disponibilidad fade-in delay-3">
         <div class="disp-dot"></div>
-        <span class="disp-text">Disponible</span>
+        <span class="disp-text">No disponible</span>
         
       </div>
 
@@ -202,5 +212,14 @@
     </div>
   </footer>
 
+  <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close">×</span>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <script>
+    function openLightbox(src,alt){{document.getElementById('lightboxImg').src=src;document.getElementById('lightboxImg').alt=alt;document.getElementById('lightbox').classList.add('active');}}
+    function closeLightbox(){{document.getElementById('lightbox').classList.remove('active');}}
+    document.addEventListener('keydown',function(e){{if(e.key==='Escape')closeLightbox();}});
+  </script>
 </body>
 </html>
