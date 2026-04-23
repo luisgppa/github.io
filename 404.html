@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página no encontrada | Luis González Palacios</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://lgonzalezpalacios.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:      #f4f1ec;
+      --ink:     #111111;
+      --ink-2:   #555555;
+      --oxide:   #9e5a28;
+      --border:  #d8d4cd;
+      --serif-d: 'Cormorant Garamond', Georgia, serif;
+      --serif-b: 'EB Garamond', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif-b);
+      font-size: 20px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 40px;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .nav-name {
+      font-family: var(--serif-d);
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 36px;
+    }
+
+    .nav-links a {
+      font-family: var(--serif-b);
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a:hover { color: var(--oxide); }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 40px;
+    }
+
+    .container {
+      max-width: 560px;
+      text-align: center;
+    }
+
+    .code {
+      font-family: var(--serif-d);
+      font-size: 100px;
+      font-weight: 300;
+      color: var(--oxide);
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-family: var(--serif-d);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 18px;
+      color: var(--ink-2);
+      margin-bottom: 48px;
+    }
+
+    .links {
+      display: flex;
+      gap: 32px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .links a {
+      font-family: var(--serif-b);
+      font-size: 16px;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-bottom: 0.5px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .links a:hover {
+      color: var(--oxide);
+      border-color: var(--oxide);
+    }
+
+    footer {
+      padding: 24px 40px;
+      border-top: 0.5px solid var(--border);
+      text-align: center;
+      font-size: 14px;
+      color: var(--ink-2);
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .code { font-size: 72px; }
+      h1 { font-size: 22px; }
+      main { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="/" class="nav-name">Luis González Palacios</a>
+    <ul class="nav-links">
+      <li><a href="/obra.html">Obra</a></li>
+      <li><a href="/bio.html">Bio</a></li>
+      <li><a href="/textos.html">Textos</a></li>
+      <li><a href="/contacto.html">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="code">404</div>
+      <h1>Esta página ya no existe</h1>
+      <p>El sitio ha cambiado de estructura. El contenido que buscas puede estar en una de estas secciones.</p>
+      <nav class="links" aria-label="Navegación principal">
+        <a href="/obra.html">Obra</a>
+        <a href="/bio.html">Bio</a>
+        <a href="/textos.html">Textos</a>
+        <a href="/contacto.html">Contacto</a>
+        <a href="/">Inicio</a>
+      </nav>
+    </div>
+  </main>
+
+  <footer>
+    lgonzalezpalacios.com
+  </footer>
+
+</body>
+</html>
