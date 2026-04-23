@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto Minab — Paisajes de Guerra · Luis González Palacios</title>
+  <meta name="description" content="Tres planchas de acero con 180 marcas por las 180 niñas de la escuela de Minab, Irán, 2026. Paisajes de Guerra · Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/paisajes-de-guerra/minab.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../estilos.css">
+  <style>
+    :root{--bg:#f4f1ec;--ink:#111111;--ink-2:#555555;--ink-3:#999999;--oxide:#9e5a28;--border:#d8d4cd;--serif-d:'Cormorant Garamond',Georgia,serif;--serif-b:'EB Garamond',Georgia,serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--bg);color:var(--ink);font-family:var(--serif-b);font-size:20px;line-height:1.6;-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{display:flex;justify-content:space-between;align-items:center;padding:22px 48px;border-bottom:0.5px solid var(--border);position:sticky;top:0;background:var(--bg);z-index:100}
+    .nav-name{font-family:var(--serif-d);font-size:21px;font-weight:400;letter-spacing:.04em}
+    .nav-links{display:flex;gap:32px;list-style:none;align-items:center}
+    .nav-links a{font-family:var(--serif-b);font-size:16px;letter-spacing:.08em;color:var(--ink);transition:color .2s}
+    .nav-links a:hover,.nav-links a.active{color:var(--oxide)}
+    .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .nav-toggle span{display:block;width:22px;height:1px;background:var(--ink);margin:5px 0}
+
+    /* LANG TOGGLE */
+    .lang-toggle{display:flex;gap:0;border:0.5px solid var(--border);overflow:hidden}
+    .lang-toggle button{font-family:var(--serif-b);font-size:13px;letter-spacing:.08em;padding:6px 14px;border:none;background:transparent;color:var(--ink-3);cursor:pointer;transition:all .2s}
+    .lang-toggle button.active{background:var(--oxide);color:var(--bg)}
+    .lang-toggle button:hover:not(.active){color:var(--oxide)}
+
+    /* HEADER */
+    .pg-header{max-width:1200px;margin:0 auto;padding:72px 48px 64px;border-bottom:0.5px solid var(--border)}
+    .pg-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--oxide);margin-bottom:16px}
+    .pg-titulo{font-family:var(--serif-d);font-size:clamp(48px,6vw,80px);font-weight:300;line-height:1.02;letter-spacing:.01em;margin-bottom:48px}
+
+    /* STATEMENT */
+    .statement{border-left:2px solid var(--oxide);padding-left:28px;max-width:680px}
+    .statement p{font-style:italic;color:var(--ink-2);line-height:1.9;margin-bottom:18px;font-size:18px}
+    .statement p:last-child{margin-bottom:0}
+    .coords{font-family:var(--serif-b);font-size:13px;letter-spacing:.1em;color:var(--ink-3);margin-top:28px;padding-top:24px;border-top:0.5px solid var(--border);line-height:1.8}
+
+    /* GALERÍA */
+    .galeria{max-width:1200px;margin:0 auto;padding:72px 48px}
+    .galeria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .galeria-item{cursor:pointer;overflow:hidden;background:#2a2420;aspect-ratio:4/5}
+    .galeria-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+    .galeria-item:hover img{transform:scale(1.03)}
+
+    /* FICHA */
+    .ficha-wrap{max-width:1200px;margin:0 auto;padding:0 48px 80px;border-top:0.5px solid var(--border)}
+    .ficha-inner{padding-top:64px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+    .ficha-label{font-family:var(--serif-b);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:24px;display:block}
+    .ficha-titulo{font-family:var(--serif-d);font-size:clamp(28px,3vw,42px);font-weight:300;line-height:1.1;margin-bottom:8px}
+    .ficha-ref{font-family:var(--serif-b);font-size:12px;letter-spacing:.1em;color:var(--ink-3);margin-bottom:32px}
+    .ficha-tabla{width:100%;border-collapse:collapse}
+    .ficha-tabla td{font-family:var(--serif-b);font-size:16px;padding:12px 0;border-bottom:0.5px solid var(--border);vertical-align:top;line-height:1.5}
+    .ficha-tabla td:first-child{color:var(--ink-3);width:140px;font-size:13px;letter-spacing:.06em}
+    .ficha-tabla tr:last-child td{border-bottom:none}
+    .ficha-nota{font-family:var(--serif-b);font-size:16px;font-style:italic;color:var(--ink-2);line-height:1.9;margin-top:0;padding-left:20px;border-left:2px solid var(--border)}
+
+    /* BACK NAV */
+    .back-nav{max-width:1200px;margin:0 auto;padding:40px 48px 0;border-top:0.5px solid var(--border)}
+    .back-link{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--oxide);border-bottom:0.5px solid var(--oxide);display:inline-block;transition:opacity .2s}
+    .back-link:hover{opacity:.7}
+
+    /* LIGHTBOX */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;display:none;align-items:center;justify-content:center}
+    .lightbox.active{display:flex}
+    .lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;display:block}
+    .lightbox-close{position:absolute;top:24px;right:32px;font-size:28px;color:rgba(255,255,255,.6);cursor:pointer;background:none;border:none;line-height:1}
+    .lightbox-close:hover{color:#fff}
+
+    /* FOOTER */
+    footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
+    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:24px}
+    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-links a:hover{color:var(--oxide)}
+
+    @media(max-width:900px){
+      nav{padding:18px 24px}
+      .nav-links{display:none;flex-direction:column;gap:0}
+      .nav-links.open{display:flex;position:absolute;top:62px;left:0;right:0;background:var(--bg);border-bottom:0.5px solid var(--border);padding:12px 24px}
+      .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
+      .nav-links.open li:last-child{border-bottom:none}
+      .nav-toggle{display:block}
+      .pg-header{padding:48px 24px}
+      .galeria{padding:48px 24px}
+      .galeria-grid{grid-template-columns:1fr;gap:2px}
+      .galeria-item{aspect-ratio:4/3}
+      .ficha-wrap{padding:0 24px 64px}
+      .ficha-inner{grid-template-columns:1fr;gap:48px}
+      .back-nav{padding:32px 24px 0}
+      footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-name">Luis González Palacios</a>
+    <button class="nav-toggle" aria-label="Menú" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="../obra.html">Obra</a></li>
+      <li><a href="../bio.html">Bio</a></li>
+      <li><a href="../textos.html">Textos</a></li>
+      <li><a href="../contacto.html">Contacto</a></li>
+      <li>
+        <div class="lang-toggle">
+          <button onclick="setLanguage('es')" class="active" id="btn-es">ES</button>
+          <button onclick="setLanguage('en')" id="btn-en">EN</button>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="pg-header">
+    <p class="pg-label"
+       data-es="V · Paisajes de Guerra"
+       data-en="V · Landscapes of War">V · Paisajes de Guerra</p>
+    <h1 class="pg-titulo"
+        data-es="Proyecto<br>Minab"
+        data-en="Project<br>Minab">Proyecto<br>Minab</h1>
+
+    <div class="statement">
+      <p data-es="Susan Sontag lo advirtió: no debería suponerse un «nosotros» cuando miramos el dolor ajeno."
+         data-en="Susan Sontag warned us: one should not assume a 'we' when looking at the pain of others.">
+        Susan Sontag lo advirtió: no debería suponerse un «nosotros» cuando miramos el dolor ajeno.
+      </p>
+      <p data-es="Yo no soy ellos. No estuve en Minab aquella mañana. No perdí a un hijo en el aula. Miro desde el taller, desde una distancia que ninguna soldadura puede cerrar."
+         data-en="I am not them. I was not in Minab that morning. I did not lose a child in the classroom. I look from the studio, from a distance that no weld can close.">
+        Yo no soy ellos. No estuve en Minab aquella mañana. No perdí a un hijo en el aula. Miro desde el taller, desde una distancia que ninguna soldadura puede cerrar.
+      </p>
+      <p data-es="Pero miro. Y negarse a apartar la vista ya es una forma mínima de justicia."
+         data-en="But I look. And refusing to look away is already a minimal form of justice.">
+        Pero miro. Y negarse a apartar la vista ya es una forma mínima de justicia.
+      </p>
+      <p data-es="Las 180 marcas sobre el acero no pretenden hablar por nadie. No son símbolo, no son homenaje. Son un registro material, obstinado, que no se apaga con el siguiente titular."
+         data-en="The 180 marks on the steel do not pretend to speak for anyone. They are not symbol, not homage. They are a material record, stubborn, that does not extinguish with the next headline.">
+        Las 180 marcas sobre el acero no pretenden hablar por nadie. No son símbolo, no son homenaje. Son un registro material, obstinado, que no se apaga con el siguiente titular.
+      </p>
+      <p data-es="Hay tres posiciones frente al dolor ajeno: el voyeur, el testigo, el consumidor. Ninguna es la mía. Yo no estuve allí, ni me nutro del espectáculo, ni lo digiero pasivamente. Escojo una cuarta: el que recuerda y se sabe deudor."
+         data-en="There are three positions facing the pain of others: the voyeur, the witness, the consumer. None is mine. I was not there, I do not feed on the spectacle, nor do I digest it passively. I choose a fourth: the one who remembers and knows himself to be a debtor.">
+        Hay tres posiciones frente al dolor ajeno: el voyeur, el testigo, el consumidor. Ninguna es la mía. Yo no estuve allí, ni me nutro del espectáculo, ni lo digiero pasivamente. Escojo una cuarta: el que recuerda y se sabe deudor.
+      </p>
+      <p data-es="Soldar 180 marcas es pagar, en el único lenguaje que tengo, una deuda que nadie me reclamó pero que me implica. No es venganza, es negarse a que los nombres se disuelvan en el ruido."
+         data-en="Welding 180 marks is paying, in the only language I have, a debt that no one claimed from me but that implicates me. Not revenge — it is refusing to let the names dissolve into noise.">
+        Soldar 180 marcas es pagar, en el único lenguaje que tengo, una deuda que nadie me reclamó pero que me implica. No es venganza, es negarse a que los nombres se disuelvan en el ruido.
+      </p>
+      <div class="coords">
+        <span data-es="Escuela Shajareh Tayyebeh · Minab, Irán"
+              data-en="Shajareh Tayyebeh School · Minab, Iran">Escuela Shajareh Tayyebeh · Minab, Irán</span><br>
+        27.109833° N · 57.084475° E
+      </div>
+    </div>
+  </div>
+
+  <!-- GALERÍA -->
+  <section class="galeria">
+    <div class="galeria-grid">
+      <div class="galeria-item" onclick="openLightbox('../img/minab1.png','Proyecto Minab — Luis González Palacios')">
+        <img src="../img/minab1.png" alt="Proyecto Minab — Luis González Palacios. Acero inoxidable reciclado, 2026.">
+      </div>
+      <div class="galeria-item" onclick="openLightbox('../img/minab2.png','Proyecto Minab, detalle — Luis González Palacios')">
+        <img src="../img/minab2.png" alt="Proyecto Minab, detalle — 180 marcas soldadas sobre acero inoxidable.">
+      </div>
+      <div class="galeria-item" onclick="openLightbox('../img/minab3.png','Proyecto Minab, detalle — Luis González Palacios')">
+        <img src="../img/minab3.png" alt="Proyecto Minab, tres planchas — Luis González Palacios.">
+      </div>
+    </div>
+  </section>
+
+  <!-- FICHA TÉCNICA -->
+  <div class="ficha-wrap">
+    <div class="ficha-inner">
+
+      <div>
+        <span class="ficha-label"
+              data-es="Ficha técnica"
+              data-en="Technical sheet">Ficha técnica</span>
+        <h2 class="ficha-titulo">Proyecto Minab</h2>
+        <p class="ficha-ref">LGP-SPG-2026-003</p>
+        <table class="ficha-tabla">
+          <tr>
+            <td data-es="Material" data-en="Material">Material</td>
+            <td data-es="Acero inoxidable reciclado · pie de madera de olivo"
+                data-en="Recycled stainless steel · olive wood base">Acero inoxidable reciclado · pie de madera de olivo</td>
+          </tr>
+          <tr>
+            <td data-es="Medidas" data-en="Dimensions">Medidas</td>
+            <td>59 × 50 cm · pie 20 × 10 cm</td>
+          </tr>
+          <tr>
+            <td data-es="Año" data-en="Year">Año</td>
+            <td>2026</td>
+          </tr>
+          <tr>
+            <td data-es="Edición" data-en="Edition">Edición</td>
+            <td data-es="Pieza única · 3 planchas"
+                data-en="Unique piece · 3 panels">Pieza única · 3 planchas</td>
+          </tr>
+          <tr>
+            <td data-es="Marcas" data-en="Marks">Marcas</td>
+            <td data-es="180 marcas soldadas"
+                data-en="180 welded marks">180 marcas soldadas</td>
+          </tr>
+          <tr>
+            <td data-es="Estado" data-en="Status">Estado</td>
+            <td data-es="Disponible" data-en="Available">Disponible</td>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <span class="ficha-label"
+              data-es="Sobre la obra"
+              data-en="About the work">Sobre la obra</span>
+        <p class="ficha-nota"
+           data-es="Tres planchas de acero inoxidable reciclado. 180 marcas soldadas, una por cada niña de la Escuela Shajareh Tayyebeh de Minab, Irán. El número exacto. La obra no habla por nadie — registra para que no se olvide."
+           data-en="Three panels of recycled stainless steel. 180 welded marks, one for each girl from the Shajareh Tayyebeh School in Minab, Iran. The exact number. The work does not speak for anyone — it records so that it is not forgotten.">
+          Tres planchas de acero inoxidable reciclado. 180 marcas soldadas, una por cada niña de la Escuela Shajareh Tayyebeh de Minab, Irán. El número exacto. La obra no habla por nadie — registra para que no se olvide.
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- BACK NAV -->
+  <div class="back-nav">
+    <a href="index.html" class="back-link"
+       data-es="← Volver a Paisajes de Guerra"
+       data-en="← Back to Landscapes of War">← Volver a Paisajes de Guerra</a>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="event.stopPropagation();closeLightbox()">×</button>
+    <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-name">Luis González Palacios · Desertor Constructor</span>
+    <div class="footer-links">
+      <a href="../obra.html">Obra</a>
+      <a href="../contacto.html">Contacto</a>
+    </div>
+  </footer>
+
+  <script>
+    function setLanguage(lang) {
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.querySelectorAll('[data-es][data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
+    }
+    function openLightbox(src, alt) {
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxImg').alt = alt;
+      document.getElementById('lightbox').classList.add('active');
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+  </script>
+
+</body>
+</html>
