@@ -6,12 +6,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://lgonzalezpalacios.com/artista.html</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <url>
     <loc>https://lgonzalezpalacios.com/paisajes-de-guerra/</loc>
     <lastmod>2026-04-14</lastmod>
@@ -120,12 +115,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://lgonzalezpalacios.com/ferrum-15a.html</loc>
-    <lastmod>2026-04-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+
   <url>
     <loc>https://lgonzalezpalacios.com/ferrum-16.html</loc>
     <lastmod>2026-04-06</lastmod>
@@ -302,7 +292,7 @@
   </url>
   <url>
     <loc>https://lgonzalezpalacios.com/poemas-materiales.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -339,6 +329,24 @@
   <url>
     <loc>https://lgonzalezpalacios.com/tierra-1.html</loc>
     <lastmod>2026-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lgonzalezpalacios.com/tierra-2.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lgonzalezpalacios.com/tierra-3.html</loc>
+    <lastmod>2026-04-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lgonzalezpalacios.com/tierra-4.html</loc>
+    <lastmod>2026-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
