@@ -13,6 +13,47 @@
   --serif-b: 'EB Garamond', Georgia, serif;
 }
 
+/* BREADCRUMB — menú de navegación (Obra — Ferrum — Ferrum 11) */
+.breadcrumb {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 0.5px solid var(--border);
+}
+.breadcrumb a {
+  font-family: var(--serif-b);
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ink-3);
+  transition: color .2s;
+}
+.breadcrumb a:hover { color: var(--oxide); }
+.breadcrumb-sep {
+  font-size: 11px;
+  color: var(--border);
+}
+.breadcrumb-current {
+  font-family: var(--serif-b);
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ink-2);
+}
+
+/* FICHA DE OBRA — etiquetas (Material, Medidas, Año…) */
+.dato-key {
+  font-family: var(--serif-b);
+  font-size: 18px !important;
+  font-style: italic;
+  color: var(--ink-3);
+}
+.dato-val  { font-size: 18px !important; }
+.texto-body { font-size: 20px !important; }
+
 /* NAV DE OBRAS: anterior / volver / siguiente */
 .nav-obras {
   border-top: 0.5px solid var(--border);
@@ -84,6 +125,7 @@
 .nav-obras-volver:hover { color: var(--oxide); }
 
 @media (max-width: 900px) {
+  .breadcrumb { padding: 16px 24px; }
   .nav-obras-inner { padding: 0 24px; }
   .nav-obra-prev,
   .nav-obra-next { padding: 28px 0; gap: 14px; }
