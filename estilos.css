@@ -47,12 +47,12 @@
 /* FICHA DE OBRA — etiquetas (Material, Medidas, Año…) */
 .dato-key {
   font-family: var(--serif-b);
-  font-size: 18px !important;
+  font-size: 20px !important;
   font-style: italic;
   color: var(--ink-3);
 }
-.dato-val  { font-size: 18px !important; }
-.texto-body { font-size: 20px !important; }
+.dato-val  { font-size: 20px !important; }
+.texto-body { font-size: 22px !important; }
 
 /* NAV DE OBRAS: anterior / volver / siguiente */
 .nav-obras {
