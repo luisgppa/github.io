@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tierra 15 — Luis González Palacios</title>
-  <meta name="description" content="Tierra 15. Madera de olivo y acero reciclado, 170 × 13 cm · 2024. Serie Tierra. Luis González Palacios.">
-  <link rel="canonical" href="https://lgonzalezpalacios.com/tierra-15.html">
+  <title>TÍTULO — Luis González Palacios</title>
+  <meta name="description" content="TÍTULO. MATERIAL, MEDIDAS, AÑO. SERIE. Luis González Palacios.">
+  <link rel="canonical" href="https://lgonzalezpalacios.com/SLUG.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-   <!-- Cloudflare Web Analytics -->
-   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ba10a27b16894cfb8f6bfe64a823ceec"}'></script>
-   <!-- End Cloudflare Web Analytics -->
   <link rel="stylesheet" href="estilos.css">
+  <!-- Cloudflare Web Analytics -->
+  <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ba10a27b16894cfb8f6bfe64a823ceec"}'></script>
+  <!-- End Cloudflare Web Analytics -->
 </head>
 <body>
 
@@ -29,44 +29,56 @@
     </ul>
   </nav>
 
+  <!-- Breadcrumb: Obra — SERIE — TÍTULO -->
   <div class="breadcrumb">
     <a href="obra.html">Obra</a>
     <span class="breadcrumb-sep">—</span>
-    <a href="tierra.html">Tierra</a>
+    <a href="SERIE.html">SERIE</a>
     <span class="breadcrumb-sep">—</span>
-    <span class="breadcrumb-current">Tierra 15</span>
+    <span class="breadcrumb-current">TÍTULO</span>
   </div>
 
   <div class="obra-wrap">
 
+    <!-- Columna izquierda: imagen -->
     <div class="obra-imagen fade-in delay-1">
-      <div class="imagen-principal ratio-3-4" onclick="openLightbox('img/tierra15-añoranza1-cover.png', 'Tierra 15 — Luis González Palacios. Serie Tierra. 170 × 13 cm · 2024.')" title="Clic para ampliar"><img src="img/tierra15-añoranza1-cover.png" alt="Tierra 15 — Luis González Palacios. Serie Tierra. 170 × 13 cm · 2024."></div>
-      <p class="imagen-caption">Tierra 15 · 2024</p>
+      <!--
+        Para esculturas (acero, madera): usar clase "imagen-principal ratio-3-4"
+        Para pinturas / figuras:         usar clase "imagen-principal ratio-4-5"
+        Si hay lightbox, añadir onclick="openLightbox('img/ARCHIVO.png','TÍTULO')"
+        y title="Clic para ampliar".
+        Si la imagen enlaza a una URL, usar <a> en lugar de <div>.
+      -->
+      <div class="imagen-principal ratio-3-4" onclick="openLightbox('img/ARCHIVO.png', 'TÍTULO')" title="Clic para ampliar">
+        <img src="img/ARCHIVO.png" alt="TÍTULO — Luis González Palacios. SERIE. MEDIDAS, AÑO.">
+      </div>
+      <p class="imagen-caption">TÍTULO · MATERIAL · AÑO</p>
     </div>
 
+    <!-- Columna derecha: ficha -->
     <div class="obra-ficha">
-      <p class="ficha-serie fade-in delay-1">Serie Tierra</p>
-      <h1 class="ficha-titulo fade-in delay-2">Tierra 15</h1>
-      <p class="ficha-anyo fade-in delay-2">2024</p>
+      <p class="ficha-serie fade-in delay-1">SERIE</p>
+      <h1 class="ficha-titulo fade-in delay-2">TÍTULO</h1>
+      <p class="ficha-anyo fade-in delay-2">AÑO</p>
 
       <hr class="sep fade-in delay-3">
 
       <div class="datos fade-in delay-3">
         <div class="dato">
           <span class="dato-key">Técnica</span>
-          <span class="dato-val">Técnica mixta</span>
+          <span class="dato-val">TÉCNICA</span>
         </div>
         <div class="dato">
           <span class="dato-key">Material</span>
-          <span class="dato-val">Madera de olivo rescatada · acero reciclado</span>
+          <span class="dato-val">MATERIAL</span>
         </div>
         <div class="dato">
           <span class="dato-key">Medidas</span>
-          <span class="dato-val">170 × 13 cm</span>
+          <span class="dato-val">MEDIDAS cm</span>
         </div>
         <div class="dato">
           <span class="dato-key">Año</span>
-          <span class="dato-val">2024</span>
+          <span class="dato-val">AÑO</span>
         </div>
         <div class="dato">
           <span class="dato-key">Edición</span>
@@ -76,32 +88,59 @@
           <span class="dato-key">Certificado</span>
           <span class="dato-val">Incluido · firmado por el autor</span>
         </div>
+        <div class="dato">
+          <span class="dato-key">Referencia</span>
+          <span class="dato-val">LGP-XX-AÑO-NNN</span>
+        </div>
       </div>
 
+      <!-- Disponibilidad: cambiar texto según estado -->
       <div class="disponibilidad fade-in delay-3">
         <div class="disp-dot"></div>
         <span class="disp-text">Disponible</span>
-        
+        <!-- Opcional: <span class="disp-galeria">Galería NOMBRE</span> -->
       </div>
 
       <div class="acciones fade-in delay-4">
-        <a href="contacto.html?obra=tierra-15" class="btn-consultar">Consultar precio</a>
-        
-        
+        <a href="contacto.html?obra=SLUG" class="btn-consultar">Consultar precio</a>
+        <!-- Opcional: <a href="URL-GALERIA" class="btn-galeria" target="_blank" rel="noopener">Ver en galería</a> -->
+        <!-- Opcional: <p class="nota-galeria">Representado por NOMBRE</p> -->
       </div>
 
       <div class="obra-texto fade-in delay-4">
         <p class="texto-label">Sobre la pieza</p>
-        <p class="texto-body">Con su imponente altura, esta pieza de traviesa de tren reciclada resalta por la interacción de sus colores naturales y las zonas quemadas y desgastadas por el tiempo. La escultura tiene un acabado tosco y fuerte, evocando la historia y la solidez de su material original, ahora transformado en arte.</p>
+        <p class="texto-body">
+          TEXTO DE LA PIEZA.
+        </p>
       </div>
     </div>
-  </div>
 
+  </div><!-- /obra-wrap -->
+
+  <!-- Nav entre obras -->
   <nav class="nav-obras" aria-label="Obras anterior y siguiente">
     <div class="nav-obras-inner">
-      <a href="tierra-16.html" class="nav-obra-prev"><div class="nav-obra-img"><img src="img/tierra16.png" alt="Tierra 16"></div><div><p class="nav-obra-dir">← Anterior</p><p class="nav-obra-nombre">Tierra 16</p></div></a>
-      <a href="tierra.html" class="nav-obras-volver">Volver a Tierra</a>
-      <a href="tierra-14.html" class="nav-obra-next"><div><p class="nav-obra-dir">Siguiente →</p><p class="nav-obra-nombre">Tierra 14</p></div><div class="nav-obra-img"><img src="img/tierra14-añoranza2.png" alt="Tierra 14"></div></a>
+      <!-- Anterior: eliminar el bloque entero si no hay anterior -->
+      <a href="ANTERIOR.html" class="nav-obra-prev">
+        <div class="nav-obra-img"><img src="img/ANTERIOR.png" alt="ANTERIOR"></div>
+        <div>
+          <p class="nav-obra-dir">← Anterior</p>
+          <p class="nav-obra-nombre">ANTERIOR</p>
+        </div>
+      </a>
+      <!-- Si no hay anterior, poner: <div></div> -->
+
+      <a href="SERIE.html" class="nav-obras-volver">Volver a SERIE</a>
+
+      <!-- Siguiente: eliminar el bloque entero si no hay siguiente -->
+      <a href="SIGUIENTE.html" class="nav-obra-next">
+        <div>
+          <p class="nav-obra-dir">Siguiente →</p>
+          <p class="nav-obra-nombre">SIGUIENTE</p>
+        </div>
+        <div class="nav-obra-img"><img src="img/SIGUIENTE.png" alt="SIGUIENTE"></div>
+      </a>
+      <!-- Si no hay siguiente, poner: <div></div> -->
     </div>
   </nav>
 
@@ -113,12 +152,11 @@
     </div>
   </footer>
 
-  <!-- LIGHTBOX -->
+  <!-- Lightbox (incluir solo si se usa openLightbox() en la imagen) -->
   <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
     <span class="lightbox-close">×</span>
     <img id="lightboxImg" src="" alt="">
   </div>
-
   <script>
     function openLightbox(src, alt) {
       document.getElementById('lightboxImg').src = src;
