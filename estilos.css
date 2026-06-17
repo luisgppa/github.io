@@ -506,3 +506,26 @@ footer {
   top: 0;
   left: 0;
 }
+
+/* ── Tipografía mobile ──────────────────────────────────────── */
+@media (max-width: 900px) {
+  .ficha-serie     { font-size: 13px; }
+  .ficha-anyo      { font-size: 16px; }
+  .texto-label     { font-size: 12px; letter-spacing: .14em; }
+  .texto-body      { font-size: 19px; line-height: 1.8; }
+  .datos           { gap: 20px; }
+  .dato            { grid-template-columns: 1fr; gap: 2px; }
+  .dato-key        { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-style: normal; }
+  .dato-val        { font-size: 18px; }
+  .disp-text       { font-size: 13px; }
+  .nav-obra-dir    { font-size: 11px; }
+  .nav-obra-nombre { font-size: 16px; }
+  .nav-obras-volver{ font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .obra-wrap       { padding: 24px 20px 48px; }
+  .breadcrumb      { padding: 12px 20px; }
+  .nav-obras-inner { padding: 0 20px; }
+  footer           { padding: 28px 20px; }
+}
