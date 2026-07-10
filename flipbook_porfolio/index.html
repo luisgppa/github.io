@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111111">
+  <meta name="description" content="Portfolio 2025–2026 de Luis González Palacios. Escultura contemporánea.">
+  <title>Luis González Palacios — Portfolio 2025–2026</title>
+  <meta name="flipbook-build" content="estable-20260710e">
+  <link rel="stylesheet" href="css/style.css?v=20260710e">
+</head>
+<body>
+  <main class="viewer" aria-label="Portfolio interactivo de Luis González Palacios">
+    <header class="toolbar">
+      <div class="identity">
+        <span class="artist">Luis González Palacios</span>
+        <span class="portfolio-label">Portfolio 2025–2026</span>
+      </div>
+
+      <nav class="controls" aria-label="Controles del portfolio">
+        <button class="icon-button" id="prevButton" type="button" aria-label="Página anterior" title="Página anterior">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <span class="page-counter" id="pageCounter" aria-live="polite">1 / 31</span>
+        <button class="icon-button" id="nextButton" type="button" aria-label="Página siguiente" title="Página siguiente">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+        <span class="separator" aria-hidden="true"></span>
+        <a class="icon-button" href="portfolio-luis-gonzalez-palacios.pdf" target="_blank" rel="noopener" aria-label="Abrir PDF" title="Abrir PDF">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 13h6M9 17h6M9 9h2"/></svg>
+        </a>
+        <button class="icon-button" id="fullscreenButton" type="button" aria-label="Pantalla completa" title="Pantalla completa">
+          <svg class="enter-fullscreen" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"/></svg>
+          <svg class="exit-fullscreen" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8h5V3M21 8h-5V3M3 16h5v5M21 16h-5v5"/></svg>
+        </button>
+      </nav>
+    </header>
+
+    <section class="stage" id="stage">
+      <div class="loading" id="loading" role="status" aria-live="polite">
+        <div class="loading-mark"></div>
+        <div class="loading-text">Preparando el portfolio <span id="loadingPercent">0%</span></div>
+      </div>
+      <div id="book" aria-label="Libro digital con paso de página animado"></div>
+
+      <div class="cover-sequence" id="coverSequence" aria-label="Portada del portfolio">
+        <div class="under-spread" aria-hidden="true">
+          <img class="under-left" src="pages/page-02.webp" alt="">
+          <img class="under-right" src="pages/page-03.webp" alt="">
+        </div>
+        <div class="cover-card" id="coverCard">
+          <div class="cover-face cover-front">
+            <img src="pages/page-01.webp" alt="Portada del portfolio de Luis González Palacios" draggable="false">
+          </div>
+          <div class="cover-face cover-back" aria-hidden="true">
+            <img src="pages/page-02.webp" alt="" draggable="false">
+          </div>
+        </div>
+      </div>
+      <div class="gesture-hint" id="gestureHint" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><path d="M15 31c4-3 7-6 9-10l2-5c1-2 4-1 4 1v6l3-3c2-2 5 0 4 2l-4 8c-2 4-5 7-9 9l-5 2-8-6z"/><path d="M8 12c9-5 18-5 28 0M8 12l4-5M8 12l6 2"/></svg>
+        <span>Arrastra una esquina o desliza para pasar la hoja</span>
+      </div>
+    </section>
+
+    <footer class="footer-note">Usa las flechas del teclado, los botones o el gesto de arrastre.</footer>
+  </main>
+
+  <noscript>Este portfolio necesita JavaScript para mostrar la animación de paso de página.</noscript>
+  <script src="js/page-flip.browser.js?v=20260710e"></script>
+  <script src="js/app.js?v=20260710e"></script>
+</body>
+</html>

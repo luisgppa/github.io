@@ -1,0 +1,37 @@
+FLIPBOOK DEL PORTFOLIO — LUIS GONZÁLEZ PALACIOS
+VERSIÓN CORREGIDA
+
+CORRECCIÓN PRINCIPAL
+- El inicio muestra únicamente la portada, centrada.
+- No se crea ni se muestra una página vacía a la izquierda.
+- La portada puede arrastrarse con el ratón o con el dedo y gira como una hoja.
+- Tras abrirla, el libro continúa con el visor de doble página en ordenador.
+- En móvil se omite la página 2, que está vacía, y se accede directamente a la página 3.
+
+CÓMO PUBLICARLO
+1. Sube la carpeta completa “flipbook_porfolio_luis_corregido” al alojamiento.
+2. Conserva exactamente las subcarpetas css, js y pages.
+3. Puedes renombrar la carpeta como “portfolio”.
+4. La dirección será, por ejemplo:
+   https://www.lgonzalezpalacios.com/portfolio/
+
+PARA INSERTARLO EN UNA PÁGINA
+
+<iframe
+  src="/portfolio/index.html"
+  title="Portfolio de Luis González Palacios"
+  style="width:100%;height:90vh;border:0;display:block;"
+  allowfullscreen>
+</iframe>
+
+IMPORTANTE
+No subas solo index.html. El visor necesita también las carpetas css, js y pages,
+además del PDF incluido.
+
+
+CORRECCIÓN DE ESTA VERSIÓN
+--------------------------
+- Se conserva el inicio estable con la portada centrada y animada.
+- La página 30 del PDF, que está vacía, no se carga en el libro.
+- La página 31 de contacto funciona como contraportada única, sin hoja blanca a la izquierda.
+- No se ha añadido una segunda animación superpuesta al final, para evitar bloquear la portada.
