@@ -25,6 +25,16 @@
   const prevButton = document.getElementById('prevButton');
   const nextButton = document.getElementById('nextButton');
   const fullscreenButton = document.getElementById('fullscreenButton');
+  const zoomButton = document.getElementById('zoomButton');
+  const zoomViewer = document.getElementById('zoomViewer');
+  const zoomCanvas = document.getElementById('zoomCanvas');
+  const zoomImage = document.getElementById('zoomImage');
+  const zoomPageLabel = document.getElementById('zoomPageLabel');
+  const zoomPercent = document.getElementById('zoomPercent');
+  const zoomInButton = document.getElementById('zoomInButton');
+  const zoomOutButton = document.getElementById('zoomOutButton');
+  const zoomResetButton = document.getElementById('zoomResetButton');
+  const zoomCloseButton = document.getElementById('zoomCloseButton');
   const gestureHint = document.getElementById('gestureHint');
 
   let pageFlip = null;
@@ -38,9 +48,20 @@
   let dragStartProgress = 0;
   let dragging = false;
   let pendingOpen = false;
+  let zoomOpen = false;
+  let zoomScale = 1;
+  let zoomX = 0;
+  let zoomY = 0;
+  let zoomDrag = null;
+  let pinchStart = null;
+  const zoomPointers = new Map();
 
   const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
-  const isPortrait = () => window.matchMedia('(max-width: 720px)').matches || pageFlip?.getOrientation() === 'portrait';
+  const isPortrait = () => window.__flipbookForcePortrait === true || window.matchMedia('(max-width: 720px)').matches || pageFlip?.getOrientation() === 'portrait';
+
+  function refreshDeviceMode() {
+    window.__refreshFlipbookDeviceMode?.();
+  }
 
   function setCoverProgress(progress) {
     coverProgress = clamp(progress, 0, 1);
@@ -274,6 +295,12 @@
   nextButton.addEventListener('click', goNext);
 
   document.addEventListener('keydown', (event) => {
+    if (zoomOpen) {
+      if (event.key === 'Escape') closeZoom();
+      if (event.key === '+' || event.key === '=') setZoom(zoomScale + 0.25);
+      if (event.key === '-') setZoom(zoomScale - 0.25);
+      return;
+    }
     if (event.key === 'ArrowRight' || event.key === 'PageDown' || event.key === ' ') {
       event.preventDefault();
       goNext();
@@ -343,6 +370,130 @@
   coverCard.addEventListener('pointerup', finishCoverDrag);
   coverCard.addEventListener('pointercancel', finishCoverDrag);
 
+
+  function currentZoomPageIndex() {
+    if (coverMode || !pageFlip) return 0;
+    return clamp(pageFlip.getCurrentPageIndex(), 0, BOOK_PAGE_COUNT - 1);
+  }
+
+  function clampZoomPan() {
+    if (zoomScale <= 1 || !zoomImage.clientWidth || !zoomCanvas.clientWidth) {
+      zoomX = 0;
+      zoomY = 0;
+      return;
+    }
+    const maxX = Math.max(0, (zoomImage.clientWidth * zoomScale - zoomCanvas.clientWidth + 28) / 2);
+    const maxY = Math.max(0, (zoomImage.clientHeight * zoomScale - zoomCanvas.clientHeight + 28) / 2);
+    zoomX = clamp(zoomX, -maxX, maxX);
+    zoomY = clamp(zoomY, -maxY, maxY);
+  }
+
+  function renderZoom() {
+    clampZoomPan();
+    zoomImage.style.transform = `translate3d(${zoomX}px, ${zoomY}px, 0) scale(${zoomScale})`;
+    zoomPercent.textContent = `${Math.round(zoomScale * 100)}%`;
+    zoomOutButton.disabled = zoomScale <= 1.001;
+    zoomInButton.disabled = zoomScale >= 4;
+    zoomCanvas.classList.toggle('pannable', zoomScale > 1.001);
+  }
+
+  function setZoom(value) {
+    zoomScale = clamp(Math.round(value * 100) / 100, 1, 4);
+    if (zoomScale === 1) {
+      zoomX = 0;
+      zoomY = 0;
+    }
+    renderZoom();
+  }
+
+  function resetZoom() {
+    zoomScale = 1;
+    zoomX = 0;
+    zoomY = 0;
+    renderZoom();
+  }
+
+  function openZoom() {
+    const index = currentZoomPageIndex();
+    const sourceNumber = sourcePageNumbers[index];
+    zoomImage.src = pageImages[index];
+    zoomPageLabel.textContent = `Página ${sourceNumber} de ${PDF_TOTAL_PAGES}`;
+    zoomViewer.classList.add('open');
+    zoomViewer.setAttribute('aria-hidden', 'false');
+    zoomOpen = true;
+    gestureHint.classList.remove('visible');
+    requestAnimationFrame(resetZoom);
+    zoomCloseButton.focus({ preventScroll: true });
+  }
+
+  function closeZoom() {
+    if (!zoomOpen) return;
+    zoomViewer.classList.remove('open');
+    zoomViewer.setAttribute('aria-hidden', 'true');
+    zoomPointers.clear();
+    zoomCanvas.classList.remove('dragging');
+    zoomOpen = false;
+    zoomButton.focus({ preventScroll: true });
+  }
+
+  zoomButton.addEventListener('click', openZoom);
+  zoomCloseButton.addEventListener('click', closeZoom);
+  zoomInButton.addEventListener('click', () => setZoom(zoomScale + 0.25));
+  zoomOutButton.addEventListener('click', () => setZoom(zoomScale - 0.25));
+  zoomResetButton.addEventListener('click', resetZoom);
+  zoomCanvas.addEventListener('dblclick', () => setZoom(zoomScale > 1 ? 1 : 2));
+  zoomCanvas.addEventListener('wheel', (event) => {
+    event.preventDefault();
+    setZoom(zoomScale * (event.deltaY < 0 ? 1.16 : 0.86));
+  }, { passive: false });
+
+  const pointerDistance = () => {
+    const points = [...zoomPointers.values()];
+    if (points.length < 2) return 0;
+    return Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
+  };
+
+  zoomCanvas.addEventListener('pointerdown', (event) => {
+    zoomPointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    zoomCanvas.setPointerCapture(event.pointerId);
+    if (zoomPointers.size === 1) {
+      zoomDrag = { x: event.clientX, y: event.clientY, originX: zoomX, originY: zoomY };
+      zoomCanvas.classList.add('dragging');
+    } else if (zoomPointers.size === 2) {
+      pinchStart = { distance: pointerDistance(), scale: zoomScale };
+      zoomDrag = null;
+    }
+  });
+
+  zoomCanvas.addEventListener('pointermove', (event) => {
+    if (!zoomPointers.has(event.pointerId)) return;
+    zoomPointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (zoomPointers.size >= 2 && pinchStart) {
+      const distance = pointerDistance();
+      if (pinchStart.distance > 0) setZoom(pinchStart.scale * distance / pinchStart.distance);
+    } else if (zoomDrag && zoomScale > 1) {
+      zoomX = zoomDrag.originX + event.clientX - zoomDrag.x;
+      zoomY = zoomDrag.originY + event.clientY - zoomDrag.y;
+      renderZoom();
+    }
+  });
+
+  function endZoomPointer(event) {
+    zoomPointers.delete(event.pointerId);
+    try { zoomCanvas.releasePointerCapture(event.pointerId); } catch (_) {}
+    if (zoomPointers.size < 2) pinchStart = null;
+    if (zoomPointers.size === 0) {
+      zoomDrag = null;
+      zoomCanvas.classList.remove('dragging');
+    } else {
+      const remaining = [...zoomPointers.values()][0];
+      zoomDrag = { x: remaining.x, y: remaining.y, originX: zoomX, originY: zoomY };
+    }
+  }
+
+  zoomCanvas.addEventListener('pointerup', endZoomPointer);
+  zoomCanvas.addEventListener('pointercancel', endZoomPointer);
+
   fullscreenButton.addEventListener('click', async () => {
     try {
       if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
@@ -360,6 +511,7 @@
   window.addEventListener('resize', () => {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
+      refreshDeviceMode();
       if (pageFlip) {
         const currentIndex = pageFlip.getCurrentPageIndex();
         bookElement.classList.remove('last-page-centered');
@@ -367,11 +519,13 @@
         requestAnimationFrame(() => setLastPageLayout(currentIndex));
       }
       if (coverMode) setCoverProgress(0);
+      if (zoomOpen) requestAnimationFrame(renderZoom);
     }, 180);
   }, { passive: true });
 
   stage.addEventListener('contextmenu', (event) => event.preventDefault());
 
+  refreshDeviceMode();
   updateInterface(0);
   setCoverProgress(0);
   preloadEssentialImages().then(initializeBook).catch(showLoadError);
