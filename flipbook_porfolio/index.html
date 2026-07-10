@@ -4,10 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#111111">
+  <script>
+    (() => {
+      const refreshMode = () => {
+        const touchCapable = navigator.maxTouchPoints > 0 || matchMedia('(pointer: coarse)').matches;
+        const singlePage = innerWidth <= 720 || (touchCapable && innerWidth <= 1400);
+        window.__flipbookForcePortrait = singlePage;
+        document.documentElement.classList.toggle('flipbook-single-page', singlePage);
+      };
+      window.__refreshFlipbookDeviceMode = refreshMode;
+      refreshMode();
+    })();
+  </script>
   <meta name="description" content="Portfolio 2025–2026 de Luis González Palacios. Escultura contemporánea.">
   <title>Luis González Palacios — Portfolio 2025–2026</title>
-  <meta name="flipbook-build" content="estable-20260710e">
-  <link rel="stylesheet" href="css/style.css?v=20260710e">
+  <meta name="flipbook-build" content="tablet-zoom-20260710g">
+  <link rel="stylesheet" href="css/style.css?v=20260710g">
 </head>
 <body>
   <main class="viewer" aria-label="Portfolio interactivo de Luis González Palacios">
@@ -18,12 +30,9 @@
       </div>
 
       <nav class="controls" aria-label="Controles del portfolio">
-        <button class="icon-button" id="prevButton" type="button" aria-label="Página anterior" title="Página anterior">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
         <span class="page-counter" id="pageCounter" aria-live="polite">1 / 31</span>
-        <button class="icon-button" id="nextButton" type="button" aria-label="Página siguiente" title="Página siguiente">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <button class="icon-button" id="zoomButton" type="button" aria-label="Ampliar página" title="Ampliar página">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg>
         </button>
         <span class="separator" aria-hidden="true"></span>
         <a class="icon-button" href="portfolio-luis-gonzalez-palacios.pdf" target="_blank" rel="noopener" aria-label="Abrir PDF" title="Abrir PDF">
@@ -37,6 +46,12 @@
     </header>
 
     <section class="stage" id="stage">
+      <button class="page-arrow page-arrow-prev" id="prevButton" type="button" aria-label="Página anterior" title="Página anterior">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <button class="page-arrow page-arrow-next" id="nextButton" type="button" aria-label="Página siguiente" title="Página siguiente">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
       <div class="loading" id="loading" role="status" aria-live="polite">
         <div class="loading-mark"></div>
         <div class="loading-text">Preparando el portfolio <span id="loadingPercent">0%</span></div>
@@ -63,11 +78,28 @@
       </div>
     </section>
 
+
+    <div class="zoom-viewer" id="zoomViewer" role="dialog" aria-modal="true" aria-label="Vista ampliada de la página" aria-hidden="true">
+      <div class="zoom-toolbar">
+        <span class="zoom-page-label" id="zoomPageLabel">Página 1</span>
+        <div class="zoom-controls" aria-label="Controles de ampliación">
+          <button class="zoom-control" id="zoomOutButton" type="button" aria-label="Reducir" title="Reducir">−</button>
+          <button class="zoom-percent" id="zoomResetButton" type="button" aria-label="Restablecer ampliación" title="Restablecer ampliación"><span id="zoomPercent">100%</span></button>
+          <button class="zoom-control" id="zoomInButton" type="button" aria-label="Ampliar" title="Ampliar">+</button>
+          <button class="zoom-close" id="zoomCloseButton" type="button" aria-label="Cerrar ampliación" title="Cerrar">×</button>
+        </div>
+      </div>
+      <div class="zoom-canvas" id="zoomCanvas">
+        <img id="zoomImage" alt="Página ampliada del portfolio" draggable="false">
+      </div>
+      <div class="zoom-help">Usa + y −, la rueda del ratón o pellizca con dos dedos. Arrastra para desplazarte.</div>
+    </div>
+
     <footer class="footer-note">Usa las flechas del teclado, los botones o el gesto de arrastre.</footer>
   </main>
 
   <noscript>Este portfolio necesita JavaScript para mostrar la animación de paso de página.</noscript>
-  <script src="js/page-flip.browser.js?v=20260710e"></script>
-  <script src="js/app.js?v=20260710e"></script>
+  <script src="js/page-flip.browser.js?v=20260710g"></script>
+  <script src="js/app.js?v=20260710g"></script>
 </body>
 </html>

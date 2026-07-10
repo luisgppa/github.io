@@ -1,15 +1,18 @@
 FLIPBOOK DEL PORTFOLIO — LUIS GONZÁLEZ PALACIOS
-VERSIÓN CORREGIDA
+VERSIÓN TABLET + AMPLIACIÓN
 
-CORRECCIÓN PRINCIPAL
-- El inicio muestra únicamente la portada, centrada.
-- No se crea ni se muestra una página vacía a la izquierda.
-- La portada puede arrastrarse con el ratón o con el dedo y gira como una hoja.
-- Tras abrirla, el libro continúa con el visor de doble página en ordenador.
-- En móvil se omite la página 2, que está vacía, y se accede directamente a la página 3.
+MEJORAS DE ESTA VERSIÓN
+- En móvil y tableta se muestra siempre una sola página vertical, incluso con la tableta en horizontal.
+- En ordenador se mantiene la doble página cuando hay espacio suficiente.
+- Las flechas de avance y retroceso están colocadas a media altura, a ambos lados de la hoja.
+- El botón de lupa abre la página actual en una vista ampliada.
+- En la vista ampliada se puede usar + y -, la rueda del ratón, doble clic o el gesto de pellizcar.
+- Cuando la página está ampliada, puede arrastrarse para leer distintas zonas.
+- Se conserva la portada sola y centrada.
+- Se conserva la última página sola y centrada, sin la página 30 en blanco.
 
 CÓMO PUBLICARLO
-1. Sube la carpeta completa “flipbook_porfolio_luis_corregido” al alojamiento.
+1. Sube la carpeta completa “flipbook_porfolio_luis_tablet_zoom” al alojamiento.
 2. Conserva exactamente las subcarpetas css, js y pages.
 3. Puedes renombrar la carpeta como “portfolio”.
 4. La dirección será, por ejemplo:
@@ -25,13 +28,5 @@ PARA INSERTARLO EN UNA PÁGINA
 </iframe>
 
 IMPORTANTE
-No subas solo index.html. El visor necesita también las carpetas css, js y pages,
-además del PDF incluido.
-
-
-CORRECCIÓN DE ESTA VERSIÓN
---------------------------
-- Se conserva el inicio estable con la portada centrada y animada.
-- La página 30 del PDF, que está vacía, no se carga en el libro.
-- La página 31 de contacto funciona como contraportada única, sin hoja blanca a la izquierda.
-- No se ha añadido una segunda animación superpuesta al final, para evitar bloquear la portada.
+Sustituye la carpeta anterior completa. No subas únicamente index.html, porque
+el visor necesita también css, js, pages y el PDF incluido.
