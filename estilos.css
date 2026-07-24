@@ -169,6 +169,11 @@ nav {
   transition: transform .8s ease;
 }
 
+/* Variante figuras esbeltas (imagen muy vertical): mostrar completa, sin recortar */
+.ratio-4-5.contener img {
+  object-fit: contain;
+}
+
 .imagen-caption {
   font-family: var(--serif-b);
   font-size: 11px;
