@@ -9,7 +9,7 @@ MEJORAS DE ESTA VERSIÓN
 - En la vista ampliada se puede usar + y -, la rueda del ratón, doble clic o el gesto de pellizcar.
 - Cuando la página está ampliada, puede arrastrarse para leer distintas zonas.
 - Se conserva la portada sola y centrada.
-- Se conserva la última página sola y centrada, sin la página 30 en blanco.
+- Se conserva la última página sola y centrada, sin la página 28 en blanco.
 
 CÓMO PUBLICARLO
 1. Sube la carpeta completa “flipbook_porfolio_luis_tablet_zoom” al alojamiento.
