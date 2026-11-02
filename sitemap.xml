@@ -213,6 +213,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://lgonzalezpalacios.com/figura-doce.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://lgonzalezpalacios.com/figura-dos.html</loc>
     <lastmod>2026-04-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -231,6 +237,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://lgonzalezpalacios.com/figura-once.html</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://lgonzalezpalacios.com/figura-seis.html</loc>
     <lastmod>2026-04-06</lastmod>
     <changefreq>monthly</changefreq>
@@ -239,6 +251,12 @@
   <url>
     <loc>https://lgonzalezpalacios.com/figura-siete.html</loc>
     <lastmod>2026-04-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://lgonzalezpalacios.com/figura-trece.html</loc>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -256,7 +274,7 @@
   </url>
   <url>
     <loc>https://lgonzalezpalacios.com/figuras.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -292,7 +310,7 @@
   </url>
   <url>
     <loc>https://lgonzalezpalacios.com/obra.html</loc>
-    <lastmod>2026-04-06</lastmod>
+    <lastmod>2026-11-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
