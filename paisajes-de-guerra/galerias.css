@@ -1,0 +1,227 @@
+/* ─────────────────────────────────────────────────────────────
+   Galerías de Paisajes de Guerra — integración con el sistema
+   general de la web (Cormorant / EB Garamond, crema y óxido).
+   Se carga DESPUÉS del <style> propio de cada galería y solo
+   ajusta presentación: no toca estructura ni JavaScript.
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --bg: #f4f1ec; --ink: #111111; --ink-2: #555555; --ink-3: #8a857e;
+  --oxide: #9e5a28; --border: #d8d4cd;
+  --serif-d: 'Cormorant Garamond', Georgia, serif;
+  --serif-b: 'EB Garamond', Georgia, serif;
+}
+
+/* Fondo y texto base */
+body.pdg-galeria {
+  background: var(--bg) !important;
+  font-family: var(--serif-b) !important;
+  color: var(--ink);
+}
+
+/* ── Cabecera ── */
+body.pdg-galeria header {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 48px 56px !important;
+  background: transparent !important;
+  border-bottom: 0.5px solid var(--border) !important;
+  text-align: left !important;
+}
+body.pdg-galeria .header-controls { margin-bottom: 0 !important; order: -2; }
+
+body.pdg-galeria .back-home,
+body.pdg-galeria .home-button,
+body.pdg-galeria .back-button {
+  order: -2;
+  align-self: flex-start;
+  position: static !important;
+  display: inline-block;
+  margin: 0 0 40px !important;
+  padding: 0 !important;
+  border: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  font-family: var(--serif-b) !important;
+  font-size: 15px !important;
+  font-style: italic;
+  letter-spacing: .02em !important;
+  text-transform: none !important;
+  color: var(--ink-2) !important;
+  transition: color .2s;
+}
+body.pdg-galeria .back-home:hover,
+body.pdg-galeria .home-button:hover,
+body.pdg-galeria .back-button:hover { color: var(--oxide) !important; background: none !important; }
+
+/* Etiqueta de serie, encima del título */
+body.pdg-galeria header > p:not(.subtitle),
+body.pdg-galeria header > .pdg-label {
+  order: -1;
+  margin: 0 0 16px !important;
+  font-family: var(--serif-b) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
+  letter-spacing: .22em !important;
+  text-transform: uppercase;
+  color: var(--oxide) !important;
+}
+
+body.pdg-galeria header h1,
+body.pdg-galeria header h2 {
+  font-family: var(--serif-d) !important;
+  font-size: clamp(44px, 5.5vw, 76px) !important;
+  font-weight: 300 !important;
+  letter-spacing: .01em !important;
+  line-height: 1.04 !important;
+  text-transform: none !important;
+  color: var(--ink) !important;
+  margin: 0 0 28px !important;
+}
+
+body.pdg-galeria header .subtitle {
+  max-width: 640px !important;
+  margin: 0 !important;
+  padding-left: 28px;
+  border-left: 2px solid var(--oxide);
+  font-family: var(--serif-b) !important;
+  font-size: 19px !important;
+  font-style: italic;
+  line-height: 1.8 !important;
+  letter-spacing: 0 !important;
+  color: var(--ink-2) !important;
+}
+
+/* ── Rejilla ── */
+body.pdg-galeria .gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 48px 96px !important;
+  background: none !important;
+  gap: 56px 40px !important;
+}
+body.pdg-galeria .gallery::before,
+body.pdg-galeria .back-button::before { content: none !important; display: none !important; }
+body.pdg-galeria .artwork { transition: opacity .25s !important; }
+body.pdg-galeria .artwork:hover { transform: none !important; opacity: .82; }
+body.pdg-galeria .artwork img { box-shadow: none !important; border-radius: 0 !important; }
+
+body.pdg-galeria .artwork-label,
+body.pdg-galeria .artwork-info { margin-top: 16px !important; padding: 0 !important; text-align: left !important; }
+body.pdg-galeria .artwork-label h3,
+body.pdg-galeria .artwork-info h3 {
+  font-family: var(--serif-d) !important;
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  letter-spacing: .06em !important;
+  line-height: 1.25 !important;
+  color: var(--ink) !important;
+  margin-bottom: 4px !important;
+}
+body.pdg-galeria .artwork-label p,
+body.pdg-galeria .artwork-info p,
+body.pdg-galeria .artwork-label .coords {
+  font-family: var(--serif-b) !important;
+  font-size: 14px !important;
+  font-style: italic;
+  font-weight: 400 !important;
+  letter-spacing: .02em !important;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3) !important;
+}
+
+/* ── Ventana de obra (modal) ── */
+body.pdg-galeria .modal { background: rgba(17, 15, 13, .96) !important; }
+
+body.pdg-galeria .modal-info h2,
+body.pdg-galeria .modal h2 {
+  font-family: var(--serif-d) !important;
+  font-size: clamp(30px, 3vw, 42px) !important;
+  font-weight: 300 !important;
+  letter-spacing: .08em !important;
+  line-height: 1.15 !important;
+  color: #f4f1ec !important;
+}
+body.pdg-galeria .modal-info,
+body.pdg-galeria .modal-info p,
+body.pdg-galeria .modal-info div {
+  font-family: var(--serif-b) !important;
+}
+body.pdg-galeria .modal-info .location,
+body.pdg-galeria .modal-info .phase {
+  font-size: 11px !important;
+  letter-spacing: .22em !important;
+  color: #c98a5c !important;          /* óxido aclarado para fondo oscuro */
+}
+body.pdg-galeria .modal-info .coords,
+body.pdg-galeria .modal-info .reference,
+body.pdg-galeria .modal-info .ref {
+  font-family: var(--serif-b) !important;
+  font-size: 15px !important;
+  font-style: italic;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .03em !important;
+  color: #b5aea5 !important;
+}
+body.pdg-galeria .modal-info .dimensions,
+body.pdg-galeria .modal-info .materials,
+body.pdg-galeria .modal-info .technique {
+  font-size: 15px !important;
+  letter-spacing: .02em !important;
+  color: #cfc8bf !important;
+}
+body.pdg-galeria .modal-info .materials {
+  background: rgba(244, 241, 236, .06) !important;
+  border-left: 2px solid var(--oxide) !important;
+  border-color: var(--oxide) !important;
+}
+body.pdg-galeria .modal-info .description,
+body.pdg-galeria .modal-info .concept {
+  font-size: 17px !important;
+  line-height: 1.85 !important;
+  color: #e6e0d8 !important;
+}
+body.pdg-galeria .satellite-image h4,
+body.pdg-galeria .modal-info h4 {
+  font-family: var(--serif-b) !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+  letter-spacing: .22em !important;
+  text-transform: uppercase;
+  color: #c98a5c !important;
+}
+body.pdg-galeria .modal-image-container img,
+body.pdg-galeria .modal img { box-shadow: none !important; }
+
+/* Flechas y cierre: finos, sin círculos ni desenfoque */
+body.pdg-galeria .modal-nav {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  width: 56px !important; height: 56px !important;
+  font-family: var(--serif-d) !important;
+  font-size: 44px !important;
+  font-weight: 300;
+  color: rgba(244, 241, 236, .55) !important;
+}
+body.pdg-galeria .modal-nav:hover {
+  background: none !important;
+  color: #f4f1ec !important;
+  transform: translateY(-50%) !important;
+}
+body.pdg-galeria .modal-close {
+  font-family: var(--serif-d) !important;
+  font-weight: 300;
+  color: rgba(244, 241, 236, .7) !important;
+}
+body.pdg-galeria .modal-close:hover { color: #f4f1ec !important; transform: none !important; }
+
+@media (max-width: 900px) {
+  body.pdg-galeria header { padding: 40px 24px 40px !important; }
+  body.pdg-galeria .gallery { padding: 40px 24px 64px !important; gap: 40px 20px !important; }
+  body.pdg-galeria header .subtitle { font-size: 17px !important; padding-left: 20px; }
+}
