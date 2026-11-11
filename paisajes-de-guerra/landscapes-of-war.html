@@ -51,13 +51,20 @@
     .statement{border-left:2px solid var(--oxide);padding-left:28px;max-width:640px;margin-bottom:0}
     .statement p{font-style:italic;color:var(--ink-2);line-height:1.9;margin-bottom:18px}
     .statement p:last-child{margin-bottom:0}
+    .pg-header{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:72px;align-items:end}
+    .pg-hero{margin:0}
+    .pg-hero img{display:block;width:100%;height:auto}
+    .pg-hero figcaption{margin-top:12px;font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
 
     /* SECCIONES */
     .secciones{max-width:1200px;margin:0 auto;padding:72px 48px 80px}
     .secciones-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;border:0.5px solid var(--border)}
 
-    .seccion-card{padding:48px 40px;border:0.5px solid var(--border);transition:background .2s;cursor:pointer;display:block;color:var(--ink)}
+    .seccion-card{padding:32px;border:0.5px solid var(--border);transition:background .2s;cursor:pointer;display:grid;grid-template-columns:132px minmax(0,1fr);column-gap:28px;align-content:start;color:var(--ink)}
     .seccion-card:hover{background:rgba(158,90,40,.04)}
+    .seccion-card > :not(.seccion-img){grid-column:2}
+    .seccion-img{grid-column:1;grid-row:1 / span 5;display:block;width:132px;height:auto;aspect-ratio:4/5;object-fit:cover;transition:opacity .25s}
+    .seccion-card:hover .seccion-img{opacity:.88}
     .seccion-num{font-family:var(--serif-b);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:12px}
     .seccion-titulo{font-family:var(--serif-d);font-size:clamp(26px,2.5vw,36px);font-weight:300;letter-spacing:.02em;margin-bottom:12px;line-height:1.1}
     .seccion-meta{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);margin-bottom:16px}
@@ -66,9 +73,9 @@
 
     /* FOOTER */
     footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
-    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
-    .footer-links{display:flex;gap:24px}
-    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-name{font-family:var(--serif-d);font-size:17px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:32px}
+    .footer-links a{font-family:var(--serif-b);font-size:16px;font-style:italic;color:var(--ink-3);transition:color .2s}
     .footer-links a:hover{color:var(--oxide)}
 
     @media(max-width:900px){
@@ -78,7 +85,10 @@
       .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
       .nav-links.open li:last-child{border-bottom:none}
       .nav-toggle{display:block}
-      .pg-header{padding:48px 24px}
+      .pg-header{padding:48px 24px;grid-template-columns:1fr;gap:48px}
+      .pg-hero{max-width:260px}
+      .seccion-card{padding:24px;grid-template-columns:96px minmax(0,1fr);column-gap:20px}
+      .seccion-img{width:96px}
       .secciones{padding:48px 24px}
       .secciones-grid{grid-template-columns:1fr}
       footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
@@ -108,6 +118,7 @@
 </ul>
 </nav>
 <div class="pg-header">
+<div>
 <p class="pg-label" data-en="Series · Landscapes of War" data-es="Serie · Paisajes de Guerra">Series · Landscapes of War</p>
 <h1 class="pg-titulo" data-en="Landscapes&lt;br&gt;of War" data-es="Paisajes&lt;br&gt;de Guerra">Landscapes<br/>of War</h1>
 <div class="statement">
@@ -116,9 +127,15 @@
 <p data-en="I don't know what legitimacy I have to build testimonies, but someone has to fix the coordinates before they erase them." data-es="No sé qué legitimidad tengo para construir testimonios, pero alguien tiene que fijar las coordenadas antes de que las borren.">I don't know what legitimacy I have to build testimonies, but someone has to fix the coordinates before they erase them.</p>
 </div>
 </div>
+<figure class="pg-hero">
+<a href="minab-en.html"><img alt="Minab — Luis González Palacios. Recycled stainless steel, 2026." fetchpriority="high" height="768" src="imagenes/portada-hero.webp" width="520"/></a>
+<figcaption data-en="Minab · Recycled stainless steel · 2026" data-es="Minab · Acero inoxidable reciclado · 2026">Minab · Recycled stainless steel · 2026</figcaption>
+</figure>
+</div>
 <section class="secciones">
 <div class="secciones-grid">
 <a class="seccion-card" href="structure-of-conflict.html">
+<img alt="Epicentre — Structure of Conflict. Luis González Palacios, recycled steel, 68 × 80 cm." class="seccion-img" height="450" loading="lazy" src="imagenes/portada-i.webp" width="360"/>
 <p class="seccion-num" data-en="I" data-es="I">I</p>
 <h2 class="seccion-titulo" data-en="Structure of Conflict" data-es="Estructura del Conflicto">Structure of Conflict</h2>
 <p class="seccion-meta" data-en="4 works · Recycled steel · 68 × 80 cm" data-es="4 obras · Acero reciclado · 68 × 80 cm">4 works · Recycled steel · 68 × 80 cm</p>
@@ -126,6 +143,7 @@
 <span class="seccion-enter" data-en="Enter →" data-es="Entrar →">Enter →</span>
 </a>
 <a class="seccion-card" href="geographic-pieces.html">
+<img alt="Gaza City — Hunger as a Weapon. Luis González Palacios, recycled steel and barbed wire, 30 × 40 cm." class="seccion-img" height="450" loading="lazy" src="imagenes/portada-ii.webp" width="360"/>
 <p class="seccion-num" data-en="II" data-es="II">II</p>
 <h2 class="seccion-titulo" data-en="Geographic Pieces" data-es="Piezas Geográficas">Geographic Pieces</h2>
 <p class="seccion-meta" data-en="16 works · Steel on MDF · 30 × 40 cm (33 × 43 cm with support)" data-es="16 obras · Acero sobre DM · 30 × 40 cm (33 × 43 cm con soporte)">16 works · Steel on MDF · 30 × 40 cm (33 × 43 cm with support)</p>
@@ -133,6 +151,7 @@
 <span class="seccion-enter" data-en="Enter →" data-es="Entrar →">Enter →</span>
 </a>
 <a class="seccion-card" href="visual-poems.html">
+<img alt="3994 — Visual poem. Luis González Palacios, mixed media on paper, 59 × 84 cm." class="seccion-img" height="450" loading="lazy" src="imagenes/portada-iii.webp" width="360"/>
 <p class="seccion-num" data-en="III" data-es="III">III</p>
 <h2 class="seccion-titulo" data-en="Visual Poems" data-es="Poemas Visuales">Visual Poems</h2>
 <p class="seccion-meta" data-en="2 works · Mixed media on paper · 59 × 84 cm" data-es="2 obras · Técnica mixta sobre papel · 59 × 84 cm">2 works · Mixed media on paper · 59 × 84 cm</p>
@@ -140,6 +159,7 @@
 <span class="seccion-enter" data-en="Enter →" data-es="Entrar →">Enter →</span>
 </a>
 <a class="seccion-card" href="sculptures.html">
+<img alt="Genocide — Luis González Palacios. Olive wood, iron and marble base." class="seccion-img" height="450" loading="lazy" src="imagenes/portada-iv.webp" width="360"/>
 <p class="seccion-num" data-en="IV" data-es="IV">IV</p>
 <h2 class="seccion-titulo" data-en="Sculptures" data-es="Esculturas">Sculptures</h2>
 <p class="seccion-meta" data-en="3 works · Wood and iron" data-es="3 obras · Madera y hierro">3 works · Wood and iron</p>
@@ -147,6 +167,7 @@
 <span class="seccion-enter" data-en="Enter →" data-es="Entrar →">Enter →</span>
 </a>
 <a class="seccion-card" href="minab-en.html">
+<img alt="Minab, detail — 180 marks welded on stainless steel." class="seccion-img" height="450" loading="lazy" src="imagenes/portada-v.webp" width="360"/>
 <p class="seccion-num" data-en="V" data-es="V">V</p>
 <h2 class="seccion-titulo" data-en="Minab" data-es="Minab">Minab</h2>
 <p class="seccion-meta" data-en="1 work · Recycled stainless steel · 59 × 50 cm" data-es="1 obra · Acero inoxidable reciclado · 59 × 50 cm">1 work · Recycled stainless steel · 59 × 50 cm</p>
@@ -154,6 +175,7 @@
 <span class="seccion-enter" data-en="Enter →" data-es="Entrar →">Enter →</span>
 </a>
 <a class="seccion-card" href="ashes-and-silence.html">
+<img alt="Ashes and Silence — Luis González Palacios. Olive wood and corrugated iron, 2026." class="seccion-img" height="450" loading="lazy" src="imagenes/portada-vi.webp" width="360"/>
 <p class="seccion-num" data-en="VI" data-es="VI">VI</p>
 <h2 class="seccion-titulo" data-en="Ashes and Silence" data-es="Cenizas y Silencio">Ashes and Silence</h2>
 <p class="seccion-meta" data-en="1 work · Olive wood and corrugated iron · 77 × 120 cm" data-es="1 obra · Madera de olivo y hierro corrugado · 77 × 120 cm">1 work · Olive wood and corrugated iron · 77 × 120 cm</p>
