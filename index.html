@@ -222,6 +222,45 @@
 
     .hero-image { width: auto; max-width: 100%; }
 
+    /* Imagen → versos (ciclo de 20 s) */
+    .hero-stage {
+      position: relative;
+      display: block;
+      line-height: 0;
+    }
+    .hero-stage .hero-image { animation: hero-oscurece 20s ease-in-out 1.5s infinite; }
+    .hero-verses {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.1em;
+      padding: 0 11%;
+      font-family: var(--serif-d);
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(16px, 1.45vw, 21px);
+      line-height: 1.55;
+      color: #efe9e0;
+      opacity: 0;
+      animation: hero-versos 20s ease-in-out 1.5s infinite;
+      pointer-events: none;
+    }
+    .hero-verses .estrofa { display: block; }
+    .hero-verses .elision { color: rgba(239,233,224,.45); font-style: normal; }
+    @keyframes hero-oscurece {
+      0%, 22%  { filter: brightness(1); }
+      30%, 78% { filter: brightness(.22); }
+      86%, 100% { filter: brightness(1); }
+    }
+    @keyframes hero-versos {
+      0%, 25%  { opacity: 0; }
+      33%, 76% { opacity: 1; }
+      84%, 100% { opacity: 0; }
+    }
+    /* Solo fundidos de opacidad, sin desplazamiento: se mantiene también con «reducir movimiento». */
+
     .hero-caption {
       font-family: var(--serif-b);
       font-size: 13px;
@@ -804,7 +843,15 @@
     </div>
     <div class="hero-image-wrap fade-in fade-in-5">
       <a href="paisajes-de-guerra/cenizas-y-silencio.html" class="hero-link">
-        <img class="hero-image" src="paisajes-de-guerra/imagenes/memoria-web.webp" width="1125" height="1800" fetchpriority="high" alt="Cenizas y Silencio — Luis González Palacios. Madera de olivo y hierro corrugado, 77 × 120 cm, 2026.">
+        <span class="hero-stage">
+          <img class="hero-image" src="paisajes-de-guerra/imagenes/memoria-web.webp" width="1125" height="1800" fetchpriority="high" alt="Cenizas y Silencio — Luis González Palacios. Madera de olivo y hierro corrugado, 77 × 120 cm, 2026.">
+          <span class="hero-verses" lang="es">
+            <span class="estrofa">Yo era la memoria.</span>
+            <span class="estrofa">Guardaba en la madera los nombres,<br>las canciones en la raíz.</span>
+            <span class="estrofa elision" aria-hidden="true">[…]</span>
+            <span class="estrofa">Vinieron de noche con sus máquinas<br>y me arrancaron, a otros<br>los amontonaron y prendieron fuego.</span>
+          </span>
+        </span>
         <span class="hero-caption">Cenizas y Silencio · Madera de olivo y hierro corrugado · 2026</span>
       </a>
     </div>
