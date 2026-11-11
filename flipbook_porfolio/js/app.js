@@ -500,6 +500,30 @@
     }
   });
 
+  // Pantalla completa automática con la primera interacción. Los navegadores
+  // no permiten activarla al cargar la página: exigen un gesto del usuario.
+  // Solo se intenta una vez; si la persona sale con Esc, se respeta.
+  let autoFullscreenTried = false;
+  const fullscreenSupported = () => Boolean(document.fullscreenEnabled || document.webkitFullscreenEnabled);
+  function autoFullscreen(event) {
+    if (autoFullscreenTried) return;
+    if (event.target?.closest?.('#fullscreenButton, a')) return;
+    autoFullscreenTried = true;
+    window.removeEventListener('pointerdown', autoFullscreen, true);
+    window.removeEventListener('keydown', autoFullscreen, true);
+    if (!fullscreenSupported() || document.fullscreenElement || document.webkitFullscreenElement) return;
+    const root = document.documentElement;
+    const request = root.requestFullscreen || root.webkitRequestFullscreen;
+    try {
+      const result = request.call(root);
+      if (result?.catch) result.catch((error) => console.warn('Pantalla completa no disponible:', error));
+    } catch (error) {
+      console.warn('Pantalla completa no disponible:', error);
+    }
+  }
+  window.addEventListener('pointerdown', autoFullscreen, true);
+  window.addEventListener('keydown', autoFullscreen, true);
+
   document.addEventListener('fullscreenchange', () => {
     fullscreenButton.setAttribute('aria-label', document.fullscreenElement ? 'Salir de pantalla completa' : 'Pantalla completa');
   });
