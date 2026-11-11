@@ -241,27 +241,15 @@ nav {
 
 /* ── Disponibilidad y acciones ──────────────────────────────── */
 .disponibilidad {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 28px 0;
-  padding: 14px 0;
-  border-top: 0.5px solid var(--border);
-  border-bottom: 0.5px solid var(--border);
+  margin: 28px 0 10px;
 }
-.disp-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--oxide);
-  flex-shrink: 0;
-}
+.disp-dot { display: none; }
 .disp-text {
   font-family: var(--serif-b);
-  font-size: 13px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--oxide);
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: .01em;
+  color: var(--ink-2);
 }
 .disp-galeria {
   font-family: var(--serif-b);
@@ -277,17 +265,17 @@ nav {
   margin-bottom: 32px;
 }
 .btn-consultar {
+  align-self: flex-start;
   font-family: var(--serif-b);
-  font-size: 12px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--bg);
-  background: var(--ink);
-  padding: 14px 24px;
-  text-align: center;
-  transition: background .2s;
+  font-size: 15px;
+  font-style: italic;
+  letter-spacing: .01em;
+  color: var(--ink);
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
 }
-.btn-consultar:hover { background: var(--oxide); }
+.btn-consultar:hover { color: var(--oxide); border-color: var(--oxide); }
 .btn-galeria {
   font-family: var(--serif-b);
   font-size: 12px;
@@ -534,3 +522,19 @@ footer {
   .nav-obras-inner { padding: 0 20px; }
   footer           { padding: 28px 20px; }
 }
+
+.serie-info-link {
+  font-family: var(--serif-b);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ink-2);
+  border-bottom: 0.5px solid var(--ink-3);
+  padding-bottom: 2px;
+  transition: color .2s, border-color .2s;
+}
+.serie-info-link:hover { color: var(--oxide); border-color: var(--oxide); }
+
+/* La navegación entre series no hereda el estilo del menú superior (nav { … }) */
+nav.nav-series { display: block !important; position: static !important; padding: 0 !important; background: none !important; border-bottom: none !important; z-index: auto !important; }
+.nav-series-inner { column-gap: 48px; }
+.contacto-nota { font-style: italic; font-size: 15px; color: var(--ink-2); margin-top: -8px; }
