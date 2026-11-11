@@ -211,13 +211,27 @@
       padding: 16px;
     }
 
+    .hero-link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .hero-image { width: auto; max-width: 100%; }
+
     .hero-caption {
       font-family: var(--serif-b);
-      font-size: 11px;
+      font-size: 13px;
       font-style: italic;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.06em;
+      color: var(--ink-2, #555);
+      letter-spacing: 0.04em;
+      text-align: center;
+      transition: color .2s;
     }
+    .hero-link:hover .hero-caption { color: var(--oxide); }
 
     /* ── FRANJA DE SERIES ── */
     .series-strip {
@@ -789,10 +803,10 @@
       </div>
     </div>
     <div class="hero-image-wrap fade-in fade-in-5">
-      <video class="hero-image" autoplay muted loop playsinline>
-        <source src="videos/cartografia%20del%20movimiento.mp4" type="video/mp4">
-        <img src="img/STANBROOK.webp" alt="Luis González Palacios — Escultor" style="width:100%;height:100%;object-fit:cover;">
-      </video>
+      <a href="paisajes-de-guerra/cenizas-y-silencio.html" class="hero-link">
+        <img class="hero-image" src="paisajes-de-guerra/imagenes/memoria-web.webp" width="1125" height="1800" fetchpriority="high" alt="Cenizas y Silencio — Luis González Palacios. Madera de olivo y hierro corrugado, 77 × 120 cm, 2026.">
+        <span class="hero-caption">Cenizas y Silencio · Madera de olivo y hierro corrugado · 2026</span>
+      </a>
     </div>
   </section>
 
