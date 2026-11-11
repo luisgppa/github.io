@@ -227,7 +227,7 @@ img { -webkit-user-drag: none; user-select: none; }
 }
 
 @media (max-height: 520px) {
-  :root { --page-size: min(calc((100vw - 50px) / 2), calc(100dvh - 58px)); }
+  :root { --page-size: min(calc((100vw - 50px) / 2), calc(100dvh - 64px)); }
   .viewer { grid-template-rows: 48px minmax(0, 1fr); }
   .footer-note { display: none; }
   .toolbar { padding-top: 5px; padding-bottom: 5px; }
@@ -402,4 +402,20 @@ html.flipbook-single-page #book {
   width: var(--page-size) !important;
   max-width: var(--page-size) !important;
   min-width: 0 !important;
+}
+
+/* Doble página: el ancho del libro se limita a dos hojas de --page-size, que ya
+   tiene en cuenta el alto disponible. Sin esto el motor llena todo el ancho y,
+   en pantallas apaisadas o con la barra del navegador, el libro se sale por
+   arriba y por abajo. */
+html:not(.flipbook-single-page) #book:not(.last-page-centered) {
+  width: calc(var(--page-size) * 2) !important;
+  max-width: calc(var(--page-size) * 2) !important;
+  min-width: 0 !important;
+}
+
+/* Pantallas bajas (móvil en horizontal): sin pie de página, el libro de una
+   sola hoja aprovecha todo el alto. Va al final para ganar a la regla anterior. */
+@media (max-height: 520px) {
+  html.flipbook-single-page { --page-size: min(calc(100vw - 110px), calc(100dvh - 64px), 900px); }
 }
