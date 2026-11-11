@@ -50,13 +50,20 @@
     .statement{border-left:2px solid var(--oxide);padding-left:28px;max-width:640px;margin-bottom:0}
     .statement p{font-style:italic;color:var(--ink-2);line-height:1.9;margin-bottom:18px}
     .statement p:last-child{margin-bottom:0}
+    .pg-header{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:72px;align-items:end}
+    .pg-hero{margin:0}
+    .pg-hero img{display:block;width:100%;height:auto}
+    .pg-hero figcaption{margin-top:12px;font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3)}
 
     /* SECCIONES */
     .secciones{max-width:1200px;margin:0 auto;padding:72px 48px 80px}
     .secciones-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;border:0.5px solid var(--border)}
 
-    .seccion-card{padding:48px 40px;border:0.5px solid var(--border);transition:background .2s;cursor:pointer;display:block;color:var(--ink)}
+    .seccion-card{padding:32px;border:0.5px solid var(--border);transition:background .2s;cursor:pointer;display:grid;grid-template-columns:132px minmax(0,1fr);column-gap:28px;align-content:start;color:var(--ink)}
     .seccion-card:hover{background:rgba(158,90,40,.04)}
+    .seccion-card > :not(.seccion-img){grid-column:2}
+    .seccion-img{grid-column:1;grid-row:1 / span 5;display:block;width:132px;height:auto;aspect-ratio:4/5;object-fit:cover;transition:opacity .25s}
+    .seccion-card:hover .seccion-img{opacity:.88}
     .seccion-num{font-family:var(--serif-b);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--oxide);margin-bottom:12px}
     .seccion-titulo{font-family:var(--serif-d);font-size:clamp(26px,2.5vw,36px);font-weight:300;letter-spacing:.02em;margin-bottom:12px;line-height:1.1}
     .seccion-meta{font-family:var(--serif-b);font-size:13px;font-style:italic;color:var(--ink-3);margin-bottom:16px}
@@ -65,9 +72,9 @@
 
     /* FOOTER */
     footer{max-width:1200px;margin:0 auto;padding:40px 48px;display:flex;justify-content:space-between;align-items:center;border-top:0.5px solid var(--border)}
-    .footer-name{font-family:var(--serif-d);font-size:14px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
-    .footer-links{display:flex;gap:24px}
-    .footer-links a{font-family:var(--serif-b);font-size:12px;font-style:italic;color:var(--ink-3);transition:color .2s}
+    .footer-name{font-family:var(--serif-d);font-size:17px;font-weight:400;color:var(--ink-3);letter-spacing:.04em}
+    .footer-links{display:flex;gap:32px}
+    .footer-links a{font-family:var(--serif-b);font-size:16px;font-style:italic;color:var(--ink-3);transition:color .2s}
     .footer-links a:hover{color:var(--oxide)}
 
     @media(max-width:900px){
@@ -77,7 +84,10 @@
       .nav-links.open li{padding:10px 0;border-bottom:0.5px solid var(--border)}
       .nav-links.open li:last-child{border-bottom:none}
       .nav-toggle{display:block}
-      .pg-header{padding:48px 24px}
+      .pg-header{padding:48px 24px;grid-template-columns:1fr;gap:48px}
+      .pg-hero{max-width:260px}
+      .seccion-card{padding:24px;grid-template-columns:96px minmax(0,1fr);column-gap:20px}
+      .seccion-img{width:96px}
       .secciones{padding:48px 24px}
       .secciones-grid{grid-template-columns:1fr}
       footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
@@ -109,6 +119,7 @@
   </nav>
 
   <div class="pg-header">
+    <div>
     <p class="pg-label" data-es="Serie · Paisajes de Guerra" data-en="Series · Landscapes of War">Serie · Paisajes de Guerra</p>
     <h1 class="pg-titulo" data-es="Paisajes<br>de Guerra" data-en="Landscapes<br>of War">Paisajes<br>de Guerra</h1>
     <div class="statement">
@@ -125,12 +136,18 @@
         No sé qué legitimidad tengo para construir testimonios, pero alguien tiene que fijar las coordenadas antes de que las borren.
       </p>
     </div>
+    </div>
+    <figure class="pg-hero">
+      <a href="minab.html"><img src="imagenes/portada-hero.webp" width="520" height="768" fetchpriority="high" alt="Minab — Luis González Palacios. Acero inoxidable reciclado, 2026."></a>
+      <figcaption data-es="Minab · Acero inoxidable reciclado · 2026" data-en="Minab · Recycled stainless steel · 2026">Minab · Acero inoxidable reciclado · 2026</figcaption>
+    </figure>
   </div>
 
   <section class="secciones">
     <div class="secciones-grid">
 
       <a class="seccion-card" href="estructura-del-conflicto-bilingue.html">
+        <img class="seccion-img" src="imagenes/portada-i.webp" width="360" height="450" loading="lazy" alt="Epicentro — Estructura del Conflicto. Luis González Palacios, acero reciclado, 68 × 80 cm.">
         <p class="seccion-num" data-es="I" data-en="I">I</p>
         <h2 class="seccion-titulo" data-es="Estructura del Conflicto" data-en="Structure of Conflict">Estructura del Conflicto</h2>
         <p class="seccion-meta" data-es="4 obras · Acero reciclado · 68 × 80 cm" data-en="4 works · Recycled steel · 68 × 80 cm">4 obras · Acero reciclado · 68 × 80 cm</p>
@@ -139,6 +156,7 @@
       </a>
 
       <a class="seccion-card" href="piezas-geograficas-bilingue.html">
+        <img class="seccion-img" src="imagenes/portada-ii.webp" width="360" height="450" loading="lazy" alt="Gaza City — El hambre como arma. Luis González Palacios, acero reciclado y alambre de púas, 30 × 40 cm.">
         <p class="seccion-num" data-es="II" data-en="II">II</p>
         <h2 class="seccion-titulo" data-es="Piezas Geográficas" data-en="Geographic Pieces">Piezas Geográficas</h2>
         <p class="seccion-meta" data-es="16 obras · Acero sobre DM · 30 × 40 cm (33 × 43 cm con soporte)" data-en="16 works · Steel on MDF · 30 × 40 cm (33 × 43 cm with support)">16 obras · Acero sobre DM · 30 × 40 cm (33 × 43 cm con soporte)</p>
@@ -147,6 +165,7 @@
       </a>
 
       <a class="seccion-card" href="poemas-visuales-bilingue.html">
+        <img class="seccion-img" src="imagenes/portada-iii.webp" width="360" height="450" loading="lazy" alt="3994 — Poema visual. Luis González Palacios, técnica mixta sobre papel, 59 × 84 cm.">
         <p class="seccion-num" data-es="III" data-en="III">III</p>
         <h2 class="seccion-titulo" data-es="Poemas Visuales" data-en="Visual Poems">Poemas Visuales</h2>
         <p class="seccion-meta" data-es="2 obras · Técnica mixta sobre papel · 59 × 84 cm" data-en="2 works · Mixed media on paper · 59 × 84 cm">2 obras · Técnica mixta sobre papel · 59 × 84 cm</p>
@@ -155,6 +174,7 @@
       </a>
 
       <a class="seccion-card" href="esculturas_bilingue_embebidas.html">
+        <img class="seccion-img" src="imagenes/portada-iv.webp" width="360" height="450" loading="lazy" alt="Genocidio — Luis González Palacios. Madera de olivo, hierro y base de mármol.">
         <p class="seccion-num" data-es="IV" data-en="IV">IV</p>
         <h2 class="seccion-titulo" data-es="Esculturas" data-en="Sculptures">Esculturas</h2>
         <p class="seccion-meta" data-es="3 obras · Madera y hierro" data-en="3 works · Wood and iron">3 obras · Madera y hierro</p>
@@ -163,6 +183,7 @@
       </a>
 
       <a class="seccion-card" href="minab.html">
+        <img class="seccion-img" src="imagenes/portada-v.webp" width="360" height="450" loading="lazy" alt="Minab, detalle — 180 marcas soldadas sobre acero inoxidable.">
         <p class="seccion-num" data-es="V" data-en="V">V</p>
         <h2 class="seccion-titulo" data-es="Minab" data-en="Minab">Minab</h2>
         <p class="seccion-meta" data-es="1 obra · Acero inoxidable reciclado · 59 × 50 cm" data-en="1 work · Recycled stainless steel · 59 × 50 cm">1 obra · Acero inoxidable reciclado · 59 × 50 cm</p>
@@ -171,6 +192,7 @@
       </a>
 
       <a class="seccion-card" href="cenizas-y-silencio.html">
+        <img class="seccion-img" src="imagenes/portada-vi.webp" width="360" height="450" loading="lazy" alt="Cenizas y Silencio — Luis González Palacios. Madera de olivo y hierro corrugado, 2026.">
         <p class="seccion-num" data-es="VI" data-en="VI">VI</p>
         <h2 class="seccion-titulo" data-es="Cenizas y Silencio" data-en="Ashes and Silence">Cenizas y Silencio</h2>
         <p class="seccion-meta" data-es="1 obra · Madera de olivo y hierro corrugado · 77 × 120 cm" data-en="1 work · Olive wood and corrugated iron · 77 × 120 cm">1 obra · Madera de olivo y hierro corrugado · 77 × 120 cm</p>
