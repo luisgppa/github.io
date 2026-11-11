@@ -105,7 +105,7 @@
     /* ── HERO ── */
     .hero {
       display: grid;
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 440px;
       gap: 0;
       min-height: min(680px, 85vh);
       max-width: 1200px;
@@ -196,7 +196,7 @@
     .hero-image {
       width: 100%;
       height: auto;
-      max-height: 580px;
+      max-height: 660px;
       display: block;
       object-fit: contain;
       background: transparent;
@@ -227,8 +227,11 @@
       position: relative;
       display: block;
       line-height: 0;
+      width: min(100%, 412px);   /* 660 px de alto máx. × 0,625 */
+      container-type: inline-size;
     }
-    .hero-stage .hero-image { animation: hero-oscurece 20s ease-in-out 1.5s infinite; }
+    .hero-link { width: 100%; }
+    .hero-stage .hero-image { width: 100%; max-height: none; animation: hero-oscurece 20s ease-in-out 1.5s infinite; }
     .hero-verses {
       position: absolute;
       inset: 0;
@@ -236,12 +239,13 @@
       flex-direction: column;
       justify-content: center;
       gap: 1.1em;
-      padding: 0 11%;
+      padding: 0 7%;
       font-family: var(--serif-d);
       font-style: italic;
       font-weight: 300;
-      font-size: clamp(16px, 1.45vw, 21px);
-      line-height: 1.55;
+      font-size: 19px;
+      font-size: clamp(15px, 6cqw, 26px);
+      line-height: 1.5;
       color: #efe9e0;
       opacity: 0;
       animation: hero-versos 20s ease-in-out 1.5s infinite;
