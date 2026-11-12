@@ -1,12 +1,12 @@
 (() => {
   'use strict';
 
-  const PDF_TOTAL_PAGES = 28;
+  const PDF_TOTAL_PAGES = 29;
   const FLIP_TIME = 900;
 
-  // La página 28 del PDF está completamente en blanco. No se carga en el
-  // flipbook: así la página 27 (Contacto) queda como contraportada única.
-  const sourcePageNumbers = Array.from({ length: 27 }, (_, index) => index + 1);
+  // Se cargan las 29 páginas del PDF. Al ser impar el total, la página 29
+  // (Contacto) queda como contraportada única.
+  const sourcePageNumbers = Array.from({ length: 29 }, (_, index) => index + 1);
   const pageImages = sourcePageNumbers.map((pageNumber) =>
     `pages/page-${String(pageNumber).padStart(2, '0')}.webp`
   );
