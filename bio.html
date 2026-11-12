@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>El artista · Luis González Palacios | Escultor, Castellón</title>
-  <meta name="description" content="Luis González Palacios (Lerma, 1959). Escultor autodidacta. Desertor Constructor. Obra en acero reciclado y madera de olivo. Castellón.">
+  <meta name="description" content="Luis González Palacios (Lerma, Burgos, 1959). Escultor. Desertor Constructor. Obra con material rescatado: acero industrial, madera de olivo y componentes mecánicos obsoletos. Castellón.">
   <link rel="canonical" href="https://lgonzalezpalacios.com/bio.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -78,7 +78,10 @@
     .hero-label { font-family: var(--serif-b); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px; }
     .hero-nombre { font-family: var(--serif-d); font-size: clamp(42px, 5vw, 68px); font-weight: 300; line-height: 1.05; letter-spacing: 0.01em; margin-bottom: 10px; }
     .hero-identidad { font-family: var(--serif-b); font-size: 15px; font-style: italic; color: var(--oxide); letter-spacing: 0.04em; margin-bottom: 40px; }
-    .hero-bio { font-family: var(--serif-b); font-style: italic; color: var(--ink-2); line-height: 1.85; max-width: 480px; border-left: 2px solid var(--border); padding-left: 20px; }
+    .hero-bio { font-family: var(--serif-b); color: var(--ink-2); line-height: 1.85; max-width: 560px; border-left: 2px solid var(--border); padding-left: 20px; }
+    .hero-bio p { margin-bottom: 18px; }
+    .hero-bio p:last-child { margin-bottom: 0; }
+    .hero-bio strong { font-weight: 500; color: var(--ink); }
     .hero-foto { position: sticky; top: 90px; }
     .foto-wrap { width: 100%; aspect-ratio: 3/4; background: #2a2420; overflow: hidden; }
     .foto-placeholder { width: 100%; height: 100%; background: linear-gradient(160deg, #2a2420 0%, #1e1c1a 40%, #3d3530 100%); }
@@ -126,12 +129,6 @@
     .mor-link { display: inline-block; font-family: var(--serif-d); font-style: italic; font-weight: 300; font-size: 28px; color: var(--oxide); text-decoration: none; border-bottom: 1px solid transparent; margin-top: 20px; line-height: 1.3; transition: border-color 0.3s; }
     .mor-link:hover { border-bottom-color: var(--oxide); }
 
-    /* Representación */
-    .rep-grid { display: grid; grid-template-columns: 1fr 1fr; max-width: 480px; margin-top: 4px; border: 0.5px solid var(--border); }
-    .rep-item { padding: 20px 24px; border-right: 0.5px solid var(--border); }
-    .rep-item:last-child { border-right: none; }
-    .rep-label { font-family: var(--serif-b); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 6px; }
-    .rep-nombre { font-family: var(--serif-d); font-size: 18px; font-weight: 400; color: var(--ink); }
 
     /* ── FOOTER ── */
     footer { max-width: 1200px; margin: 0 auto; padding: 40px 48px; display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid var(--border); }
@@ -152,12 +149,8 @@
       .hero-foto { position: static; }
       .foto-wrap { aspect-ratio: 4/3; }
       .statement-inner, .cuerpo { padding: 48px 24px; }
-      .rep-grid { grid-template-columns: 1fr; }
-      .rep-item { border-right: none; border-bottom: 0.5px solid var(--border); }
-      .rep-item:last-child { border-bottom: none; }
       footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
       .cv-tipo { font-size: 13px; }
-      .rep-label { font-size: 13px; }
       .hero-label { font-size: 13px; }
       .section-label { font-size: 13px; }
       .seccion-label { font-size: 13px; }
@@ -170,13 +163,13 @@
   <link rel="stylesheet" href="estilos.css">
   <meta property="og:type" content="website">
   <meta property="og:title" content="El artista · Luis González Palacios | Escultor, Castellón">
-  <meta property="og:description" content="Luis González Palacios (Lerma, 1959). Escultor autodidacta. Desertor Constructor. Obra en acero reciclado y madera de olivo. Castellón.">
+  <meta property="og:description" content="Luis González Palacios (Lerma, Burgos, 1959). Escultor. Desertor Constructor. Obra con material rescatado: acero industrial, madera de olivo y componentes mecánicos obsoletos. Castellón.">
   <meta property="og:image" content="https://lgonzalezpalacios.com/img/bio-1200.jpg">
   <meta property="og:url" content="https://lgonzalezpalacios.com/bio.html">
   <meta property="og:locale" content="es_ES">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="El artista · Luis González Palacios | Escultor, Castellón">
-  <meta name="twitter:description" content="Luis González Palacios (Lerma, 1959). Escultor autodidacta. Desertor Constructor. Obra en acero reciclado y madera de olivo. Castellón.">
+  <meta name="twitter:description" content="Luis González Palacios (Lerma, Burgos, 1959). Escultor. Desertor Constructor. Obra con material rescatado: acero industrial, madera de olivo y componentes mecánicos obsoletos. Castellón.">
   <meta name="twitter:image" content="https://lgonzalezpalacios.com/img/bio-1200.jpg">
    <!-- Cloudflare Web Analytics -->
    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "ba10a27b16894cfb8f6bfe64a823ceec"}'></script>
@@ -244,9 +237,10 @@
       <p class="hero-label fade-in delay-1">Escultor</p>
       <h1 class="hero-nombre fade-in delay-2">Luis González<br>Palacios</h1>
       <p class="hero-identidad fade-in delay-2">Desertor Constructor</p>
-      <p class="hero-bio fade-in delay-3">
-        Su práctica escultórica parte de los materiales: texturas, formas, procedencias. Cualquier detalle puede ser clave para afrontar un proyecto. Lo que otros descartan, él lo interroga hasta encontrar la forma que ya estaba ahí, esperando.
-      </p>
+      <div class="hero-bio fade-in delay-3">
+        <p><strong>Luis González Palacios</strong> (Lerma, Burgos, 1959) vive y trabaja en Castellón. Tras treinta y cinco años en la docencia, se dedica por completo a la escultura. Trabaja exclusivamente con material rescatado: acero industrial, madera de olivo abandonada y componentes mecánicos obsoletos.</p>
+        <p>Su obra se ha mostrado en Akelarre Art Fair (Madrid, 2025), Marbella Art Fair (2026), la 46 Muestra Internacional de Arte Contemporáneo del Museu Etnogràfic de Ripoll (2026) y en la Galería Mariam Cremades (Alicante, 2025 y 2026). Ha sido finalista del XI Certamen Nacional de Escultura de San Bartolomé de la Torre y del III Concurso Internacional de Escultura ICRE (Barcelona).</p>
+      </div>
     </div>
     <div class="hero-foto fade-in delay-4">
       <div class="foto-wrap">
@@ -261,13 +255,11 @@
     <div class="statement-inner fade-in delay-2">
       <p class="section-label">Statement</p>
       <div class="statement-texto">
-        <p><strong>Luis González Palacios (Lerma, 1959).</strong> Antes de dedicarse por completo a la escultura ejerció durante muchos años la docencia, y de ahí trae una sola certeza: la escucha atenta.</p>
-        <p>Se refugia en el material desechado —metales industriales, madera de olivo abandonada, componentes mecánicos obsoletos—, en el que reconoce la memoria del trabajo y del tiempo. Lo que fue útil y ya no lo es le ofrece, paradójicamente, un lugar.</p>
-        <p>Construye desde la deserción, entendida no como huida sino como negativa a seguir dentro de una lógica que borra lo que ya no produce. Y el presente lo atraviesa mientras trabaja: lo que ocurre fuera entra en la materia, se deposita, exige forma. De ahí surgen series como Paisajes de Guerra, que fija sobre acero, a partir de imágenes de satélite, las coordenadas GPS de territorios bombardeados en Gaza y Ucrania; Ecos del Fuego, que materializa en metal la huella que permanece cuando todo ha terminado; o Sabotaje, que examina la saturación tecnológica y las nuevas formas de dependencia, y propone interrumpir el flujo como forma de resistencia.</p>
-        <p>Frente a ellas, Tierra ofrece refugio en lo orgánico: madera de olivo rescatada y traviesas de tren, donde «las manos hacen y el cerebro calla». En estos materiales encontró una forma de estar en el mundo.</p>
-        <p>En Cartografía del Movimiento aborda el concepto físico de la dinámica y, al mismo tiempo, reflexiona sobre la propia práctica escultórica. Tres estados —Inercia, Impulso, Desplazamiento— se materializan en ensamblajes de metal y componentes mecánicos recuperados. En Ferrum la operación es más silenciosa y más formal. Piezas de chatarra que en el suelo son cuerpos sucios encuentran, en el encaje con otras, geometría, luz, posición en el espacio. Rescatarlas es devolverles presencia.</p>
-        <p>Sabe que un desertor tiene una legitimidad frágil para levantar testimonio, y construye igualmente: rescatando lo descartado, interrogando la ruina, buscando en ella la posibilidad de un sentido nuevo.</p>
-        <p>En 2026 su obra se ha expuesto en la colectiva «Habitar el silencio» de Galería Mariam Cremades (Alicante), en Marbella Art Fair (Palacio de Congresos, Marbella), en Patricia Cancelo Art Gallery (Bogense, Dinamarca) y en la 46 Muestra Internacional de Arte Contemporáneo del Museu Etnogràfic de Ripoll (Girona), y se ha incorporado a la Colección Abarclas de Galería Abartium. En 2025 participó en Akelarre Art Fair (Palacio Santa Bárbara, Madrid), Galería Ra del Rey (Madrid), Galería Abartium (Calldetenes, Barcelona) y Galería Mariam Cremades (Alicante), y fue finalista del XI Certamen Nacional de Escultura de San Bartolomé de la Torre (Huelva), del III Concurso Internacional de Escultura ICRE (Monestir de Sant Pau del Camp, Barcelona) y del VII Premio Internacional de Poesía Visual Paqui Jiménez Yepes. Reside y trabaja en Castellón. Está representado por 1819 Art Gallery y su obra forma parte de la colección de Galería Abartium desde 2024.</p>
+        <p>Todas mis obras surgen del mismo gesto: rescatar materiales expulsados de su función y construir con ellos lugares donde la memoria pueda permanecer.</p>
+        <p>Trabajo con acero industrial, madera de olivo abandonada y componentes mecánicos obsoletos. Lo que fue útil y ya no lo es me ofrece, paradójicamente, un lugar. No le impongo una forma: escucho la que propone.</p>
+        <p>Construyo desde la deserción, que no entiendo como huida sino como negativa a seguir dentro de una lógica que borra lo que ya no produce. Y el presente entra en el taller mientras trabajo: se deposita en la materia y exige forma.</p>
+        <p>Mi práctica atraviesa la escultura y la poesía. En los <a href="libro-poemas.html" style="font-style:normal">Poemas Materiales</a> se encuentran.</p>
+        <p><a href="mor.html" class="mor-link">Soy un desertor que aprende a construir.</a></p>
       </div>
     </div>
   </section>
@@ -276,15 +268,6 @@
   <div class="cuerpo">
 
     <div>
-
-      <!-- PRÁCTICA -->
-      <section class="seccion fade-in delay-3" id="practica">
-        <p class="seccion-label">Práctica artística</p>
-        <p><em>Todas mis obras surgen del mismo gesto: rescatar materiales expulsados de su función y construir con ellos lugares donde la memoria pueda permanecer.</em></p>
-        <p><em>Cada serie explora este impulso desde distintos territorios — la materia, el conflicto, el cuerpo, el equilibrio, el tiempo. Reutilizar materiales no es solo una elección estética, sino una decisión ética: una forma de honrar la vida que ya estuvo, de asumir desde el arte un compromiso consciente.</em></p>
-        <p><em>Mi práctica atraviesa la escultura y la poesía. Los <em>Poemas Materiales</em> son el punto de encuentro entre ambas: la palabra que toma cuerpo en la materia, la escultura que habla con la voz del poema.</em></p>
-        <p><a href="mor.html" class="mor-link">Soy un desertor que aprende a construir.</a></p>
-      </section>
 
       <!-- CURRÍCULUM -->
       <section class="seccion fade-in delay-3" id="curriculo">
@@ -307,10 +290,6 @@
           <div class="cv-item">
             <span class="cv-titulo">46 Muestra Internacional de Arte Contemporáneo · <em>Museu Etnogràfic de Ripoll</em>, Girona</span>
             <span class="cv-tipo">Colectiva</span>
-          </div>
-          <div class="cv-item">
-            <span class="cv-titulo">Colección Abarclas · <em>Galería Abartium</em></span>
-            <span class="cv-tipo">Colección</span>
           </div>
         </div>
 
@@ -355,14 +334,6 @@
         </div>
 
         <div class="cv-year-block">
-          <p class="cv-year">2024</p>
-          <div class="cv-item">
-            <span class="cv-titulo">Representado por <em>1819 Art Gallery</em></span>
-            <span class="cv-tipo">Galería</span>
-          </div>
-        </div>
-
-        <div class="cv-year-block">
           <p class="cv-year">2023</p>
           <div class="cv-item cv-finalista">
             <span class="cv-titulo">Finalista · <em>IV Premio de Poesía Visual Paqui Jiménez Yepes</em></span>
@@ -381,28 +352,15 @@
         <a href="contacto.html" class="cta-link">Ver exposiciones completas →</a>
       </section>
 
-      <!-- REPRESENTACIÓN -->
-      <section class="seccion fade-in delay-3" id="representacion">
-        <p class="seccion-label">Representación y presencia online</p>
-        <div class="rep-grid">
-          <div class="rep-item">
-            <p class="rep-label">Galería principal</p>
-            <p class="rep-nombre">1819 Art Gallery</p>
-          </div>
-          <div class="rep-item">
-            <p class="rep-label">Colección desde 2024</p>
-            <p class="rep-nombre">Galería Abartium</p>
-          </div>
-          <div class="rep-item">
-            <p class="rep-label">Plataforma internacional</p>
-            <p class="rep-nombre"><a href="https://www.artsy.net/artist/luis-gonzalez-palacios" target="_blank" rel="noopener" style="color:var(--oxide)">Artsy →</a></p>
-          </div>
-          <div class="rep-item">
-            <p class="rep-label">Dossier profesional</p>
-            <p class="rep-nombre"><a href="flipbook_porfolio/index.html" target="_blank" rel="noopener" style="color:var(--oxide)">Descargar portfolio →</a></p>
-          </div>
+      <!-- COLECCIONES -->
+      <section class="seccion fade-in delay-3" id="colecciones">
+        <p class="seccion-label">Colecciones</p>
+        <div class="cv-item">
+          <span class="cv-titulo">Colección Abarclas · <em>Galería Abartium</em></span>
+          <span class="cv-tipo">2024</span>
         </div>
       </section>
+
 
     </div>
   </div>
