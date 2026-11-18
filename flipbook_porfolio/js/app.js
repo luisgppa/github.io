@@ -1,15 +1,20 @@
 (() => {
   'use strict';
 
-  const PDF_TOTAL_PAGES = 29;
+  const PDF_TOTAL_PAGES = 18;
   const FLIP_TIME = 900;
 
-  // Se cargan las 29 páginas del PDF. Al ser impar el total, la página 29
-  // (Contacto) queda como contraportada única.
-  const sourcePageNumbers = Array.from({ length: 29 }, (_, index) => index + 1);
-  const pageImages = sourcePageNumbers.map((pageNumber) =>
-    `pages/page-${String(pageNumber).padStart(2, '0')}.webp`
-  );
+  // El motor necesita un total impar de hojas. El PDF tiene 18 páginas, así que
+  // se añade una hoja en blanco como reverso de la portada (no existe en el PDF).
+  const pdfPageNumbers = Array.from({ length: PDF_TOTAL_PAGES }, (_, index) => index + 1);
+  const sourcePageNumbers = [1, 2, ...pdfPageNumbers.slice(1)];
+  const pageImages = [
+    'pages/page-01.webp',
+    'pages/blank.webp',
+    ...pdfPageNumbers.slice(1).map((pageNumber) =>
+      `pages/page-${String(pageNumber).padStart(2, '0')}.webp`
+    )
+  ];
   const BOOK_PAGE_COUNT = pageImages.length;
 
   const bookElement = document.getElementById('book');
@@ -93,9 +98,14 @@
   }
 
   function firstContentPageIndex() {
-    // La página 2 del PDF está en blanco. En móvil se salta para que la apertura
-    // lleve directamente al statement de la página 3.
+    // La hoja en blanco tras la portada se salta en móvil para que la apertura
+    // lleve directamente al Statement.
     return isPortrait() ? 2 : 1;
+  }
+
+  function lastBookIndex() {
+    // En doble página, las dos últimas hojas se ven juntas.
+    return isPortrait() ? BOOK_PAGE_COUNT - 1 : BOOK_PAGE_COUNT - 2;
   }
 
   function setLastPageLayout(index) {
@@ -113,11 +123,12 @@
 
     setLastPageLayout(index);
     const safeIndex = clamp(index, 0, BOOK_PAGE_COUNT - 1);
-    const current = sourcePageNumbers[safeIndex];
+    const atEnd = index >= lastBookIndex();
+    const current = atEnd ? PDF_TOTAL_PAGES : sourcePageNumbers[safeIndex];
     pageCounter.textContent = `${current} / ${PDF_TOTAL_PAGES}`;
     const atBeginning = isPortrait() ? index <= 2 : index <= 1;
     prevButton.disabled = transitioning ? true : false;
-    nextButton.disabled = transitioning || index >= BOOK_PAGE_COUNT - 1;
+    nextButton.disabled = transitioning || atEnd;
     prevButton.dataset.closesCover = atBeginning ? 'true' : 'false';
   }
 
@@ -252,7 +263,7 @@
   function goNext() {
     if (coverMode) {
       openCover();
-    } else if (!transitioning && pageFlip) {
+    } else if (!transitioning && pageFlip && pageFlip.getCurrentPageIndex() < lastBookIndex()) {
       pageFlip.flipNext('bottom');
     }
   }
@@ -260,18 +271,13 @@
   function flipPrevAnimated() {
     if (!pageFlip) return;
 
-    // page-flip 2.x calcula la esquina izquierda fuera del lienzo cuando el
-    // libro está en modo vertical. Usamos esa coordenada real para conservar
-    // la animación también en móvil.
-    if (pageFlip.getOrientation() === 'portrait') {
-      const bounds = pageFlip.getBoundsRect();
-      pageFlip.getFlipController().flip({
-        x: bounds.left + 10,
-        y: bounds.height - 2
-      });
-    } else {
-      pageFlip.flipPrev('bottom');
-    }
+    // page-flip 2.x calcula la esquina izquierda fuera del lienzo. Usamos la
+    // coordenada real del libro para conservar la animación en cualquier modo.
+    const bounds = pageFlip.getBoundsRect();
+    pageFlip.getFlipController().flip({
+      x: bounds.left + 10,
+      y: bounds.height - 2
+    });
   }
 
   function goPrev() {
@@ -319,7 +325,7 @@
         bookElement.classList.add('visible');
       }
       pageFlip.turnToPage(BOOK_PAGE_COUNT - 1);
-      updateInterface(BOOK_PAGE_COUNT - 1);
+      updateInterface(pageFlip.getCurrentPageIndex());
     }
   });
 
@@ -370,7 +376,9 @@
 
   function currentZoomPageIndex() {
     if (coverMode || !pageFlip) return 0;
-    return clamp(pageFlip.getCurrentPageIndex(), 0, BOOK_PAGE_COUNT - 1);
+    const index = clamp(pageFlip.getCurrentPageIndex(), 0, BOOK_PAGE_COUNT - 1);
+    // En doble página, la lupa no debe abrir la hoja en blanco.
+    return index === 1 ? 2 : index;
   }
 
   function clampZoomPan() {
