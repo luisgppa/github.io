@@ -573,6 +573,8 @@
   }, { passive: true });
 
   stage.addEventListener('contextmenu', (event) => event.preventDefault());
+  // Sin menú contextual (guardar imagen) tampoco en la vista ampliada.
+  zoomViewer.addEventListener('contextmenu', (event) => event.preventDefault());
 
   refreshDeviceMode();
   updateInterface(0);
