@@ -1,20 +1,16 @@
 (() => {
   'use strict';
 
-  const PDF_TOTAL_PAGES = 18;
+  const PDF_TOTAL_PAGES = 19;
   const FLIP_TIME = 900;
 
-  // El motor necesita un total impar de hojas. El PDF tiene 18 páginas, así que
-  // se añade una hoja en blanco como reverso de la portada (no existe en el PDF).
-  const pdfPageNumbers = Array.from({ length: PDF_TOTAL_PAGES }, (_, index) => index + 1);
-  const sourcePageNumbers = [1, 2, ...pdfPageNumbers.slice(1)];
-  const pageImages = [
-    'pages/page-01.webp',
-    'pages/blank.webp',
-    ...pdfPageNumbers.slice(1).map((pageNumber) =>
-      `pages/page-${String(pageNumber).padStart(2, '0')}.webp`
-    )
-  ];
+  // El motor necesita un total impar de hojas. El PDF tiene 19 páginas (desde el
+  // 22-11-2026, con Espera), así que ya no hace falta la hoja en blanco tras la portada:
+  // portada sola, 2-3 … 16-17 y Biografía + Currículum (18-19) juntas al final.
+  const sourcePageNumbers = Array.from({ length: PDF_TOTAL_PAGES }, (_, index) => index + 1);
+  const pageImages = sourcePageNumbers.map((pageNumber) =>
+    `pages/page-${String(pageNumber).padStart(2, '0')}.webp`
+  );
   const BOOK_PAGE_COUNT = pageImages.length;
 
   const bookElement = document.getElementById('book');
@@ -98,9 +94,7 @@
   }
 
   function firstContentPageIndex() {
-    // La hoja en blanco tras la portada se salta en móvil para que la apertura
-    // lleve directamente al Statement.
-    return isPortrait() ? 2 : 1;
+    return 1;
   }
 
   function lastBookIndex() {
@@ -126,7 +120,7 @@
     const atEnd = index >= lastBookIndex();
     const current = atEnd ? PDF_TOTAL_PAGES : sourcePageNumbers[safeIndex];
     pageCounter.textContent = `${current} / ${PDF_TOTAL_PAGES}`;
-    const atBeginning = isPortrait() ? index <= 2 : index <= 1;
+    const atBeginning = index <= 1;
     prevButton.disabled = transitioning ? true : false;
     nextButton.disabled = transitioning || atEnd;
     prevButton.dataset.closesCover = atBeginning ? 'true' : 'false';
@@ -180,6 +174,9 @@
 
     pageFlip.on('init', () => {
       bookReady = true;
+      // El motor mide su lienzo al arrancar, con el libro oculto, y la medida sale
+      // corta: se fuerza una nueva medida ya maquetado.
+      requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       loading.classList.add('hidden');
       updateInterface(0);
       window.setTimeout(showGestureHint, 500);
@@ -197,9 +194,6 @@
     pageFlip.on('changeOrientation', () => {
       if (!coverMode) {
         const index = pageFlip.getCurrentPageIndex();
-        if (pageFlip.getOrientation() === 'portrait' && index === 1) {
-          pageFlip.turnToPage(2);
-        }
         updateInterface(pageFlip.getCurrentPageIndex());
       }
     });
@@ -235,6 +229,7 @@
       coverMode = false;
       transitioning = false;
       updateInterface(pageFlip.getCurrentPageIndex());
+      requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
     });
   }
 
@@ -283,7 +278,7 @@
   function goPrev() {
     if (coverMode || transitioning || !pageFlip) return;
     const index = pageFlip.getCurrentPageIndex();
-    const returnsToCover = isPortrait() ? index <= 2 : index <= 1;
+    const returnsToCover = index <= 1;
     if (returnsToCover) {
       closeCover();
     } else {
@@ -364,6 +359,7 @@
         coverMode = false;
         transitioning = false;
         updateInterface(pageFlip.getCurrentPageIndex());
+        requestAnimationFrame(() => window.dispatchEvent(new Event('resize')));
       });
     } else {
       animateCover(0, 320, () => coverSequence.classList.remove('turning'));
@@ -376,9 +372,7 @@
 
   function currentZoomPageIndex() {
     if (coverMode || !pageFlip) return 0;
-    const index = clamp(pageFlip.getCurrentPageIndex(), 0, BOOK_PAGE_COUNT - 1);
-    // En doble página, la lupa no debe abrir la hoja en blanco.
-    return index === 1 ? 2 : index;
+    return clamp(pageFlip.getCurrentPageIndex(), 0, BOOK_PAGE_COUNT - 1);
   }
 
   function clampZoomPan() {
