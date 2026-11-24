@@ -1,22 +1,22 @@
 (() => {
   'use strict';
 
-  const PDF_TOTAL_PAGES = 48;
+  const PDF_TOTAL_PAGES = 50;
   const FLIP_TIME = 900;
 
-  // Catálogo de sala, 48 páginas, emparejadas como el libro impreso: portada sola,
-  // 2-3 … 44-45 y contraportada sola. El motor trabaja sin "tapas duras"
+  // Catálogo de sala, 50 páginas, emparejadas como el libro impreso: portada sola,
+  // 2-3 … 48-49 y contraportada sola. El motor trabaja sin "tapas duras"
   // (showCover: false), porque deforma la última hoja; por eso se añaden dos hojas
   // en blanco que no existen en el PDF: una a la izquierda de la portada (índice 0,
   // nunca visible: la portada la anima .cover-sequence) y otra a la izquierda de
   // la contraportada, que en doble página se oculta y la contraportada se centra.
   const pageFile = (n) => `pages/page-${String(n).padStart(2, '0')}.webp`;
-  const interior = Array.from({ length: PDF_TOTAL_PAGES - 1 }, (_, i) => i + 1); // 1…47
+  const interior = Array.from({ length: PDF_TOTAL_PAGES - 1 }, (_, i) => i + 1); // 1…49
   const pageImages = ['pages/blank.webp', ...interior.map(pageFile), 'pages/blank.webp', pageFile(PDF_TOTAL_PAGES)];
   const sourcePageNumbers = [1, ...interior, PDF_TOTAL_PAGES - 1, PDF_TOTAL_PAGES];
   const BOOK_PAGE_COUNT = pageImages.length;      // 50
   const FIRST_INSIDE_INDEX = 2;                    // pág. 2
-  const BACK_COVER_INDEX = BOOK_PAGE_COUNT - 1;    // pág. 48
+  const BACK_COVER_INDEX = BOOK_PAGE_COUNT - 1;    // pág. 50
   const BACK_BLANK_INDEX = BOOK_PAGE_COUNT - 2;
 
   const bookElement = document.getElementById('book');
